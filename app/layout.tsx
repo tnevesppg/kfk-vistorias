@@ -9,8 +9,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Interior Design",
-  description: "Estúdio de design de interiores: projetos, portfólio e serviços.",
+  title: "KFK Vistorias & Perícias",
+  description: "KFK Vistorias & Perícias: vistorias e perícias técnicas.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

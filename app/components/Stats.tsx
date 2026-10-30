@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { stats } from "@/lib/data";
+import Reveal from "./Reveal";
 
 function Counter({ to }: { to: number }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -36,13 +37,13 @@ export default function Stats() {
   return (
     <section className="px-6 py-14 lg:px-[8.33%] lg:py-[4vw]">
       <div className="grid grid-cols-2 gap-10 lg:grid-cols-5 lg:gap-0">
-        {stats.map((s) => (
-          <div key={s.label} className="text-center">
-            <p className="text-4xl font-bold tracking-tight lg:text-[2.1vw]">
+        {stats.map((s, i) => (
+          <Reveal key={s.label} delay={i * 90} className="text-center">
+            <p className="text-4xl font-bold tracking-tight text-brand lg:text-[2.1vw]">
               <Counter to={s.value} />
             </p>
             <p className="mt-2 text-xs font-medium lg:text-[0.7vw]">{s.label}</p>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>

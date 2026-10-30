@@ -8,6 +8,7 @@ import VideoSection from "./components/VideoSection";
 import Testimonials from "./components/Testimonials";
 import Blog from "./components/Blog";
 import Footer from "./components/Footer";
+import Preloader from "./components/Preloader";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
           <span key={p} className="absolute inset-y-0 w-px bg-neutral-200" style={{ left: `${p}%` }} />
         ))}
       </div>
+      <Preloader />
       <Header />
       <main className="relative z-10">
         <Hero />

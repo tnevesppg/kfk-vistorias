@@ -136,3 +136,31 @@ Antes de uma obra, registramos o estado dos imóveis vizinhos com fotos, mediç�
 - Equipamentos próprios (drone, termografia, esclerômetro) ou terceirizados.
 - Prazos médios e política de preço (faixa ou só sob proposta).
 - Releitura do site da MGT em navegador real e das páginas internas de serviço de Master, Comper e Engevedo para aprofundar descrições.
+
+## 8. Voz e identidade da KFK Construtora (kfkconstrutora.com.br)
+
+**Identidade visual (extraída do CSS do site):**
+- Fonte única: **Poppins** (títulos peso 600, destaques 500, corpo 400).
+- Azul escuro `#03316B`, azul primário `#1A649F`, verde `#33B048`, verde vivo de destaque `#20E642`, neutros `#EBEBEB`, `#DFDFDF`, `#9E9E9E`, `#868585`, branco e preto.
+
+**Voz:**
+- Formal-profissional e acessível, sem gíria. Verbos na 1ª pessoa do plural ("Projetamos", "Executamos", "Entregamos") e "você/seu negócio" para o leitor.
+- Títulos curtos em ritmo de slogan, em trios: "Força e Precisão para Operar Sem Parar", "Excelência, Confiança e Resultados em Cada Projeto".
+- Cada serviço tem 3 pilares curtos numerados (ex.: Durabilidade, Segurança, Performance), cada um com uma frase.
+- Fecho padrão: "Entregamos o Melhor / Qualidade Comprovada, Equipe Especializada, Entregas que Superam Expectativas" + botão "Solicite um Orçamento".
+- Adjetivos recorrentes: especializada, alto padrão, referência, excelência, comprovada.
+- Valores: inovação, integridade, melhoria contínua, comprometimento.
+- Sem números, clientes, certificações ou prazos no site da Construtora. Contato: (21) 2160-0974, Bonsucesso, Rio de Janeiro.
+
+**Como aplicar na KFK Vistorias:**
+- Manter Poppins e a paleta azul/verde para a marca parecer do mesmo grupo.
+- Usar a mesma mecânica: título-slogan, 3 pilares por serviço, fecho "Entregamos o Melhor".
+- Ser mais específico que a Construtora: citar normas, etapas e entregáveis.
+- Não copiar "somos a melhor do Rio": sem prova, vira alegação vazia. Preferir fatos verificáveis.
+- Praça confirmada pela Construtora: Rio de Janeiro. Isso sugere autovistoria e marquise conforme a legislação do Rio (Lei 6400/13 e LC 126/13, a conferir).
+- Não há nenhuma menção a vistoria ou perícia no site da Construtora; o grupo aparece como "KFK Engenharia" só na página Sobre. Definir qual nome usar como "casa-mãe" no site novo.
+
+**Problemas no site da Construtora (para a cliente corrigir):**
+- Link "Projetos" do rodapé dá 404.
+- Botão "Solicite um Orçamento" em /sobre/ aponta para outro domínio (kfkconstrucoes.tneves.com.br).
+- Erros de grafia: "Endurecedor de Superfífice", "Nevegue" no rodapé.

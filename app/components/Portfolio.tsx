@@ -10,39 +10,53 @@ export default function Portfolio() {
   const visible = projects.filter((p) => active === "All" || p.tags.includes(active));
 
   return (
-    <section id="portfolio" className="px-6 py-16 lg:px-[8.33%] lg:py-[5vw]">
-      <div className="flex flex-wrap items-center justify-between gap-6">
-        <h2 className="heading text-4xl lg:text-[2.1vw]">Portfolio Gallery .</h2>
-        <ul className="order-3 flex w-full flex-wrap gap-5 text-[10px] font-medium uppercase tracking-wider lg:order-none lg:w-auto lg:text-[0.62vw] lg:gap-[1.8vw]">
+    <section id="portfolio" className="py-16 lg:py-[5vw]">
+      <Reveal className="flex flex-wrap items-center justify-between gap-6 px-6 lg:px-[8.9%]">
+        <div>
+          <h2 className="heading text-4xl lg:text-[2.9vw]">Portfolio Gallery <span className="text-sun">.</span></h2>
+          <span className="rule mt-4 w-14 lg:mt-[1vw] lg:w-[2.75vw]" />
+        </div>
+        <ul className="order-3 flex w-full flex-wrap gap-5 text-[11px] font-medium uppercase lg:order-none lg:w-auto lg:gap-[2.5vw] lg:pt-[1vw] lg:text-[0.95vw]">
           {categories.map((c) => (
             <li key={c}>
               <button
                 onClick={() => setActive(c)}
-                className={active === c ? "text-ink" : "text-neutral-400 transition hover:text-ink"}
+                className={active === c ? "border-b-2 border-brand pb-0.5 font-bold text-brand" : "text-neutral-700 transition hover:text-ink"}
               >
                 {c}
               </button>
             </li>
           ))}
         </ul>
-        <a href="#portfolio" className="btn-dark">View All</a>
-      </div>
+        <a href="#portfolio" className="btn-dark !px-8 !py-5 lg:!w-[10vw] lg:!py-[1.5vw] lg:!text-[0.8vw]">
+          View All
+        </a>
+      </Reveal>
 
-      <div className="mt-10 grid grid-cols-2 lg:mt-[3vw] lg:grid-cols-5">
+      <div className="mt-10 grid grid-cols-2 lg:mt-[3.2vw] lg:grid-cols-5">
         {visible.map((p, i) => (
-          <Reveal key={`${active}-${p.title}`} delay={i * 80}>
-            <figure className="group relative aspect-[3/4] overflow-hidden lg:aspect-auto lg:h-[22vw]">
-              <Image
-                src={p.src}
-                alt={p.title}
-                fill
-                sizes="(min-width:1024px) 20vw, 50vw"
-                className="object-cover transition duration-700 group-hover:scale-110"
-              />
-              <figcaption className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 via-black/10 to-transparent p-5 text-white opacity-0 transition duration-500 group-hover:opacity-100">
-                <p className="text-sm font-semibold">{p.title}</p>
-                <p className="mt-1 text-[10px] uppercase tracking-widest text-white/70">{p.tags.join(" · ")}</p>
-              </figcaption>
+          <Reveal key={`${active}-${p.title}`} variant="wipe" delay={i * 90} className="hover:z-10">
+            <figure className="group relative aspect-[3/4] overflow-hidden transition-shadow duration-500 hover:shadow-[0_2.5vw_5vw_rgba(0,0,0,0.18)] lg:aspect-auto lg:h-[26.6vw] lg:overflow-visible">
+              <div className="absolute inset-0 overflow-hidden">
+                <Image
+                  src={p.src}
+                  alt={p.title}
+                  fill
+                  sizes="(min-width:1024px) 20vw, 50vw"
+                  className="object-cover transition duration-700 ease-out group-hover:scale-[1.06]"
+                />
+              </div>
+
+              {/* hover panel: plus square on top, vertical title bar at the bottom */}
+              <div className="absolute inset-0 overflow-hidden lg:left-[3%] lg:w-[27%] lg:right-auto">
+                <span className="absolute inset-x-0 top-0 grid aspect-square -translate-y-full place-items-center bg-sun text-2xl font-light text-ink transition-transform duration-500 ease-out group-hover:translate-y-0 lg:text-[1.6vw]">
+                  +
+                </span>
+                <div className="absolute inset-x-0 bottom-0 flex h-[64%] translate-y-full items-end justify-center gap-2 bg-ink/95 py-[8%] text-white transition-transform duration-500 ease-out group-hover:translate-y-0">
+                  <p className="text-[11px] font-light [writing-mode:vertical-rl] rotate-180 lg:text-[0.8vw]">{p.tags.join(" · ")}</p>
+                  <p className="text-sm font-bold [writing-mode:vertical-rl] rotate-180 lg:text-[1.1vw]">{p.title}</p>
+                </div>
+              </div>
             </figure>
           </Reveal>
         ))}

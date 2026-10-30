@@ -2,7 +2,6 @@ import Image from "next/image";
 import { images } from "@/lib/data";
 import { u } from "@/lib/u";
 import Parallax from "./Parallax";
-import Reveal from "./Reveal";
 
 const brands = [
   { a: "GOLDEN", b: "sub" },
@@ -45,50 +44,52 @@ export default function Hero() {
     <section id="home" className="relative">
       {/* desktop: absolute collage mirrored from the demo (1920 design grid) */}
       <div className="relative hidden lg:block" style={{ height: u(1140) }}>
-        <Parallax speed={0.12} className="absolute" style={{ left: u(160), top: u(136), width: u(160), height: u(564) }}>
+        <Parallax speed={0.12} className="load-wipe absolute" style={{ left: u(160), top: u(136), width: u(160), height: u(564), ["--d" as string]: "700ms" }}>
           <Image src={images.heroPlant} alt="Planta suspensa" fill sizes="10vw" priority className="object-cover" />
         </Parallax>
 
-        <Parallax speed={-0.06} className="absolute" style={{ left: u(1152), top: u(136), width: u(736), height: u(564) }}>
+        <Parallax speed={-0.06} className="load-wipe absolute" style={{ left: u(1152), top: u(136), width: u(736), height: u(564), ["--d" as string]: "600ms" }}>
           <Image src={images.heroMain} alt="Sala clara e minimalista" fill sizes="40vw" priority className="object-cover" />
         </Parallax>
 
-        <span className="absolute h-px bg-ink" style={{ left: u(480), top: u(136), width: u(53) }} />
-        <span className="absolute h-px bg-ink" style={{ left: u(1095), top: u(647), width: u(53) }} />
+        <span className="absolute h-[3px] bg-brand" style={{ left: u(480), top: u(136), width: u(53) }} />
+        <span className="absolute h-[3px] bg-sun" style={{ left: u(1095), top: u(647), width: u(53) }} />
 
         <Parallax mode="scrollX" speed={0.28} className="absolute z-10 whitespace-nowrap" style={{ left: u(485), top: u(285) }}>
+          <div className="load-rise" style={{ ["--d" as string]: "500ms" }}>
           <h1
             className="font-extrabold"
             style={{ fontSize: u(150), lineHeight: 1.1, letterSpacing: "-0.055em" }}
           >
             Interior Design
           </h1>
+          </div>
         </Parallax>
 
-        <Reveal className="absolute" style={{ left: u(490), top: u(470), width: u(450) }}>
+        <div className="load-rise absolute" style={{ left: u(490), top: u(470), width: u(450), ["--d" as string]: "400ms" }}>
           <p className="text-neutral-700" style={{ fontSize: u(18), lineHeight: 1.65 }}>
             There are many variations of passages of lorem ipsum available majority view project alteration some form by injected humour, or randomised .
           </p>
-        </Reveal>
+        </div>
 
-        <Parallax speed={0.08} className="absolute" style={{ left: u(800), top: u(700), width: u(320), height: u(275) }}>
+        <Parallax speed={0.08} className="load-wipe absolute" style={{ left: u(800), top: u(700), width: u(320), height: u(275), ["--d" as string]: "200ms" }}>
           <Image src={images.heroSmall} alt="Ambiente com planta" fill sizes="20vw" className="object-cover" />
         </Parallax>
 
-        <Reveal className="absolute" style={{ left: u(1265), top: u(740), width: u(430) }}>
+        <div className="load-rise absolute" style={{ left: u(1265), top: u(740), width: u(430), ["--d" as string]: "300ms" }}>
           <h2 className="font-extrabold" style={{ fontSize: u(64), letterSpacing: "-0.05em", lineHeight: 1 }}>
             look
           </h2>
           <p className="text-neutral-700" style={{ marginTop: u(40), fontSize: u(18), lineHeight: 1.65 }}>
-            There Are Many Variations Of Passages Of Lorem Ipsum Available Majority <a href="#portfolio" className="font-semibold underline">View Project</a> Alteration Some Form By Injected Humour Or.
+            There Are Many Variations Of Passages Of Lorem Ipsum Available Majority <a href="#portfolio" className="font-semibold text-brand underline decoration-sun decoration-2 underline-offset-4">View Project</a> Alteration Some Form By Injected Humour Or.
           </p>
-        </Reveal>
+        </div>
 
-        <div className="absolute" style={{ left: u(190), top: u(960) }}>
+        <div className="load-rise absolute" style={{ left: u(190), top: u(960), ["--d" as string]: "100ms" }}>
           <Socials />
         </div>
 
-        <div className="absolute" style={{ left: u(160), top: u(990), width: u(1600) }}>
+        <div className="load-rise absolute" style={{ left: u(160), top: u(990), width: u(1600) }}>
           <Brands />
         </div>
       </div>

@@ -8,10 +8,10 @@ export default function Testimonials() {
       <div className="relative grid gap-12 lg:grid-cols-[1fr_1fr_1fr_0.45fr] lg:gap-[3vw]">
         {testimonials.map((t, i) => (
           <Reveal key={i} delay={i * 120}>
-            <span className="heading block text-[5rem] leading-none text-neutral-300 lg:text-[5vw]">“</span>
+            <span className="heading block text-[5rem] leading-none text-sun lg:text-[5vw]">“</span>
             <p className="mt-4 text-[13px] leading-7 text-neutral-600 lg:text-[0.78vw] lg:leading-[1.85]">{t.quote}</p>
             <div className="mt-8 flex items-center gap-4">
-              <span className="h-px w-8 bg-ink" />
+              <span className="h-[3px] w-8 bg-sun" />
               <div>
                 <p className="text-sm font-bold lg:text-[0.85vw]">{t.name}</p>
                 <p className="text-xs text-neutral-500 lg:text-[0.65vw]">{t.city}</p>
@@ -19,7 +19,9 @@ export default function Testimonials() {
             </div>
           </Reveal>
         ))}
-        <h2 className="heading text-4xl lg:text-[2.3vw] lg:[writing-mode:vertical-rl]">Customer Says .</h2>
+        <Reveal delay={360}>
+          <h2 className="heading text-4xl lg:text-[2.3vw] lg:[writing-mode:vertical-rl]">Customer Says <span className="text-sun">.</span></h2>
+        </Reveal>
       </div>
     </section>
   );
