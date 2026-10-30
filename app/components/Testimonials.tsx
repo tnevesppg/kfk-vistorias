@@ -1,40 +1,25 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import { testimonials } from "@/lib/data";
+import Reveal from "./Reveal";
 
 export default function Testimonials() {
-  const [i, setI] = useState(0);
-
-  useEffect(() => {
-    const id = setInterval(() => setI((v) => (v + 1) % testimonials.length), 6000);
-    return () => clearInterval(id);
-  }, []);
-
-  const t = testimonials[i];
-
   return (
-    <section className="py-24">
-      <div className="mx-auto max-w-4xl px-6 text-center">
-        <h2 className="section-title text-4xl font-bold md:text-5xl">
-          Customer Says<span className="text-accent">.</span>
-        </h2>
-        <div className="mt-12 min-h-56">
-          <span className="section-title text-7xl leading-none text-accent">“</span>
-          <p className="mt-2 text-lg leading-8 text-neutral-600">{t.quote}</p>
-          <p className="mt-6 font-semibold">{t.name}</p>
-          <p className="text-xs uppercase tracking-widest text-neutral-400">{t.city}</p>
-        </div>
-        <div className="mt-8 flex justify-center gap-3">
-          {testimonials.map((_, idx) => (
-            <button
-              key={idx}
-              aria-label={`Depoimento ${idx + 1}`}
-              onClick={() => setI(idx)}
-              className={`h-2.5 w-2.5 rounded-full ${idx === i ? "bg-accent" : "bg-neutral-300"}`}
-            />
-          ))}
-        </div>
+    <section className="relative px-6 py-20 lg:px-[8.33%] lg:py-[9vw]">
+      <div className="blueprint pointer-events-none absolute right-0 top-[3vw] hidden h-[30vw] w-[26vw] opacity-80 lg:block" />
+      <div className="relative grid gap-12 lg:grid-cols-[1fr_1fr_1fr_0.45fr] lg:gap-[3vw]">
+        {testimonials.map((t, i) => (
+          <Reveal key={i} delay={i * 120}>
+            <span className="heading block text-[5rem] leading-none text-neutral-300 lg:text-[5vw]">“</span>
+            <p className="mt-4 text-[13px] leading-7 text-neutral-600 lg:text-[0.78vw] lg:leading-[1.85]">{t.quote}</p>
+            <div className="mt-8 flex items-center gap-4">
+              <span className="h-px w-8 bg-ink" />
+              <div>
+                <p className="text-sm font-bold lg:text-[0.85vw]">{t.name}</p>
+                <p className="text-xs text-neutral-500 lg:text-[0.65vw]">{t.city}</p>
+              </div>
+            </div>
+          </Reveal>
+        ))}
+        <h2 className="heading text-4xl lg:text-[2.3vw] lg:[writing-mode:vertical-rl]">Customer Says .</h2>
       </div>
     </section>
   );

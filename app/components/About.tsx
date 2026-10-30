@@ -1,40 +1,35 @@
 import Image from "next/image";
 import { images } from "@/lib/data";
+import Parallax from "./Parallax";
+import Reveal from "./Reveal";
 
 export default function About() {
   return (
-    <section id="about" className="bg-neutral-50 py-24">
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 md:grid-cols-2">
-        <div className="relative aspect-[4/3]">
-          <Image
-            src={images.about}
-            alt="Ambiente com sofá bege e arte na parede"
-            fill
-            sizes="(min-width: 768px) 50vw, 100vw"
-            className="object-cover"
-          />
+    <section id="about" className="relative px-6 py-16 lg:px-[8.33%] lg:py-0">
+      {/* image strip */}
+      <div className="relative grid h-[260px] grid-cols-[1fr_2.2fr_1fr] gap-4 lg:h-[27vw] lg:gap-0">
+        <Parallax speed={0.05} className="relative">
+          <Image src={images.aboutA} alt="" fill sizes="20vw" className="object-cover" />
+        </Parallax>
+        <div className="relative">
+          <Image src={images.aboutB} alt="Cozinha com backsplash" fill sizes="50vw" className="object-cover" />
         </div>
-        <div>
-          <h2 className="section-title text-4xl font-bold md:text-5xl">
-            About Us<span className="text-accent">.</span>
-          </h2>
-          <p className="mt-6 text-sm leading-7 text-neutral-500">
-            Somos um estúdio dedicado a transformar espaços em lugares com
-            identidade. Cada projeto começa ouvindo você e termina com detalhes
-            que fazem diferença no dia a dia.
-          </p>
-          <p className="mt-4 text-sm leading-7 text-neutral-500">
-            Trabalhamos do conceito à execução, com curadoria de materiais,
-            mobiliário e iluminação, sempre respeitando prazo e orçamento.
-          </p>
-          <a
-            href="#contact"
-            className="mt-8 inline-block bg-ink px-8 py-3 text-xs font-medium uppercase tracking-widest text-white transition hover:bg-accent"
-          >
-            Read More
-          </a>
-        </div>
+        <Parallax speed={-0.05} className="relative">
+          <Image src={images.aboutC} alt="" fill sizes="20vw" className="object-cover" />
+        </Parallax>
       </div>
+
+      <Reveal className="relative z-10 mx-auto -mt-16 bg-white p-8 lg:-mt-[5vw] lg:w-[62.5%] lg:px-[4.2vw] lg:py-[4vw]">
+        <h2 className="heading text-4xl lg:text-[3.1vw]">About Us .</h2>
+        <span className="mt-6 block h-px w-14 bg-ink" />
+        <p className="mt-8 text-[13px] leading-7 text-neutral-600 lg:text-[0.8vw] lg:leading-[1.9]">
+          There are many variations of passages of Lorem Ipsum available majority have suffered alteration some form by injected humour, or randomised . words which don&apos;t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn&apos;t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary .
+        </p>
+        <p className="mt-4 text-[13px] leading-7 text-neutral-600 lg:text-[0.8vw] lg:leading-[1.9]">
+          There are many variations of passages of Lorem Ipsum available majority have suffered alteration some form by injected humour, or randomised . words which don&apos;t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn&apos;t anything embarrassing hidden in the middle of text.
+        </p>
+        <a href="#portfolio" className="btn-dark mt-8">Read More</a>
+      </Reveal>
     </section>
   );
 }

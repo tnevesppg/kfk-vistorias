@@ -11,17 +11,25 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <main>
+    <div className="relative mx-auto max-w-[1920px] overflow-x-clip">
+      {/* vertical guide lines, like the demo */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-0 hidden md:block">
+        {[20, 40, 60, 80].map((p) => (
+          <span key={p} className="absolute inset-y-0 w-px bg-neutral-200" style={{ left: `${p}%` }} />
+        ))}
+      </div>
       <Header />
-      <Hero />
-      <About />
-      <Services />
-      <Portfolio />
-      <Stats />
-      <VideoSection />
-      <Testimonials />
-      <Blog />
+      <main className="relative z-10">
+        <Hero />
+        <About />
+        <Services />
+        <Portfolio />
+        <Stats />
+        <VideoSection />
+        <Testimonials />
+        <Blog />
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 }

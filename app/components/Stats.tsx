@@ -16,7 +16,7 @@ function Counter({ to }: { to: number }) {
       io.disconnect();
       const start = performance.now();
       const tick = (t: number) => {
-        const p = Math.min((t - start) / 1600, 1);
+        const p = Math.min((t - start) / 1800, 1);
         setN(Math.round(to * (1 - Math.pow(1 - p, 3))));
         if (p < 1) raf = requestAnimationFrame(tick);
       };
@@ -29,19 +29,19 @@ function Counter({ to }: { to: number }) {
     };
   }, [to]);
 
-  return <span ref={ref}>{n.toLocaleString("pt-BR")}</span>;
+  return <span ref={ref}>{n}</span>;
 }
 
 export default function Stats() {
   return (
-    <section className="bg-ink py-20 text-white">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-10 px-6 text-center md:grid-cols-5">
+    <section className="px-6 py-14 lg:px-[8.33%] lg:py-[4vw]">
+      <div className="grid grid-cols-2 gap-10 lg:grid-cols-5 lg:gap-0">
         {stats.map((s) => (
-          <div key={s.label}>
-            <p className="section-title text-5xl font-bold text-accent">
+          <div key={s.label} className="text-center">
+            <p className="text-4xl font-bold tracking-tight lg:text-[2.1vw]">
               <Counter to={s.value} />
             </p>
-            <p className="mt-2 text-xs uppercase tracking-widest text-white/70">{s.label}</p>
+            <p className="mt-2 text-xs font-medium lg:text-[0.7vw]">{s.label}</p>
           </div>
         ))}
       </div>

@@ -1,16 +1,61 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-accent: #b08d57;
-  --color-ink: #1f1f1f;
+  --color-ink: #111111;
   --font-sans: var(--font-poppins);
-  --font-serif: var(--font-playfair);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-poppins), system-ui, sans-serif;
+  color: #111;
+  background: #fff;
+  overflow-x: hidden;
 }
 
-.section-title {
-  font-family: var(--font-playfair), serif;
+.heading {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 36px, 0);
+  transition: opacity 0.9s cubic-bezier(0.2, 0.7, 0.2, 1), transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+.blueprint {
+  background: url("/blueprint.svg") no-repeat right center / contain;
+}
+
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #111;
+  color: #fff;
+  padding: 1rem 2.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: background 0.3s;
+}
+.btn-dark:hover {
+  background: #444;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
