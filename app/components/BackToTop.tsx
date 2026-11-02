@@ -15,6 +15,7 @@ export default function BackToTop() {
   return (
     <a
       href="#home"
+      data-cursor="solid"
       aria-label="Voltar ao topo"
       tabIndex={show ? 0 : -1}
       className={`fixed bottom-6 right-6 z-40 grid h-11 w-11 place-items-center rounded-[3px] bg-sun text-ink shadow-lg transition-all duration-500 hover:bg-brand hover:text-white lg:bottom-[2vw] lg:right-[2vw] lg:h-[3vw] lg:w-[3vw] ${

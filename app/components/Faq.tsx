@@ -16,7 +16,7 @@ export default function Faq() {
                     +
                   </span>
                 </summary>
-                <p className="pb-6 text-[15px] leading-[1.7] text-neutral-600 lg:max-w-[44vw] lg:pb-[1.8vw] lg:text-[0.9vw] lg:leading-[1.7]">{f.a}</p>
+                <p className="pb-6 text-[15px] leading-[1.7] text-neutral-600 lg:max-w-[44vw] lg:pb-[1.8vw] lg:text-[1vw] lg:leading-[1.7]">{f.a}</p>
               </details>
             </Reveal>
           ))}

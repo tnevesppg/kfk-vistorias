@@ -23,17 +23,17 @@ export default function About() {
     <section id="about" className="relative px-6 pb-14 pt-6 lg:px-[8.33%] lg:py-0">
       {/* image strip */}
       <div className="relative -mx-6 flex snap-x snap-mandatory gap-3 overflow-x-auto px-6 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:mx-0 lg:grid lg:h-[27vw] lg:grid-cols-[1fr_2.2fr_1fr] lg:gap-0 lg:overflow-visible lg:px-0 lg:pb-0">
-        <Reveal variant="wipe" className="max-lg:h-[26rem] max-lg:w-[min(76vw,22rem)] max-lg:shrink-0 max-lg:snap-center relative">
+        <Reveal variant="wipe" className="max-lg:h-[26rem] max-lg:w-[min(76vw,22rem)] max-lg:shrink-0 max-lg:snap-center photo relative">
           <Parallax speed={0.05} className="absolute inset-0">
             <Image src={images.aboutA} alt="" fill sizes="20vw" className="object-cover" />
           </Parallax>
           <Problem {...problems[0]} />
         </Reveal>
-        <Reveal variant="wipe" delay={120} className="max-lg:h-[26rem] max-lg:w-[min(76vw,22rem)] max-lg:shrink-0 max-lg:snap-center relative">
+        <Reveal variant="wipe" delay={120} className="max-lg:h-[26rem] max-lg:w-[min(76vw,22rem)] max-lg:shrink-0 max-lg:snap-center photo relative">
           <Image src={images.aboutB} alt="Parede com trinca diagonal" fill sizes="50vw" className="object-cover" />
           <Problem {...problems[1]} />
         </Reveal>
-        <Reveal variant="wipe" delay={240} className="max-lg:h-[26rem] max-lg:w-[min(76vw,22rem)] max-lg:shrink-0 max-lg:snap-center relative">
+        <Reveal variant="wipe" delay={240} className="max-lg:h-[26rem] max-lg:w-[min(76vw,22rem)] max-lg:shrink-0 max-lg:snap-center photo relative">
           <Parallax speed={-0.05} className="absolute inset-0">
             <Image src={images.aboutC} alt="" fill sizes="20vw" className="object-cover" />
           </Parallax>
@@ -44,12 +44,12 @@ export default function About() {
       <p aria-hidden className="mt-3 text-center text-[11px] font-semibold uppercase tracking-[0.25em] text-neutral-400 lg:hidden">Deslize →</p>
 
       <Reveal className="relative z-10 mx-auto mt-6 bg-white p-0 md:max-w-2xl lg:max-w-none lg:-mt-[5vw] lg:w-[62.5%] lg:px-[4.2vw] lg:py-[4vw]">
-        <h2 className="heading text-4xl lg:text-[3.1vw]">Esperar Custa Mais <span className="text-sun">.</span></h2>
+        <h2 className="heading text-4xl lg:text-[3.1vw]">Esperar custa mais <span className="text-sun">.</span></h2>
         <span className="rule mt-6 w-14 lg:w-[3.6vw]" />
-        <p className="mt-8 text-[15px] leading-[1.75] text-neutral-600 lg:text-[0.8vw] lg:leading-[1.9]">
+        <p className="mt-8 text-[15px] leading-[1.75] text-neutral-600 lg:text-[0.9vw] lg:leading-[1.85]">
           Uma infiltração ignorada vira laje comprometida. Uma vistoria mal feita vira disputa na justiça. Uma fachada esquecida vira risco para quem passa embaixo. Quanto mais o problema espera, mais caro fica resolver.
         </p>
-        <p className="mt-4 text-[15px] leading-[1.75] text-neutral-600 lg:text-[0.8vw] lg:leading-[1.9]">
+        <p className="mt-4 text-[15px] leading-[1.75] text-neutral-600 lg:text-[0.9vw] lg:leading-[1.85]">
           Na KFK Vistorias, o laudo é assinado por engenheiro habilitado, com ART/RRT, fotos e conclusões claras: você sabe o que tem, quanto é grave e o que fazer primeiro. Atendemos síndicos, administradoras, proprietários, construtoras e advogados no Rio de Janeiro.
         </p>
         <a href="#contact" className="btn-dark mt-8 max-lg:w-full max-lg:justify-center max-lg:py-4">Solicitar Orçamento</a>

@@ -5,8 +5,8 @@
   --color-brand: #0164bb;
   --color-brand-dark: #00559c;
   --color-sun: #fcc300;
-  --font-sans: var(--font-montserrat);
-  --font-display: var(--font-poppins);
+  --font-sans: var(--font-sans-main);
+  --font-display: var(--font-sans-main);
 }
 
 html {
@@ -14,26 +14,46 @@ html {
 }
 
 body {
-  font-family: var(--font-montserrat), system-ui, sans-serif;
-  font-weight: 500;
-  letter-spacing: -0.03em;
+  font-family: var(--font-sans-main), system-ui, sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.015em;
   color: #242625;
   background: #fff;
   overflow-x: hidden;
 }
 
-/* display type: Poppins for titles, nav and big labels; Montserrat for body and buttons */
+/* one family, light weights: Bai Jamjuree. Titles are 500, never bold; only "precisos" in the main title is a serif italic (Tartuffo) */
 h1, h2, h3, h4, header nav a, .font-extrabold {
-  font-family: var(--font-poppins), system-ui, sans-serif;
+  font-family: var(--font-sans-main), system-ui, sans-serif;
+}
+h1, h2, h3, h4, .font-extrabold, .font-bold, .font-semibold {
+  font-weight: 500 !important;
 }
 header nav a {
-  font-weight: 600;
-  letter-spacing: normal;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+@font-face {
+  font-family: "Tartuffo";
+  src: url("./_fonts/Tartuffo_Trial-RegularItalic-BF643371dadcd03.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* the one highlighted word of the main title: Tartuffo Regular Italic (trial font, no accented glyphs) */
+.accent {
+  font-family: "Tartuffo", Georgia, serif;
+  font-style: italic;
+  font-weight: 400 !important;
+  letter-spacing: -0.065em;
+  font-size: 1em;
+  line-height: 1;
 }
 
 .heading {
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-weight: 500;
+  letter-spacing: -0.045em;
   line-height: 1.05;
 }
 
@@ -53,9 +73,10 @@ header nav a {
   color: #fff;
   border-radius: 3px;
   padding: 1rem 2.25rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   transition: background 0.3s;
 }
 .btn-dark:hover {
@@ -70,9 +91,10 @@ header nav a {
   color: #242625;
   border-radius: 3px;
   padding: 1rem 2.25rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   box-shadow: 0 8px 24px -8px rgba(252, 195, 0, 0.7);
   transition: background 0.3s, color 0.3s, box-shadow 0.3s;
 }
@@ -100,8 +122,8 @@ header nav a {
   from { translate: 0 48px; opacity: 0; }
   to   { translate: 0 0; opacity: 1; }
 }
-.load-wipe { animation: load-wipe 1.4s cubic-bezier(0.65, 0, 0.2, 1) backwards; animation-delay: calc(var(--base, 1700ms) + var(--d, 0ms)); }
-.load-rise { animation: load-rise 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) backwards; animation-delay: calc(var(--base, 1700ms) + var(--d, 0ms)); }
+.load-wipe { animation: load-wipe 1.4s cubic-bezier(0.65, 0, 0.2, 1) backwards; animation-delay: calc(var(--base, 2500ms) + var(--d, 0ms)); }
+.load-rise { animation: load-rise 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) backwards; animation-delay: calc(var(--base, 2500ms) + var(--d, 0ms)); }
 
 @media (prefers-reduced-motion: reduce) {
   .load-wipe, .load-rise { animation: none; }
@@ -126,4 +148,74 @@ details[name="faq"][open]::details-content {
   footer[id] {
     scroll-margin-top: 3.25rem;
   }
+}
+
+/* Lenis smooth scroll: native smooth scrolling must be off or the two fight each other */
+html.lenis {
+  scroll-behavior: auto !important;
+}
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* custom cursor (mouse only) */
+@media (hover: hover) and (pointer: fine) {
+  html.has-cursor,
+  html.has-cursor * {
+    cursor: none !important;
+  }
+}
+
+/* photos: clipped, zoom slowly on hover (the ripple is driven by the cursor) */
+.photo {
+  overflow: hidden;
+}
+.photo img,
+.photo video {
+  transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+@media (hover: hover) and (pointer: fine) {
+  .photo:hover img,
+  .photo:hover video {
+    transform: scale(1.07);
+  }
+}
+
+/* desktop menu: the item under the mouse stays, the others step back */
+.menu-dim a {
+  transition: opacity 0.3s;
+}
+.menu-dim:hover a:not(:hover) {
+  opacity: 0.3;
+}
+
+/* loader: each photo swap slides in a little and flashes */
+@keyframes photo-swap {
+  0% { transform: translateX(calc(var(--dir, 1) * 7%)) scale(1.06); filter: brightness(1.4) saturate(1.15); }
+  100% { transform: none; filter: none; }
+}
+.photo-swap {
+  animation: photo-swap 0.16s ease-out;
+}
+
+/* mobile title: each letter shows as an outline, then fills in solid, one after the other */
+@keyframes draw-letter {
+  0% { opacity: 0; color: transparent; -webkit-text-stroke: 1.5px #242625; }
+  35% { opacity: 1; color: transparent; -webkit-text-stroke: 1.5px #242625; }
+  100% { opacity: 1; color: #242625; -webkit-text-stroke: 0 #242625; }
+}
+.draw-letter {
+  display: inline-block;
+  animation: draw-letter 0.9s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+  animation-delay: calc(var(--base, 2500ms) + 450ms + var(--i, 0) * 120ms);
+}
+@media (prefers-reduced-motion: reduce) {
+  .draw-letter { animation: none; }
 }

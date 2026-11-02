@@ -9,7 +9,7 @@ function Item({ s, w, right = false }: { s: (typeof services)[number]; w: string
       <h3 className="text-xl font-bold text-[#0c0c0c] lg:whitespace-nowrap lg:text-[1.55vw] lg:leading-[1.4]">
         {s.n}. {s.title}
       </h3>
-      <p className={`mt-4 max-w-sm text-[15px] leading-[1.7] text-[#0c0c0c] lg:mt-[1vw] lg:w-[var(--w)] lg:max-w-none lg:text-[0.78vw] lg:leading-[1.5] ${right ? "lg:ml-auto" : ""}`}>{s.text}</p>
+      <p className={`mt-4 max-w-sm text-[15px] leading-[1.7] text-[#0c0c0c] lg:mt-[1vw] lg:w-[var(--w)] lg:max-w-none lg:text-[0.88vw] lg:leading-[1.5] ${right ? "lg:ml-auto" : ""}`}>{s.text}</p>
     </Reveal>
   );
 }
@@ -39,7 +39,7 @@ export default function Services() {
             { s: services[2], src: images.serviceMain, alt: "Perito medindo umidade em parede", ratio: "aspect-[4/5]", sp: 0.05 },
           ].map(({ s, src, alt, ratio, sp }) => (
             <article key={s.n}>
-              <Reveal variant="wipe" className={`relative overflow-hidden ${ratio}`}>
+              <Reveal variant="wipe" className={`photo relative overflow-hidden ${ratio}`}>
                 <Parallax speed={sp} className="absolute -inset-y-[6%] inset-x-0">
                   <Image src={src} alt={alt} fill sizes="(min-width:768px) 42rem, 100vw" className="object-cover" />
                 </Parallax>
@@ -58,13 +58,13 @@ export default function Services() {
         {/* left column: two staggered items, text aligned to the right edge */}
         <div className="flex flex-col gap-12 lg:gap-[1.2vw]">
           <Parallax speed={0.06} className="space-y-6 lg:flex lg:flex-col lg:items-end lg:space-y-0 lg:gap-[1vw]">
-            <Reveal variant="wipe" className="relative aspect-[4/3] lg:aspect-[338/300] lg:w-[17.6vw]">
+            <Reveal variant="wipe" className="photo relative aspect-[4/3] lg:aspect-[338/300] lg:w-[17.6vw]">
               <Image src={images.serviceA} alt="" fill sizes="20vw" className="object-cover" />
             </Reveal>
             <Item s={services[0]} w="14.4vw" right />
           </Parallax>
           <Parallax speed={0.09} className="space-y-6 lg:flex lg:flex-col lg:items-end lg:space-y-0 lg:gap-[1vw]">
-            <Reveal variant="wipe" className="relative aspect-[4/3] lg:aspect-[573/333] lg:w-full">
+            <Reveal variant="wipe" className="photo relative aspect-[4/3] lg:aspect-[573/333] lg:w-full">
               <Image src={images.serviceB} alt="" fill sizes="30vw" className="object-cover" />
             </Reveal>
             <Item s={services[1]} w="21.6vw" right />
@@ -72,7 +72,7 @@ export default function Services() {
         </div>
 
         {/* center tall image */}
-        <Reveal variant="wipe" delay={150} className="relative aspect-[3/4] lg:-mt-[3vw] lg:aspect-auto lg:h-[56vw]">
+        <Reveal variant="wipe" delay={150} className="photo relative aspect-[3/4] lg:-mt-[3vw] lg:aspect-auto lg:h-[56vw]">
           <Parallax speed={-0.05} className="absolute inset-0">
             <Image src={images.serviceMain} alt="Perito medindo umidade em parede" fill sizes="36vw" className="object-cover" />
           </Parallax>

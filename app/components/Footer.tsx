@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Year from "./Year";
 
+const QUICK: Record<string, string> = { "Sobre Nós": "#about", "Serviços": "#services", "Contato": "#contact" };
+
 const cols = [
   { h: "Links Rápidos", items: ["Sobre Nós", "Serviços", "Contato"] },
   { h: "Contato", items: ["Endereço: Rua 24 de Fevereiro, 07, Bonsucesso, Rio de Janeiro, RJ", "Telefone: (21) 2160-0974", "E-mail: contato@kfkconstrutora.com.br"] },
@@ -10,7 +12,10 @@ const cols = [
 export default function Footer() {
   return (
     <footer id="contact" className="relative z-10">
-      <div className="bg-ink px-6 py-14 text-white lg:px-[8.33%] lg:py-[4.5vw]">
+      <div
+        className="bg-ink bg-cover bg-center px-6 py-14 text-white lg:px-[8.33%] lg:py-[4.5vw]"
+        style={{ backgroundImage: "url(/photos/vector-footer.png)" }}
+      >
         <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center lg:gap-[4vw]">
           <div className="lg:max-w-[40vw]">
             <h2 className="text-3xl font-extrabold leading-tight lg:text-[2.6vw]">
@@ -39,7 +44,9 @@ export default function Footer() {
             <ul className="mt-4 space-y-2 text-xs leading-6 text-neutral-500 lg:text-[0.7vw]">
               {c.items.map((i) => (
                 <li key={i}>
-                  {i.startsWith("Telefone") ? (
+                  {QUICK[i] ? (
+                    <a href={QUICK[i]} className="hover:text-ink">{i}</a>
+                  ) : i.startsWith("Telefone") ? (
                     <>
                       Telefone/WhatsApp:{" "}
                       <a href="https://wa.me/552121600974" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand">

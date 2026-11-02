@@ -9,6 +9,8 @@ import Faq from "./components/Faq";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
 import Preloader from "./components/Preloader";
+import SmoothScroll from "./components/SmoothScroll";
+import CustomCursor from "./components/CustomCursor";
 
 export default function Home() {
   return (
@@ -19,6 +21,8 @@ export default function Home() {
           <span key={p} className="absolute inset-y-0 w-px bg-neutral-200" style={{ left: `${p}%` }} />
         ))}
       </div>
+      <SmoothScroll />
+      <CustomCursor />
       <Preloader />
       <Header />
       <main className="relative z-10">

@@ -8,11 +8,12 @@ export const contentType = "image/png";
 
 const read = (p: string) => readFile(join(process.cwd(), p));
 
-const [bg, logo, poppins, montserrat] = await Promise.all([
+const [bg, logo, bai500, bai400, serifItalic] = await Promise.all([
   read("app/_assets/share-bg.jpg"),
   read("public/brand/logo.png"),
-  read("app/_fonts/Poppins-ExtraBold.ttf"),
-  read("app/_fonts/Montserrat-Medium.ttf"),
+  read("app/_fonts/Bai-500.ttf"),
+  read("app/_fonts/Bai-400.ttf"),
+  read("app/_fonts/Tartuffo_Trial-RegularItalic-BF643371dadcd03.otf"),
 ]);
 
 const dataUrl = (type: string, buf: Buffer) => `data:${type};base64,${buf.toString("base64")}`;
@@ -27,11 +28,11 @@ export default async function Image() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={dataUrl("image/png", logo)} alt="" height={44} width={306} style={{ marginBottom: 52 }} />
           <div style={{ width: 72, height: 6, background: "#fcc300", marginBottom: 28 }} />
-          <div style={{ display: "flex", flexDirection: "column", fontFamily: "Poppins", fontWeight: 800, fontSize: 112, lineHeight: 1, letterSpacing: -5, color: "#242625" }}>
+          <div style={{ display: "flex", flexDirection: "column", fontFamily: "BaiTitle", fontWeight: 500, fontSize: 112, lineHeight: 1, letterSpacing: -5, color: "#242625" }}>
             <span>Laudos</span>
-            <span>Precisos</span>
+            <span style={{ fontFamily: "Serif", fontWeight: 400, fontSize: 124, letterSpacing: -8, marginTop: 2 }}>Precisos</span>
           </div>
-          <div style={{ marginTop: 34, fontFamily: "Montserrat", fontSize: 32, lineHeight: 1.35, color: "#3b3e3d", maxWidth: 520 }}>
+          <div style={{ marginTop: 34, fontFamily: "BaiText", fontWeight: 400, fontSize: 32, lineHeight: 1.35, color: "#3b3e3d", maxWidth: 520 }}>
             Inspeção, vistoria e perícia assinadas por engenheiro.
           </div>
         </div>
@@ -40,8 +41,9 @@ export default async function Image() {
     {
       ...size,
       fonts: [
-        { name: "Poppins", data: poppins, weight: 800, style: "normal" },
-        { name: "Montserrat", data: montserrat, weight: 500, style: "normal" },
+        { name: "BaiTitle", data: bai500, weight: 500, style: "normal" },
+        { name: "BaiText", data: bai400, weight: 400, style: "normal" },
+        { name: "Serif", data: serifItalic, weight: 400, style: "italic" },
       ],
     },
   );

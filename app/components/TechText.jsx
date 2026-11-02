@@ -766,7 +766,8 @@ const TechText = ({
       }
 
       const focus = introducing ? typing : dragging >= 0 ? dragging : active ? glyphAt(lens.x, lens.y) : -1;
-      if (focus >= 0 && s.selection) {
+      // no selection frame while the intro draws the word: it only shows up afterwards
+      if (focus >= 0 && s.selection && !introducing) {
         const glyph = glyphs[focus];
         const bx1 = glyph.box.x1 + glyph.offset.x - 6;
         const by1 = glyph.box.y1 + glyph.offset.y - 6;
@@ -785,7 +786,7 @@ const TechText = ({
         frame.y2 = approach(frame.y2, by2, dt, glide);
         frame.index = focus;
       }
-      frame.alpha = approach(frame.alpha, focus >= 0 && s.selection ? 1 : 0, dt, 0.1);
+      frame.alpha = approach(frame.alpha, focus >= 0 && s.selection && !introducing ? 1 : 0, dt, 0.1);
 
       glyphs.forEach((glyph, i) => {
         const target = introducing

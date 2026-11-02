@@ -49,9 +49,9 @@ export default function Header() {
         } lg:bg-transparent lg:shadow-none lg:backdrop-blur-none`}
       >
         <Logo onClick={() => setOpen(false)} />
-        <nav className="hidden gap-[2.1vw] lg:flex">
+        <nav className="menu-dim hidden gap-[2.1vw] lg:flex">
           {navLinks.map((l) => (
-            <a key={l.href} href={l.href} className="text-[0.8vw] font-semibold uppercase transition hover:text-brand max-[1400px]:text-[11px]">
+            <a key={l.href} href={l.href} className="text-[0.8vw] font-semibold uppercase max-[1400px]:text-[11px]">
               {l.label}
             </a>
           ))}
