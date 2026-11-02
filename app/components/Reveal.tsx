@@ -28,24 +28,34 @@ export default function Reveal({ children, delay = 0, variant = "fade", classNam
     let raf = 0;
     let lastY = 0;
 
-    const apply = (p: number) => {
-      const e = p * p * (3 - 2 * p); // smoothstep: gradual over the whole scroll range
-      el.style.opacity = String(e);
+    const smooth = (p: number) => p * p * (3 - 2 * p);
+
+    // enter: 0 (below, hidden) -> 1 (settled). leave: 0 (settled) -> 1 (gone off the top)
+    const apply = (enter: number, leave: number) => {
+      const e = smooth(enter);
+      const l = smooth(leave);
+      el.style.opacity = String(e * (1 - l));
       if (variant === "wipe") {
         // "none" once done so shadows/overflow (e.g. portfolio hover) aren't clipped
-        el.style.clipPath = e > 0.999 ? "none" : `inset(${(1 - e) * 100}% 0 0 0)`;
+        const hidden = Math.max(1 - e, l) * 100;
+        el.style.clipPath = hidden < 0.1 ? "none" : `inset(${hidden}% 0 0 0)`;
       } else {
-        lastY = (1 - e) * 120;
+        lastY = (1 - e) * 48 - l * 32;
         el.style.transform = `translate3d(0,${lastY}px,0)`;
       }
     };
 
     const update = () => {
       raf = 0;
-      if (reduced) return apply(1);
+      if (reduced) return apply(1, 0);
       const vh = window.innerHeight;
-      const top = el.getBoundingClientRect().top - lastY;
-      apply(clamp((vh - top - delay * 0.4) / (vh * 0.75)));
+      const rect = el.getBoundingClientRect();
+      const top = rect.top - lastY;
+      const bottom = rect.bottom - lastY;
+      apply(
+        clamp((vh - top - delay * 0.4) / (vh * 0.25)),
+        clamp(1 - bottom / (vh * 0.3)),
+      );
     };
     const on = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -62,7 +72,7 @@ export default function Reveal({ children, delay = 0, variant = "fade", classNam
   }, [delay, variant]);
 
   return (
-    <div ref={ref} className={className} style={{ opacity: 0, willChange: "opacity, transform", ...style }}>
+    <div ref={ref} className={className} style={{ opacity: 0, willChange: "opacity, transform", transition: "opacity 0.7s ease-out, clip-path 0.7s ease-out", ...style }}>
       {children}
     </div>
   );

@@ -2,58 +2,44 @@ const img = (id: string, w = 1200) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 export const images = {
-  heroMain: img("1705326701287-346fc37a2c86", 1600),
-  heroPlant: img("1776754373093-c36d872e635b", 700),
-  heroSmall: img("1749703836810-361f30aba87a", 900),
-  aboutA: img("1632489753406-52689c507a83", 700),
-  aboutB: img("1610177534644-34d881503b83", 1400),
-  aboutC: img("1600489000022-c2086d79f9d4", 700),
-  serviceA: img("1780042731953-15dd1b3b5f00", 900),
-  serviceB: img("1716078410207-20e223587181", 900),
-  serviceMain: img("1502005097973-6a7082348e28", 1000),
-  video: img("1653242370243-5f7ca54b00db", 1800),
+  heroMain: "/photos/hero-principal.jpg",
+  heroPlant: "/photos/hero-faixa.jpg",
+  heroSmall: "/photos/hero-detalhe.jpg",
+  aboutA: "/photos/problema-infiltracao.jpg",
+  aboutB: "/photos/problema-trincas.jpg",
+  aboutC: "/photos/problema-laudo.jpg",
+  serviceA: "/photos/servico-inspecao.jpg",
+  serviceB: "/photos/servico-vistoria.jpg",
+  serviceMain: "/photos/servico-pericia.jpg",
+  video: "/photos/laudo-protege.jpg",
 };
 
 export const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Blog", href: "#blog" },
-  { label: "Contact", href: "#contact" },
+  { label: "Início", href: "#home" },
+  { label: "Sobre", href: "#about" },
+  { label: "Serviços", href: "#services" },
+  { label: "Contato", href: "#contact" },
 ];
 
 export const services = [
-  { n: "01", title: "Lighting Design", text: "There are many variations passages Lorem available majority suffered alteration some." },
-  { n: "02", title: "Architectural Design", text: "There are many variations of passages of Lorem Ipsum available majority have suffered alteration some injected humour, or randomised." },
-  { n: "03", title: "Interior Design", text: "There are many variations of Lorem passages of Ipsum available majority suffered." },
+  { n: "01", title: "Inspeção Predial", text: "Diagnóstico de estrutura, fachadas e instalações, com laudo conforme a NBR 16747." },
+  { n: "02", title: "Vistorias Técnicas", text: "Cautelar de vizinhança, imóvel novo, áreas comuns e locativa. Registramos o estado do imóvel antes que vire disputa." },
+  { n: "03", title: "Perícia e Avaliação", text: "Assistência técnica judicial, perícia de engenharia e avaliação de imóveis pela NBR 14653." },
 ];
 
-export const categories = ["All", "Decoration", "Interior", "Kitchen", "Uncategorized"] as const;
-
-export const projects: { title: string; tags: string[]; src: string }[] = [
-  { title: "Patio Dining Sets", tags: ["Uncategorized"], src: img("1653242370243-5f7ca54b00db", 800) },
-  { title: "Kitchen Remodel", tags: ["Interior", "Kitchen"], src: img("1502005097973-6a7082348e28", 800) },
-  { title: "Unique Wall Shelves", tags: ["Decoration"], src: img("1632489753406-52689c507a83", 800) },
-  { title: "Affordable Home Accessories", tags: ["Decoration"], src: img("1749703836810-361f30aba87a", 800) },
-  { title: "The Best Window Curtains", tags: ["Decoration", "Interior"], src: img("1764742814331-65fce6c3367c", 800) },
+export const benefits: { n: string; title: string; text: string; src: string }[] = [
+  { n: "01", title: "Resguardo Jurídico", text: "Laudo e registro fotográfico protegem síndicos, proprietários e inquilinos em disputas e reclamações.", src: "/photos/beneficio-1-juridico.jpg" },
+  { n: "02", title: "Mais Vida Útil", text: "Manutenção planejada a partir da inspeção prolonga a vida do imóvel e evita gastos futuros.", src: "/photos/beneficio-2-vida-util.jpg" },
+  { n: "03", title: "Valorização do Imóvel", text: "Imóvel inspecionado e certificado por engenheiro vale mais e inspira confiança na venda.", src: "/photos/beneficio-3-valorizacao.jpg" },
+  { n: "04", title: "Segurança Garantida", text: "Estrutura e sistemas verificados conforme as normas da ABNT, com laudo assinado por engenheiro.", src: "/photos/beneficio-4-seguranca.jpg" },
+  { n: "05", title: "Detecção de Anomalias", text: "Infiltrações, trincas e corrosões identificadas cedo, com a causa e a correção indicadas.", src: "/photos/beneficio-5-anomalias.jpg" },
 ];
 
-export const stats = [
-  { label: "Products", value: 614 },
-  { label: "Happy Customers", value: 970 },
-  { label: "Clients", value: 215 },
-  { label: "Project Launched", value: 15 },
-  { label: "Materials", value: 106 },
-];
-
-export const testimonials = [
-  { quote: "There are many variations of passages of Lorem Ipsum available majority have suffered alteration some form by injected humour, or randomised.", name: "Martin Kabour", city: "New York" },
-  { quote: "There are many variations of passages of Lorem Ipsum available majority have suffered alteration some form by injected humour, or randomised.", name: "Martin Kabour", city: "New York" },
-  { quote: "There are many variations of passages of Lorem Ipsum available majority have suffered alteration some form by injected humour, or randomised.", name: "Martin Kabour", city: "New York" },
-];
-
-export const posts = [
-  { title: "Interior inspiration to hidden in the middle of text …", date: "May 6, 2019", src: img("1465224414649-ceb7f1db3999", 1000) },
-  { title: "7 of the biggest interior have suffered alteration some …", date: "May 6, 2019", src: img("1600489000022-c2086d79f9d4", 1000) },
-  { title: "Global Interior Design Software There are many variations…", date: "May 6, 2019", src: img("1610177534644-34d881503b83", 1000) },
+export const faqs = [
+  { q: "O que é inspeção predial e quando fazer?", a: "É a avaliação técnica das condições de uso, conservação e segurança da edificação, conforme a NBR 16747. Indicada ao assumir um prédio, ao planejar a manutenção ou diante de sinais como fissuras, infiltrações e peças soltando da fachada." },
+  { q: "Qual a diferença entre vistoria, laudo e perícia?", a: "A vistoria é a visita técnica que registra o estado do imóvel. O laudo é o documento com a análise e a conclusão do engenheiro. A perícia é a análise especializada, em geral para esclarecer fatos em processos judiciais ou disputas." },
+  { q: "A autovistoria é obrigatória para o meu prédio?", a: "Depende da legislação do município, que define quais edificações precisam do laudo e com que frequência. Informe o endereço e a idade do prédio e dizemos se ele se enquadra." },
+  { q: "Quanto tempo leva para receber o laudo?", a: "O prazo depende do porte do imóvel e do tipo de serviço. Ele é combinado na proposta, antes de começarmos." },
+  { q: "Como é calculado o valor?", a: "Pelo escopo: tipo de serviço, tamanho e complexidade do imóvel e ensaios necessários. Você recebe a proposta com valor e prazo, sem compromisso." },
+  { q: "O laudo vale na Justiça?", a: "O laudo é assinado por engenheiro habilitado, com ART/RRT, e segue as normas da ABNT, o que lhe dá base técnica para acordos e processos. A decisão final cabe sempre ao juiz." },
 ];

@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 
-/** Dark curtain with a counter; on 100% it lifts away bottom-to-top, uncovering the page. */
+/** Blue fills the screen bottom-to-top as the counter climbs, then fades out to reveal the page. */
 export default function Preloader() {
   const [n, setN] = useState(0);
   const [done, setDone] = useState(false);
@@ -27,7 +26,7 @@ export default function Preloader() {
       } else {
         setDone(true);
         document.body.style.overflow = "";
-        t2 = setTimeout(() => setGone(true), 1200);
+        t2 = setTimeout(() => setGone(true), 1000);
       }
     };
     raf = requestAnimationFrame(tick);
@@ -44,15 +43,14 @@ export default function Preloader() {
   return (
     <div
       aria-hidden
-      className="fixed inset-0 z-[100] flex flex-col justify-between bg-white p-6 text-ink transition-[clip-path] duration-[1100ms] ease-[cubic-bezier(0.76,0,0.24,1)] lg:p-[3vw]"
-      style={{ clipPath: done ? "inset(0 0 100% 0)" : "inset(0 0 0 0)" }}
+      className="pointer-events-none fixed inset-0 z-[100] flex flex-col justify-end overflow-hidden bg-brand-dark p-6 text-sun transition-opacity duration-[900ms] ease-out lg:p-[3vw]"
+      style={{ opacity: done ? 0 : 1 }}
     >
-      <Image src="/brand/logo.png" unoptimized alt="" width={1400} height={201} priority className="h-10 w-auto lg:h-[3.4vw]" />
-      <div className="flex items-end justify-between">
+      <span className="absolute inset-0 origin-bottom bg-brand" style={{ transform: `scaleY(${n / 100})` }} />
+      <div className="relative flex items-end justify-between">
         <p className="text-[clamp(4rem,14vw,16rem)] font-extrabold leading-[0.8] tracking-[-0.06em]">{n}</p>
-        <p className="mb-2 text-sm font-medium uppercase tracking-[0.3em] text-brand">Carregando</p>
+        <p className="mb-2 text-sm font-medium uppercase tracking-[0.3em]">Carregando</p>
       </div>
-      <span className="absolute inset-x-0 bottom-0 h-1.5 origin-left bg-gradient-to-r from-brand from-70% to-sun to-70%" style={{ transform: `scaleX(${n / 100})` }} />
     </div>
   );
 }

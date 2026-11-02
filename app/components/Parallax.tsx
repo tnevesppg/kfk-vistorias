@@ -7,12 +7,14 @@ type Props = {
   speed?: number;
   /** "y": vertical drift relative to viewport; "scrollX": horizontal slide driven by page scroll */
   mode?: "y" | "scrollX";
+  /** fade out as the page scrolls away from the top, and back in on the way up */
+  fadeOut?: boolean;
   className?: string;
   style?: CSSProperties;
   children: ReactNode;
 };
 
-export default function Parallax({ speed = 0.1, mode = "y", className, style, children }: Props) {
+export default function Parallax({ speed = 0.1, mode = "y", fadeOut = false, className, style, children }: Props) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -23,6 +25,10 @@ export default function Parallax({ speed = 0.1, mode = "y", className, style, ch
 
     const update = () => {
       raf = 0;
+      if (fadeOut) {
+        const t = Math.min(1, Math.max(0, (window.scrollY - window.innerHeight * 0.05) / (window.innerHeight * 0.6)));
+        el.style.opacity = String(1 - t * t * (3 - 2 * t));
+      }
       if (mode === "scrollX") {
         el.style.transform = `translate3d(${-window.scrollY * speed}px,0,0)`;
         return;
@@ -43,7 +49,7 @@ export default function Parallax({ speed = 0.1, mode = "y", className, style, ch
       window.removeEventListener("resize", on);
       cancelAnimationFrame(raf);
     };
-  }, [speed, mode]);
+  }, [speed, mode, fadeOut]);
 
   return (
     <div ref={ref} className={`will-change-transform ${className ?? ""}`} style={style}>

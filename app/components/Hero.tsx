@@ -2,40 +2,14 @@ import Image from "next/image";
 import { images } from "@/lib/data";
 import { u } from "@/lib/u";
 import Parallax from "./Parallax";
+import Reveal from "./Reveal";
+import TechText from "./TechText";
 
-const brands = [
-  { a: "GOLDEN", b: "sub" },
-  { a: "SWEETY", b: "C A F E T E R I A" },
-  { a: "FASTLANE", b: "S P O R T S W E A R" },
-  { a: "MIGHTY", b: "FURNITURES" },
-  { a: "JR", b: "JACK ROLLER" },
-];
-
-function Socials() {
-  const items = ["IG", "in", "f", "tw"];
+function Lead() {
   return (
-    <div className="flex gap-[2vw] text-xs font-bold">
-      {items.map((s) => (
-        <a key={s} href="#" aria-label={s} className="hover:opacity-60">
-          {s}
-        </a>
-      ))}
-    </div>
-  );
-}
-
-function Brands() {
-  return (
-    <div className="grid grid-cols-2 gap-8 sm:grid-cols-5">
-      {brands.map((b) => (
-        <div key={b.a} className="text-center leading-none">
-          <p className="text-[clamp(1.1rem,1.9vw,2.1rem)] font-extrabold tracking-tight">{b.a}</p>
-          <p className="mt-1 text-[clamp(0.45rem,0.55vw,0.7rem)] tracking-[0.3em] text-neutral-500">
-            {b.b === "sub" ? "" : b.b}
-          </p>
-        </div>
-      ))}
-    </div>
+    <p className="text-center text-lg font-semibold text-neutral-700 lg:text-[1.7vw]">
+      Você se identifica com algum desses problemas?
+    </p>
   );
 }
 
@@ -43,76 +17,114 @@ export default function Hero() {
   return (
     <section id="home" className="relative">
       {/* desktop: absolute collage mirrored from the demo (1920 design grid) */}
-      <div className="relative hidden lg:block" style={{ height: u(1140) }}>
-        <Parallax speed={0.12} className="load-wipe absolute" style={{ left: u(160), top: u(136), width: u(160), height: u(564), ["--d" as string]: "700ms" }}>
-          <Image src={images.heroPlant} alt="Planta suspensa" fill sizes="10vw" priority className="object-cover" />
+      <div className="relative hidden lg:block" style={{ height: u(1130) }}>
+        <Parallax speed={0.12} fadeOut className="load-wipe absolute" style={{ left: u(160), top: u(136), width: u(160), height: u(564), ["--d" as string]: "700ms" }}>
+          <Image src={images.heroPlant} alt="Fachada de edifício residencial vista de baixo" fill sizes="25vw" quality={90} priority className="object-cover" />
         </Parallax>
 
-        <Parallax speed={-0.06} className="load-wipe absolute" style={{ left: u(1152), top: u(136), width: u(736), height: u(564), ["--d" as string]: "600ms" }}>
-          <Image src={images.heroMain} alt="Sala clara e minimalista" fill sizes="40vw" priority className="object-cover" />
+        <Parallax speed={0.1} fadeOut className="load-wipe absolute" style={{ left: u(1152), top: u(136), width: u(736), height: u(564), ["--d" as string]: "600ms" }}>
+          <Image src={images.heroMain} alt="Engenheiro inspecionando trinca em parede" fill sizes="60vw" quality={90} priority className="object-cover" />
         </Parallax>
 
         <span className="absolute h-[3px] bg-brand" style={{ left: u(480), top: u(136), width: u(53) }} />
         <span className="absolute h-[3px] bg-sun" style={{ left: u(1095), top: u(647), width: u(53) }} />
 
-        <Parallax mode="scrollX" speed={0.28} className="absolute z-10 whitespace-nowrap" style={{ left: u(485), top: u(285) }}>
+        <Parallax mode="scrollX" speed={0.28} className="absolute z-10 whitespace-nowrap" style={{ left: u(424), top: u(262) }}>
           <div className="load-rise" style={{ ["--d" as string]: "500ms" }}>
-          <h1
-            className="font-extrabold"
-            style={{ fontSize: u(150), lineHeight: 1.1, letterSpacing: "-0.055em" }}
-          >
-            Interior Design
-          </h1>
+            <h1 className="font-extrabold">
+              <TechText
+                text="Laudos Precisos"
+                fontWeight={800}
+                fontSize={400}
+                letterSpacing={-0.055}
+                align="left"
+                accentColor="#0164bb"
+                reveal="letter"
+                dashLength={4}
+                dashGap={2}
+                specks={15}
+                intro="none"
+                clickKick
+                guides={false}
+                style={{ width: u(1230), height: u(210) }}
+              />
+            </h1>
           </div>
         </Parallax>
 
-        <div className="load-rise absolute" style={{ left: u(490), top: u(470), width: u(450), ["--d" as string]: "400ms" }}>
+        <div className="load-rise absolute" style={{ left: u(490), top: u(470), width: u(640), ["--d" as string]: "400ms" }}>
           <p className="text-neutral-700" style={{ fontSize: u(18), lineHeight: 1.65 }}>
-            There are many variations of passages of lorem ipsum available majority view project alteration some form by injected humour, or randomised .
+            <span className="block lg:whitespace-nowrap">Mancha que volta, trinca que cresce, laudo contestado.</span>
+            <span className="block lg:whitespace-nowrap">Descubra a causa real antes que vire prejuízo.</span>
           </p>
         </div>
 
-        <Parallax speed={0.08} className="load-wipe absolute" style={{ left: u(800), top: u(700), width: u(320), height: u(275), ["--d" as string]: "200ms" }}>
-          <Image src={images.heroSmall} alt="Ambiente com planta" fill sizes="20vw" className="object-cover" />
+        <div className="load-rise absolute" style={{ left: u(490), top: u(620), ["--d" as string]: "600ms" }}>
+          <a href="#contact" className="btn-sun">Solicitar Orçamento</a>
+        </div>
+
+        <Parallax speed={0.08} fadeOut className="load-wipe absolute" style={{ left: u(800), top: u(700), width: u(320), height: u(275), ["--d" as string]: "200ms" }}>
+          <Image src={images.heroSmall} alt="Mão com régua medindo trinca na parede" fill sizes="35vw" quality={90} className="object-cover" />
         </Parallax>
 
         <div className="load-rise absolute" style={{ left: u(1265), top: u(740), width: u(430), ["--d" as string]: "300ms" }}>
           <h2 className="font-extrabold" style={{ fontSize: u(64), letterSpacing: "-0.05em", lineHeight: 1 }}>
-            look
+            sem achismo
           </h2>
           <p className="text-neutral-700" style={{ marginTop: u(40), fontSize: u(18), lineHeight: 1.65 }}>
-            There Are Many Variations Of Passages Of Lorem Ipsum Available Majority <a href="#portfolio" className="font-semibold text-brand underline decoration-sun decoration-2 underline-offset-4">View Project</a> Alteration Some Form By Injected Humour Or.
-          </p>
+            Você não precisa adivinhar o tamanho do problema. Um engenheiro registra, explica e indica o caminho, com laudo que sustenta sua decisão em assembleia, seguro ou disputa.</p>
         </div>
 
-        <div className="load-rise absolute" style={{ left: u(190), top: u(960), ["--d" as string]: "100ms" }}>
-          <Socials />
-        </div>
-
-        <div className="load-rise absolute" style={{ left: u(160), top: u(990), width: u(1600) }}>
-          <Brands />
+        <div className="load-rise absolute" style={{ left: u(160), top: u(1050), width: u(1600) }}>
+          <Lead />
         </div>
       </div>
 
       {/* mobile / tablet */}
-      <div className="px-6 pb-16 pt-32 lg:hidden">
-        <h1 className="text-[clamp(3rem,13vw,6rem)] font-extrabold leading-[0.95] tracking-[-0.05em]">Interior Design</h1>
-        <p className="mt-6 text-neutral-700">
-          There are many variations of passages of lorem ipsum available majority view project alteration some form by injected humour.
-        </p>
-        <div className="relative mt-10 aspect-[4/3]">
-          <Image src={images.heroMain} alt="Sala clara e minimalista" fill sizes="100vw" priority className="object-cover" />
+      <div className="mx-auto px-6 pb-14 pt-28 md:max-w-2xl lg:hidden">
+        <span className="load-rise block h-[3px] w-12 bg-brand" style={{ ["--d" as string]: "300ms" }} />
+        <h1 className="load-rise mt-5 text-[clamp(3.6rem,17.5vw,6.5rem)] font-extrabold leading-[0.9] tracking-[-0.055em]" style={{ ["--d" as string]: "400ms" }}>
+          Laudos<br />Precisos
+        </h1>
+        <div className="load-rise" style={{ ["--d" as string]: "550ms" }}>
+          <p className="mt-6 text-[17px] leading-[1.6] text-neutral-700">
+            <span className="block">Mancha que volta, trinca que cresce, laudo contestado.</span>
+            <span className="mt-2 block font-semibold text-ink">Descubra a causa real antes que vire prejuízo.</span>
+          </p>
+          <a href="#contact" className="btn-sun mt-8 w-full justify-center py-4 text-sm">
+            Solicitar Orçamento <span aria-hidden>→</span>
+          </a>
         </div>
-        <div className="mt-6 grid grid-cols-2 gap-4">
-          <div className="relative aspect-[3/4]">
-            <Image src={images.heroPlant} alt="" fill sizes="50vw" className="object-cover" />
-          </div>
-          <div className="relative aspect-[3/4]">
-            <Image src={images.heroSmall} alt="" fill sizes="50vw" className="object-cover" />
+
+        <div className="relative mt-12">
+          <span className="absolute -left-6 -top-3 z-10 h-[3px] w-10 bg-sun" />
+          <Reveal>
+            <div className="load-wipe relative aspect-[4/3] overflow-hidden" style={{ ["--d" as string]: "700ms" }}>
+              <Parallax speed={0.05} className="absolute -inset-y-[6%] inset-x-0">
+                <Image src={images.heroMain} alt="Engenheiro inspecionando trinca em parede" fill sizes="(min-width:768px) 42rem, 100vw" quality={90} priority className="object-cover" />
+              </Parallax>
+            </div>
+          </Reveal>
+          <div className="mt-3 grid grid-cols-2 gap-3">
+            <Reveal delay={60}>
+              <div className="load-wipe relative aspect-[3/4] overflow-hidden" style={{ ["--d" as string]: "850ms" }}>
+                <Parallax speed={0.07} className="absolute -inset-y-[6%] inset-x-0">
+                  <Image src={images.heroPlant} alt="Fachada de edifício residencial vista de baixo" fill sizes="(min-width:768px) 21rem, 50vw" quality={90} className="object-cover" />
+                </Parallax>
+              </div>
+            </Reveal>
+            <Reveal delay={140} className="mt-10">
+              <div className="load-wipe relative aspect-[3/4] overflow-hidden" style={{ ["--d" as string]: "1000ms" }}>
+                <Parallax speed={-0.05} className="absolute -inset-y-[6%] inset-x-0">
+                  <Image src={images.heroSmall} alt="Mão com régua medindo trinca na parede" fill sizes="(min-width:768px) 21rem, 50vw" quality={90} className="object-cover" />
+                </Parallax>
+              </div>
+            </Reveal>
           </div>
         </div>
-        <div className="mt-14">
-          <Brands />
+
+        <div className="mt-16 pb-2">
+          <Lead />
         </div>
       </div>
     </section>

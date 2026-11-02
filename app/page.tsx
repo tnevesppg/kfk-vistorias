@@ -2,12 +2,12 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Services from "./components/Services";
-import Portfolio from "./components/Portfolio";
+import Benefits from "./components/Benefits";
 import Stats from "./components/Stats";
 import VideoSection from "./components/VideoSection";
-import Testimonials from "./components/Testimonials";
-import Blog from "./components/Blog";
+import Faq from "./components/Faq";
 import Footer from "./components/Footer";
+import BackToTop from "./components/BackToTop";
 import Preloader from "./components/Preloader";
 
 export default function Home() {
@@ -25,13 +25,13 @@ export default function Home() {
         <Hero />
         <About />
         <Services />
-        <Portfolio />
+        <Benefits />
         <Stats />
         <VideoSection />
-        <Testimonials />
-        <Blog />
+        <Faq />
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 }

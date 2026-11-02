@@ -3,53 +3,88 @@ import { images, services } from "@/lib/data";
 import Parallax from "./Parallax";
 import Reveal from "./Reveal";
 
-function Item({ s }: { s: (typeof services)[number] }) {
+function Item({ s, w, right = false }: { s: (typeof services)[number]; w: string; right?: boolean }) {
   return (
-    <Reveal>
-      <h3 className="text-xl font-bold lg:text-[1.35vw]">
-        <span className="font-medium text-brand">{s.n}.</span> {s.title}
+    <Reveal className={`lg:w-max ${right ? "lg:text-right" : ""}`} style={{ ["--w" as string]: w }}>
+      <h3 className="text-xl font-bold text-[#0c0c0c] lg:whitespace-nowrap lg:text-[1.55vw] lg:leading-[1.4]">
+        {s.n}. {s.title}
       </h3>
-      <span className="rule mt-3 w-10" />
-      <p className="mt-4 max-w-sm text-[13px] leading-7 text-neutral-600 lg:text-[0.78vw] lg:leading-[1.85]">{s.text}</p>
+      <p className={`mt-4 max-w-sm text-[15px] leading-[1.7] text-[#0c0c0c] lg:mt-[1vw] lg:w-[var(--w)] lg:max-w-none lg:text-[0.78vw] lg:leading-[1.5] ${right ? "lg:ml-auto" : ""}`}>{s.text}</p>
     </Reveal>
   );
 }
 
 export default function Services() {
   return (
-    <section className="relative px-6 py-20 lg:px-[8.33%] lg:py-[9vw]">
-      <div className="blueprint pointer-events-none absolute right-0 top-[6vw] hidden h-[34vw] w-[26vw] opacity-80 lg:block" />
-      <div className="relative grid gap-12 lg:grid-cols-[1fr_1.15fr_1fr] lg:gap-[2.5vw]">
-        {/* left column: two staggered items */}
-        <div className="flex flex-col gap-12 lg:gap-[5vw]">
-          <Parallax speed={0.06} className="space-y-6">
-            <Reveal variant="wipe" className="relative aspect-[4/3] lg:aspect-[3/2.6]">
-              <Image src={images.serviceA} alt="" fill sizes="25vw" className="object-cover" />
+    <section id="services" className="relative px-6 py-16 lg:px-0 lg:pb-[5vw] lg:pt-[0.7vw]">
+      <div
+        className="blueprint pointer-events-none absolute right-0 top-[2vw] hidden h-[56vw] w-[28vw] opacity-90 lg:block"
+        style={{ backgroundSize: "auto 90%" }}
+      />
+      {/* mobile / tablet: title first, then each service with its own photo */}
+      <div
+        aria-hidden
+        className="blueprint pointer-events-none absolute -right-16 top-10 h-[110vw] w-[80vw] opacity-[0.12] lg:hidden"
+        style={{ backgroundSize: "auto 90%" }}
+      />
+      <div className="relative mx-auto md:max-w-2xl lg:hidden">
+        <Reveal>
+          <h2 className="heading text-[2.6rem] leading-[1.02]">Nossos Serviços<span className="text-sun">.</span></h2>
+          <span className="rule mt-5 w-14" />
+        </Reveal>
+        <div className="mt-12 space-y-14">
+          {[
+            { s: services[0], src: images.serviceA, alt: "Engenheiro inspecionando a fachada de um edifício", ratio: "aspect-[4/3]", sp: 0.05 },
+            { s: services[1], src: images.serviceB, alt: "Engenheiro e cliente vistoriando um apartamento", ratio: "aspect-[16/10]", sp: -0.05 },
+            { s: services[2], src: images.serviceMain, alt: "Perito medindo umidade em parede", ratio: "aspect-[4/5]", sp: 0.05 },
+          ].map(({ s, src, alt, ratio, sp }) => (
+            <article key={s.n}>
+              <Reveal variant="wipe" className={`relative overflow-hidden ${ratio}`}>
+                <Parallax speed={sp} className="absolute -inset-y-[6%] inset-x-0">
+                  <Image src={src} alt={alt} fill sizes="(min-width:768px) 42rem, 100vw" className="object-cover" />
+                </Parallax>
+                <span className="absolute left-0 top-0 grid h-12 w-14 place-items-center bg-sun text-lg font-extrabold text-ink">{s.n}</span>
+              </Reveal>
+              <Reveal delay={80}>
+                <h3 className="mt-6 text-[1.4rem] font-bold leading-tight text-[#0c0c0c]">{s.title}</h3>
+                <p className="mt-3 text-[15px] leading-[1.7] text-neutral-700">{s.text}</p>
+              </Reveal>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div className="relative hidden lg:grid lg:grid-cols-[29.8vw_36vw_1fr] lg:gap-x-[4.7vw] lg:pl-[1.6vw]">
+        {/* left column: two staggered items, text aligned to the right edge */}
+        <div className="flex flex-col gap-12 lg:gap-[1.2vw]">
+          <Parallax speed={0.06} className="space-y-6 lg:flex lg:flex-col lg:items-end lg:space-y-0 lg:gap-[1vw]">
+            <Reveal variant="wipe" className="relative aspect-[4/3] lg:aspect-[338/300] lg:w-[17.6vw]">
+              <Image src={images.serviceA} alt="" fill sizes="20vw" className="object-cover" />
             </Reveal>
-            <Item s={services[0]} />
+            <Item s={services[0]} w="14.4vw" right />
           </Parallax>
-          <Parallax speed={0.09} className="space-y-6 lg:-ml-[4vw] lg:mr-[2vw]">
-            <Reveal variant="wipe" className="relative aspect-[4/3] lg:aspect-[3/2.3]">
+          <Parallax speed={0.09} className="space-y-6 lg:flex lg:flex-col lg:items-end lg:space-y-0 lg:gap-[1vw]">
+            <Reveal variant="wipe" className="relative aspect-[4/3] lg:aspect-[573/333] lg:w-full">
               <Image src={images.serviceB} alt="" fill sizes="30vw" className="object-cover" />
             </Reveal>
-            <Item s={services[1]} />
+            <Item s={services[1]} w="21.6vw" right />
           </Parallax>
         </div>
 
         {/* center tall image */}
-        <Reveal variant="wipe" delay={150} className="relative aspect-[3/4] lg:mt-[3vw] lg:aspect-auto lg:h-[44vw]">
+        <Reveal variant="wipe" delay={150} className="relative aspect-[3/4] lg:-mt-[3vw] lg:aspect-auto lg:h-[56vw]">
           <Parallax speed={-0.05} className="absolute inset-0">
-            <Image src={images.serviceMain} alt="Aparador com espelho" fill sizes="30vw" className="object-cover" />
+            <Image src={images.serviceMain} alt="Perito medindo umidade em parede" fill sizes="36vw" className="object-cover" />
           </Parallax>
         </Reveal>
 
-        {/* right column */}
-        <div className="relative lg:min-h-[40vw]">
-          <Reveal className="lg:absolute lg:right-0 lg:top-0">
-            <h2 className="heading text-4xl lg:text-[2.3vw] lg:[writing-mode:vertical-rl]">Our Services.</h2>
+        {/* right column: vertical heading on top, third item at the bottom */}
+        <div className="relative lg:min-h-[52vw]">
+          <Reveal className="lg:absolute lg:left-[26%] lg:top-[3vw]">
+            <h2 className="heading text-4xl lg:text-[2.6vw] lg:[writing-mode:vertical-rl]">Nossos Serviços.</h2>
           </Reveal>
-          <div className="mt-8 lg:absolute lg:bottom-[2vw] lg:right-0 lg:mt-0 lg:w-[82%]">
-            <Item s={services[2]} />
+          <div className="mt-8 lg:absolute lg:bottom-[9vw] lg:left-0 lg:mt-0">
+            <Item s={services[2]} w="17vw" />
           </div>
         </div>
       </div>

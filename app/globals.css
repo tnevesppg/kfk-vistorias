@@ -5,7 +5,8 @@
   --color-brand: #0164bb;
   --color-brand-dark: #00559c;
   --color-sun: #fcc300;
-  --font-sans: var(--font-poppins);
+  --font-sans: var(--font-montserrat);
+  --font-display: var(--font-poppins);
 }
 
 html {
@@ -13,10 +14,21 @@ html {
 }
 
 body {
-  font-family: var(--font-poppins), system-ui, sans-serif;
+  font-family: var(--font-montserrat), system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.03em;
   color: #242625;
   background: #fff;
   overflow-x: hidden;
+}
+
+/* display type: Poppins for titles, nav and big labels; Montserrat for body and buttons */
+h1, h2, h3, h4, header nav a, .font-extrabold {
+  font-family: var(--font-poppins), system-ui, sans-serif;
+}
+header nav a {
+  font-weight: 600;
+  letter-spacing: normal;
 }
 
 .heading {
@@ -26,7 +38,11 @@ body {
 }
 
 .blueprint {
-  background: url("/blueprint.svg") no-repeat right center / contain;
+  background: url("/blueprint-a.png") no-repeat right center / contain;
+}
+
+.blueprint-b {
+  background: url("/blueprint-b.png") no-repeat left center / contain;
 }
 
 .btn-dark {
@@ -35,6 +51,7 @@ body {
   gap: 0.75rem;
   background: #242625;
   color: #fff;
+  border-radius: 3px;
   padding: 1rem 2.25rem;
   font-size: 0.75rem;
   font-weight: 600;
@@ -45,11 +62,31 @@ body {
   background: #0164bb;
 }
 
+.btn-sun {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #fcc300;
+  color: #242625;
+  border-radius: 3px;
+  padding: 1rem 2.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 24px -8px rgba(252, 195, 0, 0.7);
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+.btn-sun:hover {
+  background: #0164bb;
+  color: #fff;
+  box-shadow: 0 8px 24px -8px rgba(1, 100, 187, 0.7);
+}
+
 /* short accent rule under headings */
 .rule {
   display: block;
   height: 3px;
-  background: linear-gradient(90deg, #0164bb 0 66%, #fcc300 66% 100%);
+  background: #fcc300;
 }
 
 
@@ -68,4 +105,25 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .load-wipe, .load-rise { animation: none; }
+}
+
+/* FAQ: smooth open/close */
+:root { interpolate-size: allow-keywords; }
+details[name="faq"]::details-content {
+  height: 0;
+  opacity: 0;
+  overflow: clip;
+  transition: height 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, content-visibility 0.5s allow-discrete;
+}
+details[name="faq"][open]::details-content {
+  height: auto;
+  opacity: 1;
+}
+
+/* mobile: anchors land below the fixed header */
+@media (max-width: 1023px) {
+  section[id],
+  footer[id] {
+    scroll-margin-top: 3.25rem;
+  }
 }
