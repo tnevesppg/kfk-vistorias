@@ -29,7 +29,7 @@ export default function ServiceList() {
               data-cursor="dot"
               className="svc-row group grid grid-cols-[auto_1fr_auto] items-center gap-x-5 gap-y-5 px-6 py-8 transition-colors duration-300 ease-in-out hover:text-white focus-visible:text-white lg:grid-cols-[6vw_20vw_1fr_22vw_8vw] lg:gap-x-[2vw] lg:px-[4.2vw] lg:py-[2.4vw]"
             >
-              <span className="self-start text-lg lg:self-center lg:text-[1.15vw]">{s.n}.</span>
+              <span className="self-start text-lg lg:self-center lg:text-[length:max(1.15vw,20.7px)]">{s.n}.</span>
               <div className="relative col-span-3 row-start-2 aspect-[2/1] overflow-hidden lg:col-span-1 lg:row-start-auto lg:aspect-[300/156]">
                 <Image src={src} alt={alt} fill sizes="(min-width:1024px) 20vw, 90vw" className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110" />
               </div>
@@ -38,7 +38,7 @@ export default function ServiceList() {
                 <br />
                 <span className="accent">{line2}</span>
               </h2>
-              <p className="col-span-2 text-[15px] leading-[1.7] text-neutral-600 transition-colors duration-300 ease-in-out group-hover:text-white/75 lg:col-span-1 lg:text-[0.95vw]">
+              <p className="col-span-2 text-[15px] leading-[1.7] text-neutral-600 transition-colors duration-300 ease-in-out group-hover:text-white/75 lg:col-span-1 lg:text-[length:max(0.95vw,17.1px)]">
                 {s.text}
               </p>
               <span className="col-start-3 row-start-1 justify-self-end lg:col-start-auto lg:row-start-auto">

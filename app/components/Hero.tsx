@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { images } from "@/lib/data";
-import { u } from "@/lib/u";
+import { u, uf } from "@/lib/u";
 import Parallax from "./Parallax";
 import Reveal from "./Reveal";
 import HeroTitle from "./HeroTitle";
@@ -29,7 +29,7 @@ export default function Hero() {
         </Parallax>
 
         <div className="load-rise absolute" style={{ left: u(490), top: u(520), width: u(640), ["--d" as string]: "400ms" }}>
-          <p className="text-neutral-700" style={{ fontSize: u(18), lineHeight: 1.65 }}>
+          <p className="text-neutral-700" style={{ fontSize: uf(18), lineHeight: 1.65 }}>
             <span className="block lg:whitespace-nowrap">Mancha que volta, trinca que cresce, laudo contestado.</span>
             <span className="block lg:whitespace-nowrap">Descubra a causa real antes que vire prejuízo.</span>
           </p>
@@ -47,7 +47,7 @@ export default function Hero() {
           <h2 className="font-extrabold" style={{ fontSize: u(64), letterSpacing: "-0.05em", lineHeight: 1 }}>
             <span className="accent">sem achismo</span>
           </h2>
-          <p className="text-neutral-700" style={{ marginTop: u(40), fontSize: u(18), lineHeight: 1.65 }}>
+          <p className="text-neutral-700" style={{ marginTop: u(40), fontSize: uf(18), lineHeight: 1.65 }}>
             Você não precisa adivinhar o tamanho do problema. Um engenheiro registra, explica e indica o caminho, com laudo que sustenta sua decisão em assembleia, seguro ou disputa.</p>
         </div>
 

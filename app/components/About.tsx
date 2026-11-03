@@ -12,8 +12,8 @@ const problems = [
 function Problem({ a, b }: { a: string; b: string }) {
   return (
     <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/30 to-transparent p-5 text-center lg:p-[1.6vw]">
-      <p className="text-xl font-extrabold uppercase leading-tight text-white lg:text-[1.35vw]">{a}</p>
-      <p className="mt-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-sun lg:mt-[0.4vw] lg:text-[0.6vw]">{b}</p>
+      <p className="text-xl font-extrabold uppercase leading-tight text-white lg:text-[length:max(1.35vw,24.3px)]">{a}</p>
+      <p className="mt-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-sun lg:mt-[0.4vw] lg:text-[length:max(0.6vw,10.8px)]">{b}</p>
     </div>
   );
 }
@@ -46,13 +46,13 @@ export default function About() {
       <Reveal className="relative z-10 mx-auto mt-6 paper p-0 md:max-w-2xl lg:max-w-none lg:-mt-[5vw] lg:w-[62.5%] lg:px-[4.2vw] lg:py-[4vw]">
         <h2 className="heading text-4xl lg:text-[3.1vw]">Você se identifica com algum <span className="accent">desses problemas?</span></h2>
         <span className="rule mt-6 w-14 lg:w-[3.6vw]" />
-        <p className="mt-8 text-xl font-semibold leading-snug text-ink lg:text-[1.35vw]">
+        <p className="mt-8 text-xl font-semibold leading-snug text-ink lg:text-[length:max(1.35vw,24.3px)]">
           Esperar custa mais: quanto mais o problema espera, mais caro fica resolver.
         </p>
-        <p className="mt-5 text-[15px] leading-[1.75] text-neutral-600 lg:text-[0.9vw] lg:leading-[1.85]">
+        <p className="mt-5 text-[15px] leading-[1.75] text-neutral-600 lg:text-[length:max(0.9vw,16.2px)] lg:leading-[1.85]">
           Uma infiltração ignorada vira laje comprometida. Uma vistoria mal feita vira disputa na justiça. Uma fachada esquecida vira risco para quem passa embaixo.
         </p>
-        <p className="mt-4 text-[15px] leading-[1.75] text-neutral-600 lg:text-[0.9vw] lg:leading-[1.85]">
+        <p className="mt-4 text-[15px] leading-[1.75] text-neutral-600 lg:text-[length:max(0.9vw,16.2px)] lg:leading-[1.85]">
           Na KFK Vistorias, o laudo é assinado por engenheiro habilitado, com ART/RRT, fotos e conclusões claras: você sabe o que tem, quanto é grave e o que fazer primeiro. Atendemos síndicos, administradoras, proprietários, construtoras e advogados no Rio de Janeiro.
         </p>
         <a href="#contact" className="btn-dark mt-8 max-lg:w-full max-lg:justify-center max-lg:py-4">Solicitar Orçamento</a>

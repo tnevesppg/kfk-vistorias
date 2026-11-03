@@ -26,9 +26,9 @@ export default function Benefits() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
               <figcaption className="absolute inset-x-0 bottom-0 p-5 text-white lg:p-[1.8vw]">
-                <p className="text-sm font-bold text-sun lg:text-[0.95vw]">{b.n}</p>
-                <h3 className="mt-2 text-lg font-bold uppercase lg:mt-[0.6vw] lg:text-[1.1vw] lg:leading-[1.3]">{b.title}</h3>
-                <p className="mt-3 text-[14px] leading-6 text-white/90 lg:mt-[0.8vw] lg:text-[0.86vw] lg:leading-[1.55]">{b.text}</p>
+                <p className="text-sm font-bold text-sun lg:text-[length:max(0.95vw,17.1px)]">{b.n}</p>
+                <h3 className="mt-2 text-lg font-bold uppercase lg:mt-[0.6vw] lg:text-[length:max(1.1vw,19.8px)] lg:leading-[1.3]">{b.title}</h3>
+                <p className="mt-3 text-[14px] leading-6 text-white/90 lg:mt-[0.8vw] lg:text-[length:max(0.86vw,15.5px)] lg:leading-[1.55]">{b.text}</p>
               </figcaption>
             </figure>
           </Reveal>

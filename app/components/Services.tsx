@@ -8,7 +8,7 @@ function More({ s, className = "" }: { s: (typeof services)[number]; className?:
     <a
       href={s.href}
       aria-label={`Saiba mais sobre ${s.title}`}
-      className={`group inline-flex items-center gap-2 border-b border-sun pb-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink lg:text-[0.65vw] ${className}`}
+      className={`group inline-flex items-center gap-2 border-b border-sun pb-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink lg:text-[length:max(0.65vw,11.7px)] ${className}`}
     >
       Saiba mais <span aria-hidden className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>
     </a>
@@ -18,10 +18,10 @@ function More({ s, className = "" }: { s: (typeof services)[number]; className?:
 function Item({ s, w, right = false }: { s: (typeof services)[number]; w: string; right?: boolean }) {
   return (
     <Reveal className={`lg:w-max ${right ? "lg:text-right" : ""}`} style={{ ["--w" as string]: w }}>
-      <h3 className="text-xl font-bold text-[#0c0c0c] lg:whitespace-nowrap lg:text-[1.55vw] lg:leading-[1.4]">
+      <h3 className="text-xl font-bold text-[#0c0c0c] lg:whitespace-nowrap lg:text-[length:max(1.55vw,27.9px)] lg:leading-[1.4]">
         <a href={s.href} className="hover:text-brand">{s.n}. {s.title}</a>
       </h3>
-      <p className={`mt-4 max-w-sm text-[15px] leading-[1.7] text-[#0c0c0c] lg:mt-[1vw] lg:w-[var(--w)] lg:max-w-none lg:text-[0.88vw] lg:leading-[1.5] ${right ? "lg:ml-auto" : ""}`}>{s.text}</p>
+      <p className={`mt-4 max-w-sm text-[15px] leading-[1.7] text-[#0c0c0c] lg:mt-[1vw] lg:w-[var(--w)] lg:max-w-none lg:text-[length:max(0.88vw,15.8px)] lg:leading-[1.5] ${right ? "lg:ml-auto" : ""}`}>{s.text}</p>
       <More s={s} className="mt-4 lg:mt-[1.1vw]" />
     </Reveal>
   );
