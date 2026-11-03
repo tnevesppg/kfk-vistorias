@@ -12,7 +12,11 @@ const description =
   "Inspeção predial, vistorias técnicas e perícias com laudo assinado por engenheiro. Descubra a causa real do problema antes que vire prejuízo. Rio de Janeiro.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3100"),
+  // absolute base for the share image and canonical URLs; the production build has no .env, so it needs a real default
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ??
+      (process.env.NODE_ENV === "production" ? "https://kfkvistorias.electricsheep.com.br" : "http://localhost:3100"),
+  ),
   title: "KFK Vistorias & Perícias",
   description,
   openGraph: {
