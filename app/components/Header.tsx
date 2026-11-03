@@ -19,7 +19,8 @@ function Logo({ onClick }: { onClick?: () => void }) {
   );
 }
 
-export default function Header() {
+/** `band`: the home draws the menu background itself (see app/page.tsx), so the opening line can pass behind the menu. */
+export default function Header({ band = false }: { band?: boolean }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -46,7 +47,9 @@ export default function Header() {
       <div
         className={`relative z-10 flex items-center justify-between px-6 transition-all duration-300 lg:px-[8.33%] lg:py-[2.2vw] ${
           scrolled || open ? "bg-white/90 py-3.5 shadow-[0_1px_0_rgba(0,0,0,0.06)] backdrop-blur-md" : "py-6"
-        } lg:border-b lg:border-neutral-200 lg:[background:var(--paper)] lg:shadow-none lg:backdrop-blur-none`}
+        } lg:border-b ${
+          band ? "lg:border-transparent lg:bg-transparent" : "lg:border-neutral-200 lg:[background:var(--paper)]"
+        } lg:shadow-none lg:backdrop-blur-none`}
       >
         <Logo onClick={() => setOpen(false)} />
         <nav className="menu-dim hidden gap-[3.4vw] lg:flex">
@@ -64,12 +67,12 @@ export default function Header() {
                     <path d="M0 5.33V0H5.47" stroke="currentColor" strokeLinejoin="round" />
                   </svg>
                   <div className="submenu absolute left-[-1.2vw] top-full z-20 pt-[1.4vw]">
-                    <ul className="paper min-w-[15vw] border border-neutral-300 py-2 shadow-[0_12px_30px_-18px_rgba(0,0,0,0.35)]">
+                    <ul className="paper min-w-[15vw] border border-neutral-300 shadow-[0_12px_30px_-18px_rgba(0,0,0,0.35)]">
                       {l.children.map((c) => (
-                        <li key={c.href}>
+                        <li key={c.href} className="border-b border-neutral-300 last:border-b-0">
                           <a
                             href={c.href}
-                            className="block whitespace-nowrap px-[1.2vw] py-[0.7vw] text-[clamp(13px,calc(0.8vw-1px),14.5px)] uppercase hover:bg-black/[0.04]"
+                            className="block whitespace-nowrap px-[1.2vw] py-[0.95vw] text-[clamp(13px,calc(0.8vw-1px),14.5px)] uppercase hover:bg-black/[0.04]"
                           >
                             {c.label}
                           </a>

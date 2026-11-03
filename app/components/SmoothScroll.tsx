@@ -2,10 +2,10 @@
 
 import { useEffect } from "react";
 import Lenis from "lenis";
-import { COUNT_MS } from "./Preloader";
+import { introMs } from "./Preloader";
 
 /** Weighty, slower wheel scrolling (mouse). Touch keeps native scrolling. */
-export default function SmoothScroll() {
+export default function SmoothScroll({ instant = false }: { instant?: boolean }) {
   useEffect(() => {
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
@@ -17,8 +17,10 @@ export default function SmoothScroll() {
     });
 
     // keep the page still while the preloader runs, then release
-    lenis.stop();
-    const release = setTimeout(() => lenis.start(), COUNT_MS);
+    // (inner pages have no preloader, so they start free)
+    const hold = instant ? 0 : introMs();
+    if (hold) lenis.stop();
+    const release = hold ? setTimeout(() => lenis.start(), hold) : 0;
 
     // in-page anchors glide too, and respect scroll-margin (fixed header on mobile)
     const onClick = (e: MouseEvent) => {
@@ -39,7 +41,7 @@ export default function SmoothScroll() {
       document.removeEventListener("click", onClick);
       lenis.destroy();
     };
-  }, []);
+  }, [instant]);
 
   return null;
 }

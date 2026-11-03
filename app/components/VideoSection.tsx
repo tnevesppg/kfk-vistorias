@@ -18,7 +18,7 @@ export default function VideoSection() {
           Do contato ao laudo em quatro etapas claras: briefing, proposta, vistoria técnica e entrega do documento assinado por engenheiro.
         </p>
         <a href="#" className="btn-dark mt-8 w-full !justify-start !px-5 !py-3.5">
-          <span className="grid h-6 w-6 place-items-center rounded-full bg-sun text-[8px] text-ink">▶</span>
+          <span className="grid h-6 w-6 place-items-center bg-sun text-[8px] text-ink">▶</span>
           Como Funciona
         </a>
       </Reveal>

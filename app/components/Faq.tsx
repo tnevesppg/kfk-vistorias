@@ -12,7 +12,7 @@ export default function Faq() {
               <details name="faq" className="group border-b border-neutral-200">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 lg:py-[1.5vw] [&::-webkit-details-marker]:hidden">
                   <h3 className="text-base font-semibold lg:text-[1.25vw] lg:leading-[1.35]">{f.q}</h3>
-                  <span aria-hidden className="grid h-9 w-9 shrink-0 place-items-center rounded-[3px] bg-sun text-lg font-light text-ink transition-transform duration-500 ease-out group-open:rotate-45 lg:h-[2.2vw] lg:w-[2.2vw] lg:text-[1.4vw]">
+                  <span aria-hidden className="grid h-9 w-9 shrink-0 place-items-center bg-sun text-lg font-light text-ink transition-transform duration-500 ease-out group-open:rotate-45 lg:h-[2.2vw] lg:w-[2.2vw] lg:text-[1.4vw]">
                     +
                   </span>
                 </summary>

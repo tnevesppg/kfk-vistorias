@@ -151,7 +151,7 @@ Itens em `[colchetes]` dependem de confirmação (prazos, equipamentos, legisla�
 
 ---
 
-# GRUPO 3 — PERÍCIA E AVALIAÇÃO
+# GRUPO 3 — AVALIAÇÃO E PERÍCIA
 
 ## 11. Perícia Judicial e Assistência Técnica
 **H1:** Perícia de Engenharia e Assistência Técnica no Rio de Janeiro

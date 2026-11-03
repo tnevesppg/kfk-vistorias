@@ -14,7 +14,7 @@ export default function BackToTop() {
 
   return (
     <a
-      href="#home"
+      href="#"
       data-cursor="solid"
       aria-label="Voltar ao topo"
       tabIndex={show ? 0 : -1}

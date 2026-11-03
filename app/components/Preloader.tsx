@@ -3,6 +3,10 @@
 import { useEffect, useState } from "react";
 
 export const COUNT_MS = 2200;
+/** true on a returning visit in the same session: no loader, entrances start at once (marked by the script in layout.tsx) */
+export const introSeen = () => typeof document !== "undefined" && document.documentElement.dataset.seen === "1";
+/** how long the loader holds the page, 0 when it is skipped */
+export const introMs = () => (introSeen() ? 0 : COUNT_MS);
 const OPEN_MS = 1000;
 const SWAP_MS = 130;
 
@@ -31,10 +35,13 @@ export default function Preloader() {
   const [gone, setGone] = useState(false);
 
   useEffect(() => {
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (introSeen() || matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setGone(true);
       return;
     }
+    try {
+      sessionStorage.setItem("kfk-intro", "1");
+    } catch {}
     document.body.style.overflow = "hidden";
     const start = performance.now();
     let raf = 0;
@@ -69,7 +76,7 @@ export default function Preloader() {
   const dir = active % 2 === 0 ? 1 : -1; // photos alternate sliding in from the left / right
 
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 z-[100] overflow-hidden">
+    <div aria-hidden data-preloader className="pointer-events-none fixed inset-0 z-[100] overflow-hidden">
       <span className={`${half} top-0`} style={{ transform: open ? "translateY(-100%)" : "none", transitionDuration: `${OPEN_MS}ms`, transitionDelay: open ? "150ms" : "0ms" }} />
       <span className={`${half} bottom-0`} style={{ transform: open ? "translateY(100%)" : "none", transitionDuration: `${OPEN_MS}ms`, transitionDelay: open ? "150ms" : "0ms" }} />
 

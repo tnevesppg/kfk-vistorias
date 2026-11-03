@@ -11,7 +11,7 @@ export default function Hero() {
     <section id="home" className="relative">
       {/* desktop: absolute collage mirrored from the demo (1920 design grid) */}
       <div className="relative hidden lg:block" style={{ height: u(1010) }}>
-        <Parallax speed={0.12} fadeOut className="photo photo-pop load-wipe absolute" style={{ left: u(160), top: u(136), width: u(206), height: u(650), ["--d" as string]: "700ms" }}>
+        <Parallax speed={0.12} fadeOut className="photo photo-pop load-wipe absolute" style={{ left: u(160), top: `clamp(${u(136)}, calc(19.06svh + 2vw), ${u(330)})`, width: u(206), height: u(650), ["--d" as string]: "700ms" }}>
           <Image src={images.heroPlant} alt="Fachada de edifício residencial vista de baixo" fill sizes="25vw" quality={90} priority className="object-cover" />
         </Parallax>
 
@@ -39,7 +39,7 @@ export default function Hero() {
           <a href="#contact" className="btn-sun">Solicitar Orçamento</a>
         </div>
 
-        <Parallax speed={0.08} fadeOut className="photo load-wipe absolute" style={{ left: u(800), top: u(700), width: u(320), height: u(275), ["--d" as string]: "200ms" }}>
+        <Parallax speed={0.08} fadeOut className="photo load-wipe absolute" style={{ left: u(830), top: u(700), width: u(320), height: u(275), ["--d" as string]: "200ms" }}>
           <Image src={images.heroSmall} alt="Mão com régua medindo trinca na parede" fill sizes="35vw" quality={90} className="object-cover" />
         </Parallax>
 
@@ -80,7 +80,7 @@ export default function Hero() {
             <span className="mt-2 block font-semibold text-ink">Descubra a causa real antes que vire prejuízo.</span>
           </p>
           <a href="#contact" className="btn-sun mt-8 w-full justify-center py-4 text-sm">
-            Solicitar Orçamento <span aria-hidden>→</span>
+            Solicitar Orçamento
           </a>
         </div>
 

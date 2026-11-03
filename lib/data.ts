@@ -17,7 +17,7 @@ export const images = {
 export const services = [
   { n: "01", title: "Inspeção Predial", href: "/servicos/inspecao-predial", text: "Diagnóstico de estrutura, fachadas e instalações, com laudo conforme a NBR 16747." },
   { n: "02", title: "Vistorias Técnicas", href: "/servicos/vistorias-tecnicas", text: "Cautelar de vizinhança, imóvel novo, áreas comuns e locativa. Registramos o estado do imóvel antes que vire disputa." },
-  { n: "03", title: "Perícia e Avaliação", href: "/servicos/pericia-e-avaliacao", text: "Assistência técnica judicial, perícia de engenharia e avaliação de imóveis pela NBR 14653." },
+  { n: "03", title: "Avaliação e Perícia", href: "/servicos/avaliacao-e-pericia", text: "Avaliação de imóveis pela NBR 14653, perícia de engenharia e assistência técnica judicial." },
 ];
 
 export type NavLink = { label: string; href: string; children?: { label: string; href: string }[] };

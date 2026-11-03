@@ -129,7 +129,7 @@ Proporção 16:9, horizontal.
 Fotografia realista de um engenheiro com prancheta e uma pessoa (cliente) caminhando por uma sala vazia de apartamento, vistoriando as paredes e o piso. Ambos de costas ou de perfil, sem rostos identificáveis. Ambiente claro, piso de madeira clara, janelas grandes, luz natural. Engenheiro com capacete amarelo e colete. Composição com os personagens no centro, profundidade de campo suave. Sem texto, sem logos.
 ```
 
-### 09 · Serviço 03 "Perícia e Avaliação" — foto alta, central ⚠️ maior imagem do site
+### 09 · Serviço 03 "Avaliação e Perícia" — foto alta, central ⚠️ maior imagem do site
 - **Arquivo:** `servico-pericia.jpg`
 - **Na tela:** 691 × 1075 px (≈ 0,64:1, bem alta)
 - **Peça ao Gemini:** 2:3 (se não houver, 9:16 e eu recorto). Exportar: 1382 × 2150.

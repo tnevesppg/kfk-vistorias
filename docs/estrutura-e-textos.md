@@ -36,7 +36,7 @@ Público, em ordem: síndicos e administradoras; proprietários e compradores de
 2. **Serviços** (mega menu, 4 colunas):
    - *Inspeção e Laudos*: Inspeção Predial (NBR 16747) · Autovistoria Predial (exigência municipal, RJ) [confirmar praça de atuação] · Laudo de Marquise · Laudo Estrutural e de Segurança · Laudo de Infiltração · Patologias e Vícios Construtivos
    - *Vistorias*: Vistoria Cautelar de Vizinhança · Vistoria de Recebimento de Imóvel Novo · Recebimento de Áreas Comuns · Vistoria Locativa
-   - *Perícia e Avaliação*: Perícia Judicial · Assistência Técnica Judicial · Avaliação de Imóveis (NBR 14653) · Consultoria e Pareceres Técnicos
+   - *Avaliação e Perícia*: Perícia Judicial · Assistência Técnica Judicial · Avaliação de Imóveis (NBR 14653) · Consultoria e Pareceres Técnicos
    - *Ensaios e Tecnologia*: Termografia · Esclerometria · Pacometria · Inspeção com Drone / Acesso por Corda [confirmar capacidade]
    - *Opcional, fase 2 (retaguarda da construtora)*: Plano de Manutenção Predial · Manual do Proprietário · Fiscalização de Obras · Recuperação de Fachada
 3. **Para quem** (Síndicos e condomínios · Proprietários · Construtoras · Advogados)
@@ -66,7 +66,7 @@ Cada serviço do menu = página própria (SEO e anúncios).
 
 **Hero**
 - Título: *Laudos que protegem o seu patrimônio, assinados por quem entende de obra.*
-- Subtítulo: Inspeção predial, vistoria, perícia e avaliação com engenheiros habilitados e o conhecimento de campo do grupo KFK Engenharia.
+- Subtítulo: Inspeção predial, vistoria, avaliação e perícia com engenheiros habilitados e o conhecimento de campo do grupo KFK Engenharia.
 - CTAs: **Solicitar orçamento** · Falar no WhatsApp
 - Linha de apoio: Atendimento em [cidades/regiões].
 

@@ -34,7 +34,6 @@ export default function Footer() {
           </div>
           <a href="/orcamento" className="btn-sun shrink-0 lg:gap-[1vw] lg:px-[3vw] lg:py-[1.4vw] lg:text-[1vw]">
             Solicitar Orçamento
-            <span aria-hidden>→</span>
           </a>
         </div>
       </div>

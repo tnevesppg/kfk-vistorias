@@ -10,7 +10,7 @@ function More({ s, className = "" }: { s: (typeof services)[number]; className?:
       aria-label={`Saiba mais sobre ${s.title}`}
       className={`group inline-flex items-center gap-2 border-b border-sun pb-0.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink lg:text-[0.65vw] ${className}`}
     >
-      Saiba mais <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+      Saiba mais <span aria-hidden className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">↗</span>
     </a>
   );
 }

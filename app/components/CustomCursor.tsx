@@ -31,7 +31,8 @@ export default function CustomCursor() {
 
     const pick = (t: Element | null) => {
       solid = !!t?.closest(".btn-sun, .btn-dark, [data-cursor='solid']");
-      link = solid ? null : (t?.closest("a, button, [data-cursor='link']") ?? null);
+      // [data-cursor="dot"]: big links that change colour themselves (service rows) keep the plain square
+      link = solid || t?.closest("[data-cursor='dot']") ? null : (t?.closest("a, button, [data-cursor='link']") ?? null);
       photo = link ? null : (t?.closest(".photo") ?? null);
     };
 

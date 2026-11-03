@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { u } from "@/lib/u";
 import TechText from "./TechText";
-import { COUNT_MS } from "./Preloader";
+import { introMs } from "./Preloader";
 
 const SANS = '"Bai Jamjuree"';
 const SERIF = '"Tartuffo"';
@@ -67,7 +67,8 @@ function measure(): { segs: Seg[]; height: number } | null {
 
 /**
  * Draws itself once, on arrival (letters appear dashed, one by one, then turn solid), after the loader
- * and the first elements. Afterwards it just stays: no hover, no sweep, no selection frame.
+ * and the first elements. Afterwards it stays still; only hovering a letter brings back the dotted
+ * reveal and the selection frame. No sweep, dragging or click kick.
  */
 export default function HeroTitle() {
   const [layout, setLayout] = useState<ReturnType<typeof measure>>(null);
@@ -85,7 +86,7 @@ export default function HeroTitle() {
     };
     window.addEventListener("resize", onResize);
 
-    const base = reduced ? 0 : COUNT_MS + 650;
+    const base = reduced ? 0 : introMs() + (introMs() ? 650 : 0);
     const starts = [0, 1.1, 2.6];
     const timers = starts.map((s, i) =>
       setTimeout(() => setShown((p) => p.map((v, j) => (j === i ? true : v))), reduced ? 0 : base + s * 1000),
@@ -102,7 +103,7 @@ export default function HeroTitle() {
     <div className="pointer-events-none relative" style={{ width: u(1230), height: layout ? layout.height : u(300) }}>
       {layout?.segs.map((seg, i) =>
         shown[i] ? (
-          <div key={seg.key} className="absolute" style={{ left: seg.box.left, top: seg.box.top, width: seg.box.width, height: seg.box.height }}>
+          <div key={seg.key} className="pointer-events-auto absolute" style={{ left: seg.box.left, top: seg.box.top, width: seg.box.width, height: seg.box.height }}>
             <TechText
               text={seg.text}
               fontFamily={seg.serif ? SERIF : SANS}
@@ -114,11 +115,11 @@ export default function HeroTitle() {
               intro="type"
               introDuration={seg.intro}
               sweep={false}
-              selection={false}
+              selection
               draggable={false}
               clickKick={false}
-              labels={false}
-              reveal="none"
+              labels
+              reveal="letter"
               guides={false}
               style={{ width: "100%", height: "100%" }}
             />

@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Reveal from "./Reveal";
 
 // k = logo width in design units, tuned so every mark carries about the same visual weight
 const clients = [
@@ -14,10 +13,9 @@ const clients = [
 export default function Clients() {
   return (
     <section aria-label="Clientes atendidos" className="px-6 py-14 lg:px-[8.33%] lg:py-[5.5vw]">
-      <ul className="mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-x-9 gap-y-8 [--u:8.5px] md:gap-x-14 lg:max-w-none lg:flex-nowrap lg:justify-between lg:gap-x-0 lg:[--u:1vw]">
-        {clients.map((c, i) => (
+      <ul data-opening-first className="mx-auto flex max-w-3xl flex-wrap items-center justify-center gap-x-9 gap-y-8 [--u:8.5px] md:gap-x-14 lg:max-w-none lg:flex-nowrap lg:justify-between lg:gap-x-0 lg:[--u:1vw]">
+        {clients.map((c) => (
           <li key={c.name}>
-            <Reveal delay={i * 80}>
               <Image
                 src={c.src}
                 alt={c.name}
@@ -26,7 +24,6 @@ export default function Clients() {
                 unoptimized
                 style={{ width: `calc(var(--u) * ${c.k})`, height: "auto" }}
               />
-            </Reveal>
           </li>
         ))}
       </ul>

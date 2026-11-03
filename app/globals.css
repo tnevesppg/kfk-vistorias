@@ -9,9 +9,50 @@
   --font-display: var(--font-sans-main);
 }
 
+/* returning visit in this session: no loader, and every entrance starts at once */
+html[data-seen] {
+  --base: 0ms;
+}
+html[data-seen] [data-preloader] {
+  display: none;
+}
+
+/* the opening line: a 1px gradient band through the middle of its box, at --angle (turned by OpeningScene) */
+.opening-line {
+  --angle: -148deg;
+  background-image: linear-gradient(
+    var(--angle),
+    transparent calc(50% - 1px),
+    #e5e5e5 calc(50% - 0.5px),
+    #e5e5e5 calc(50% + 0.5px),
+    transparent calc(50% + 1px)
+  );
+}
+/* the line draws itself in from the top once the loader is done, like the reference (same timing base as the other entrances) */
+@keyframes line-draw {
+  from { clip-path: inset(0 0 100% 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+.opening-line { animation: line-draw 1.4s cubic-bezier(0.65, 0, 0.2, 1) backwards; animation-delay: calc(var(--base, 2500ms) + 100ms); }
+@media (prefers-reduced-motion: reduce) {
+  .opening-line { animation: none; }
+}
+/* desktop: the room the turn needs above the clients strip, known from CSS alone so nothing shifts when the script runs
+   (115svh = 0.65 turn + 0.5 half screen, 40px margin; 58.104vw = hero 52.604vw + strip padding 5.5vw). Keep in step with OpeningScene.tsx */
+@media (min-width: 1024px) {
+  [data-opening-mask] {
+    padding-top: max(0px, calc(115svh + 40px - 58.104vw));
+  }
+}
+/* menu band height until the script measures the real one */
+:root {
+  --header-h: calc(4.4vw + max(1.5rem, 1.35vw) + 1px);
+}
+
 /* paper grain: warm off-white with a fine noise tile; swap the --paper value to #fff to go back to plain white */
 :root {
-  --paper: #f5f5ef url(/textures/papel.png) 0 0 / 124px 124px;
+  --paper: #f4f4f4;
+  /* previous paper grain: --paper: #f5f5ef url(/textures/papel.png) 0 0 / 124px 124px; */
 }
 .paper {
   background: var(--paper);
@@ -27,7 +68,7 @@ body {
   letter-spacing: -0.015em;
   color: #242625;
   background: var(--paper);
-  overflow-x: hidden;
+  overflow-x: clip; /* not hidden: hidden makes body a scroll container and breaks position: sticky */
 }
 
 /* one family, light weights: Bai Jamjuree. Titles are 500, never bold; only "precisos" in the main title is a serif italic (Tartuffo) */
@@ -82,13 +123,20 @@ header nav.menu-dim a {
   gap: 0.75rem;
   background: #242625;
   color: #fff;
-  border-radius: 3px;
+  border-radius: 0;
   padding: 1rem 2.25rem;
   font-size: 0.74rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   transition: background 0.3s;
+}
+/* every CTA ends with the up-right arrow */
+.btn-dark::after,
+.btn-sun::after {
+  content: "\2197";
+  font-size: 1.15em;
+  line-height: 1;
 }
 .btn-dark:hover {
   background: #0164bb;
@@ -100,19 +148,17 @@ header nav.menu-dim a {
   gap: 0.75rem;
   background: #fcc300;
   color: #242625;
-  border-radius: 3px;
+  border-radius: 0;
   padding: 1rem 2.25rem;
   font-size: 0.74rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  box-shadow: 0 8px 24px -8px rgba(252, 195, 0, 0.7);
-  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  transition: background 0.3s, color 0.3s;
 }
 .btn-sun:hover {
   background: #0164bb;
   color: #fff;
-  box-shadow: 0 8px 24px -8px rgba(1, 100, 187, 0.7);
 }
 
 /* short accent rule under headings */
@@ -238,6 +284,29 @@ html.lenis body {
   transform: none;
 }
 header nav.menu-dim .submenu a { font-weight: 500; }
+
+/* service rows: the dark fill drops in from the top as the pointer arrives and slides out the bottom when it leaves
+   (same trick as the reference: a layer anchored to the bottom whose height animates, pinned to the top while hovered) */
+.svc-row {
+  position: relative;
+  isolation: isolate;
+}
+.svc-row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  z-index: -1;
+  background: var(--color-ink);
+  transition: height 0.3s ease-in-out;
+}
+.svc-row:hover::before,
+.svc-row:focus-visible::before {
+  top: 0;
+  height: 100%;
+}
 
 /* loader: each photo swap slides in a little and flashes */
 @keyframes photo-swap {
