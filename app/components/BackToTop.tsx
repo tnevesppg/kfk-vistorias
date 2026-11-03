@@ -18,7 +18,7 @@ export default function BackToTop() {
       data-cursor="solid"
       aria-label="Voltar ao topo"
       tabIndex={show ? 0 : -1}
-      className={`fixed bottom-6 right-6 z-40 grid h-11 w-11 place-items-center rounded-full border border-sun bg-white/70 text-sun backdrop-blur-sm transition-all duration-500 hover:bg-sun hover:text-ink lg:bottom-[2vw] lg:right-[2vw] lg:h-[3vw] lg:w-[3vw] ${
+      className={`fixed bottom-6 right-6 z-40 grid h-11 w-11 place-items-center rounded-full border border-sun bg-transparent text-sun transition-all duration-500 hover:bg-sun hover:text-ink lg:bottom-[2vw] lg:right-[2vw] lg:h-[3vw] lg:w-[3vw] ${
         show ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
       }`}
     >

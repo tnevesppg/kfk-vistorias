@@ -52,7 +52,7 @@ export default function Header() {
         <nav className="menu-dim hidden gap-[3.4vw] lg:flex">
           {navLinks.map((l) => (
             <div key={l.href} className="menu-item relative">
-              <a href={l.href} className="text-[clamp(11px,calc(0.8vw-2px),14px)] uppercase">
+              <a href={l.href} className="text-[clamp(13px,calc(0.8vw-1px),14.5px)] uppercase">
                 {l.label}
               </a>
               {l.children && (
@@ -69,7 +69,7 @@ export default function Header() {
                         <li key={c.href}>
                           <a
                             href={c.href}
-                            className="block whitespace-nowrap px-[1.2vw] py-[0.7vw] text-[clamp(11px,calc(0.8vw-2px),14px)] uppercase hover:bg-black/[0.04]"
+                            className="block whitespace-nowrap px-[1.2vw] py-[0.7vw] text-[clamp(13px,calc(0.8vw-1px),14.5px)] uppercase hover:bg-black/[0.04]"
                           >
                             {c.label}
                           </a>
