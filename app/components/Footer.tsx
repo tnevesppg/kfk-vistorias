@@ -20,31 +20,34 @@ const heading = "text-sm font-bold lg:text-[length:max(0.95vw,17.1px)]";
 const body = "text-xs leading-6 text-neutral-500 lg:text-[length:max(0.8vw,14.4px)] lg:leading-[1.8]";
 const Rule = () => <span className="ml-2 inline-block h-[3px] w-8 bg-sun align-middle" />;
 
-export default function Footer() {
+/** `cta={false}` drops the black quote band, for pages that bring their own closing call to action. */
+export default function Footer({ cta = true }: { cta?: boolean }) {
   return (
     <footer id="contact" className="relative z-10">
-      <div
-        className="bg-ink bg-cover bg-center px-6 py-14 text-white lg:px-[8.33%] lg:py-[4.5vw]"
-        style={{ backgroundImage: "url(/photos/vector-footer.png)" }}
-      >
-        <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center lg:gap-[4vw]">
-          <div className="lg:max-w-[40vw]">
-            <h2 className="text-3xl font-extrabold leading-tight lg:text-[2.6vw]">
-              Solicite o Seu Orçamento<span className="text-sun">.</span>
-            </h2>
-            <p className="mt-3 text-sm leading-7 text-white/70 lg:mt-[1vw] lg:text-[length:max(1vw,18.0px)] lg:leading-[1.7]">
-              Conte o que está acontecendo no imóvel. Um engenheiro analisa o seu caso e retorna com a proposta.
-            </p>
+      {cta && (
+        <div
+          className="bg-ink bg-cover bg-center px-6 py-14 text-white lg:px-[8.33%] lg:py-[4.5vw]"
+          style={{ backgroundImage: "url(/photos/vector-footer.png)" }}
+        >
+          <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center lg:gap-[4vw]">
+            <div className="lg:max-w-[40vw]">
+              <h2 className="text-3xl font-extrabold leading-tight lg:text-[2.6vw]">
+                Solicite o Seu Orçamento<span className="text-sun">.</span>
+              </h2>
+              <p className="mt-3 text-sm leading-7 text-white/70 lg:mt-[1vw] lg:text-[length:max(1vw,18.0px)] lg:leading-[1.7]">
+                Conte o que está acontecendo no imóvel. Um engenheiro analisa o seu caso e retorna com a proposta.
+              </p>
+            </div>
+            <a href="/orcamento" className="btn-sun shrink-0 lg:gap-[1vw] lg:px-[3vw] lg:py-[1.4vw] lg:text-[length:max(1vw,18.0px)]">
+              Solicitar Orçamento
+            </a>
           </div>
-          <a href="/orcamento" className="btn-sun shrink-0 lg:gap-[1vw] lg:px-[3vw] lg:py-[1.4vw] lg:text-[length:max(1vw,18.0px)]">
-            Solicitar Orçamento
-          </a>
         </div>
-      </div>
+      )}
       <div className="grid paper lg:grid-cols-3">
         <div className={col}>
           <div>
-            <Image src="/brand/logo-outline.png" unoptimized alt="KFK Vistorias & Perícias" width={1400} height={201} className="h-6 w-auto lg:h-[clamp(1.5rem,1.55vw,2rem)]" />
+            <Image src="/brand/logo.png" unoptimized alt="KFK Vistorias & Perícias" width={1400} height={201} className="h-6 w-auto grayscale brightness-[0.6] transition duration-500 ease-out hover:grayscale-0 hover:brightness-100 lg:h-[clamp(1.5rem,1.55vw,2rem)]" />
             <p className={`mt-3 max-w-[16rem] lg:mt-[0.8vw] lg:max-w-[18vw] ${body}`}>
               Laudos, vistorias e perícias assinados por engenheiro habilitado.
             </p>
