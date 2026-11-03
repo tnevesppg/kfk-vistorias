@@ -45,7 +45,7 @@ export default function Hero() {
 
         <div className="load-rise absolute" style={{ left: u(1265), top: u(740), width: u(430), ["--d" as string]: "300ms" }}>
           <h2 className="font-extrabold" style={{ fontSize: u(64), letterSpacing: "-0.05em", lineHeight: 1 }}>
-            sem achismo
+            <span className="accent">sem achismo</span>
           </h2>
           <p className="text-neutral-700" style={{ marginTop: u(40), fontSize: u(18), lineHeight: 1.65 }}>
             Você não precisa adivinhar o tamanho do problema. Um engenheiro registra, explica e indica o caminho, com laudo que sustenta sua decisão em assembleia, seguro ou disputa.</p>
