@@ -3,6 +3,8 @@ import Image from "next/image";
 import PageShell from "../components/PageShell";
 import HeroVideo from "../components/HeroVideo";
 import Reveal from "../components/Reveal";
+import PageOpening from "../components/PageOpening";
+import AccordionItem from "../components/AccordionItem";
 
 export const metadata: Metadata = {
   title: "Sobre | KFK Vistorias & Perícias",
@@ -34,19 +36,12 @@ const lead = "text-[1.6rem] leading-[1.2] tracking-[-0.02em] lg:text-[length:max
 const body = "text-[15px] leading-[1.75] text-neutral-700 lg:text-[length:max(0.95vw,17.1px)]";
 const cell = "border-t border-neutral-200 py-8 lg:border-l lg:border-t-0 lg:py-[3vw] lg:first:border-l-0";
 
-function PlusIcon() {
-  return (
-    <span aria-hidden className="relative block h-7 w-7 shrink-0 bg-sun transition-transform duration-500 ease-out group-open:rotate-45 lg:h-[1.8vw] lg:min-h-7 lg:w-[1.8vw] lg:min-w-7">
-      <span className="absolute left-1/2 top-1/2 h-[2px] w-[40%] -translate-x-1/2 -translate-y-1/2 bg-ink" />
-      <span className="absolute left-1/2 top-1/2 h-[40%] w-[2px] -translate-x-1/2 -translate-y-1/2 bg-ink" />
-    </span>
-  );
-}
-
 export default function SobrePage() {
   return (
     <PageShell>
-      {/* title */}
+      <PageOpening
+        mediaClassName="photo relative mt-8 h-[calc(100svh-24rem)] min-h-[15rem] lg:mt-[3vw] lg:h-[calc(100svh-26.3vw)] lg:min-h-[18rem]"
+        title={
       <section className={`${pad} pt-28 lg:pt-[9vw]`}>
         <p className="flex items-center gap-3 text-sm lg:gap-[0.8vw] lg:text-[length:max(0.9vw,16.2px)]">
           <a href="/" className="hover:text-brand">Início</a>
@@ -59,11 +54,10 @@ export default function SobrePage() {
           <span className="accent">por dentro</span>
         </h1>
       </section>
-
-      {/* video slot, full bleed */}
-      <Reveal variant="wipe" className="photo relative mt-10 aspect-[16/10] overflow-hidden lg:mt-[4vw] lg:aspect-[2.3/1]">
+        }
+      >
         <HeroVideo alt="Engenheiro da KFK em vistoria de campo" src={VIDEO_SRC} poster={VIDEO_POSTER} />
-      </Reveal>
+      </PageOpening>
 
       {/* quem somos */}
       <section className={pad}>
@@ -71,19 +65,19 @@ export default function SobrePage() {
           <div className={cell}>
             <p className={label}>Quem somos</p>
           </div>
-          <Reveal className={`${cell} lg:col-span-2 lg:pl-[3vw]`}>
+          <Reveal variant="left" className={`${cell} lg:col-span-2 lg:pl-[3vw]`}>
             <p className={lead}>
               A KFK Vistorias nasceu da experiência da KFK Engenharia e da KFK Construtora para oferecer inspeção, vistoria e perícia com independência técnica.
             </p>
           </Reveal>
         </div>
         <div className="grid border-t border-neutral-200 lg:grid-cols-3">
-          <Reveal className="relative aspect-[4/3] overflow-hidden py-0 lg:col-span-2 lg:my-[3vw] lg:aspect-auto lg:min-h-[28vw]">
+          <Reveal variant="wipe-x" className="relative aspect-[4/3] overflow-hidden py-0 lg:col-span-2 lg:my-[3vw] lg:aspect-auto lg:min-h-[28vw]">
             <div className="photo absolute inset-0">
               <Image src="/photos/sobre-quem-somos.jpg" alt="Engenheiro inspecionando equipamentos no terraço de um prédio no Rio de Janeiro" fill sizes="(min-width:1024px) 60vw, 100vw" className="object-cover" />
             </div>
           </Reveal>
-          <Reveal className="flex flex-col justify-end gap-5 border-neutral-200 py-8 lg:border-l lg:px-[3vw] lg:py-[3vw]">
+          <Reveal variant="right" className="flex flex-col justify-end gap-5 border-neutral-200 py-8 lg:border-l lg:px-[3vw] lg:py-[3vw]">
             <p className={body}>
               Conhecemos a obra por dentro, e por isso sabemos onde os problemas costumam aparecer. Cada laudo é assinado por engenheiro habilitado, com ART/RRT, fotos e conclusões claras.
             </p>
@@ -106,7 +100,7 @@ export default function SobrePage() {
           </div>
           <ol className="border-t border-neutral-200 lg:col-span-2 lg:border-l lg:border-t-0">
             {normas.map((n, i) => (
-              <Reveal key={n} delay={i * 40}>
+              <Reveal key={n} variant={(["right", "left", "zoom", "right", "left"] as const)[i % 5]} delay={i * 40}>
                 <li className="flex items-baseline gap-5 border-b border-neutral-200 py-5 last:border-b-0 lg:gap-[1.6vw] lg:px-[3vw] lg:py-[1.6vw]">
                   <span className="text-sm text-neutral-400 lg:text-[length:max(0.85vw,15.3px)]">0{i + 1}</span>
                   <span className="text-lg leading-tight tracking-[-0.01em] lg:text-[length:max(1.6vw,28px)]">{n}</span>
@@ -119,7 +113,7 @@ export default function SobrePage() {
 
       {/* compromisso: grey panel */}
       <section className={`${pad} border-t border-neutral-200 py-10 lg:py-[3vw]`}>
-        <Reveal className="grid bg-neutral-200/70 lg:grid-cols-3">
+        <Reveal variant="zoom" className="grid bg-neutral-200/70 lg:grid-cols-3">
           <div className="p-6 lg:p-[3vw]">
             <p className={label}>Compromisso</p>
             <h2 className="mt-4 text-[1.9rem] leading-[1.1] tracking-[-0.03em] lg:mt-[1.2vw] lg:text-[length:max(2.2vw,38px)]">
@@ -149,24 +143,30 @@ export default function SobrePage() {
         <p className={label}>Nosso diferencial</p>
         <h2 className="mt-4 text-[1.9rem] leading-[1.1] tracking-[-0.03em] lg:mt-[1.2vw] lg:text-[length:max(2.2vw,38px)]">O nosso compromisso, a sua garantia</h2>
         <div className="mt-10 grid gap-8 lg:mt-[4vw] lg:grid-cols-[1fr_1.3fr] lg:gap-0">
-          <Reveal className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[26vw] lg:mr-[3vw]">
+          <Reveal variant="wipe-x" className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[26vw] lg:mr-[3vw]">
             <div className="photo absolute inset-0">
               <Image src="/photos/sobre-diferencial.jpg" alt="Engenheiro mostrando um apartamento a dois clientes durante a vistoria" fill sizes="(min-width:1024px) 38vw, 100vw" className="object-cover" />
             </div>
           </Reveal>
           <div className="border-neutral-200 lg:border-l lg:pl-[3vw]">
             {diffs.map((x, i) => (
-              <Reveal key={x.t} delay={i * 40}>
-                <details name="diff" open={i === 0} className="group border-b border-neutral-200 first:border-t lg:first:border-t-0">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 lg:py-[1.6vw] [&::-webkit-details-marker]:hidden">
+              <Reveal key={x.t} variant={(["right", "left", "right", "left"] as const)[i % 4]} delay={i * 40}>
+                <AccordionItem
+                  group="diff"
+                  defaultOpen={i === 0}
+                  className="border-b border-neutral-300 first:border-t lg:first:border-t-0"
+                  btnClassName="py-5 lg:py-[1.6vw]"
+                  plusClassName="h-7 w-7 lg:h-[1.8vw] lg:min-h-7 lg:w-[1.8vw] lg:min-w-7"
+                  bodyClassName={`${body} max-w-[34rem] pb-6 pl-9 lg:max-w-[34vw] lg:pb-[2vw] lg:pl-[3vw]`}
+                  head={
                     <span className="flex items-baseline gap-4 lg:gap-[1.2vw]">
                       <span className="text-sm text-neutral-400 lg:text-[length:max(0.85vw,15.3px)]">0{i + 1}</span>
-                      <h3 className="text-xl leading-tight tracking-[-0.02em] lg:text-[length:max(1.9vw,34px)]">{x.t}</h3>
+                      <span className="text-xl leading-tight tracking-[-0.02em] lg:text-[length:max(1.9vw,34px)]">{x.t}</span>
                     </span>
-                    <PlusIcon />
-                  </summary>
-                  <p className={`${body} max-w-[34rem] pb-6 pl-9 lg:max-w-[34vw] lg:pb-[2vw] lg:pl-[3vw]`}>{x.d}</p>
-                </details>
+                  }
+                >
+                  {x.d}
+                </AccordionItem>
               </Reveal>
             ))}
           </div>

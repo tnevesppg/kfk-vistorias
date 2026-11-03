@@ -72,3 +72,115 @@ export const inspecaoPredial: Servico = {
     },
   ],
 };
+
+export const vistoriasTecnicas: Servico = {
+  slug: "vistorias-tecnicas",
+  nome: "Vistorias Técnicas",
+  h1: "Vistorias Técnicas",
+  h1Accent: "no Rio de Janeiro",
+  slogan: "Registre o estado do imóvel antes que vire disputa.",
+  resumo:
+    "Cautelar de vizinhança, imóvel novo, áreas comuns e locativa. Um engenheiro examina, fotografa e descreve cada ponto, para você ter o retrato técnico do imóvel na hora certa.",
+  image: "/photos/servico-vistoria.jpg",
+  imageAlt: "Engenheiro e cliente vistoriando um apartamento",
+  meta: [
+    { k: "Norma", v: "ABNT NBR 15575" },
+    { k: "Registro", v: "ART/RRT" },
+    { k: "Atendimento", v: "Rio de Janeiro" },
+  ],
+  pilares: [
+    { t: "Registro", d: "Fotos e descrição técnica de cada ambiente e de cada detalhe." },
+    { t: "Conferência", d: "Acabamentos, instalações e medidas verificados item por item." },
+    { t: "Respaldo", d: "Laudo claro para usar em assembleia, acordo ou negociação." },
+  ],
+  inclui: [
+    "Vistoria cautelar de vizinhança: o antes de uma escavação, demolição ou obra",
+    "Vistoria de recebimento de imóvel novo: conferência contra o memorial e o projeto",
+    "Recebimento de áreas comuns: sistemas, fachadas e documentos na entrega ao condomínio",
+    "Vistoria locativa: laudo de entrada e de saída do contrato de locação",
+    "Registro fotográfico e lista de pendências em todas elas",
+  ],
+  etapas: [
+    { t: "Briefing", d: "Entendemos o imóvel, o momento da vistoria e o que você precisa registrar." },
+    { t: "Proposta", d: "Escopo, prazo e valor definidos antes de começar." },
+    { t: "Vistoria técnica", d: "O engenheiro vai a campo, examina e fotografa cada ponto." },
+    { t: "Laudo", d: "Entregamos o documento assinado, com fotos e pendências classificadas." },
+  ],
+  recebe: [
+    "Laudo com ART/RRT",
+    "Registro fotográfico por ambiente",
+    "Pendências classificadas, com prazo sugerido para correção",
+  ],
+  recebeImage: "/photos/beneficio-3-valorizacao.jpg",
+  recebeImageAlt: "Entrega de chaves e do laudo de vistoria de um imóvel",
+  faq: [
+    {
+      q: "Quando fazer a vistoria cautelar de vizinhança?",
+      a: "Antes de a obra começar. Assim o registro mostra o estado dos imóveis vizinhos antes de escavação, demolição ou construção, e protege o construtor e o vizinho. Ao fim da obra, uma vistoria de saída é opcional.",
+    },
+    {
+      q: "A vistoria vale também para imóvel usado?",
+      a: "Sim. A conferência de acabamentos, instalações e estado geral serve também para quem compra um imóvel usado ou vai alugar, e o laudo registra tudo com fotos.",
+    },
+    {
+      q: "Quem contrata a vistoria locativa, locador ou locatário?",
+      a: "Qualquer uma das partes. O laudo é assinado por engenheiro e imparcial, e serve às duas na entrega e na devolução das chaves.",
+    },
+  ],
+};
+
+export const avaliacaoPericia: Servico = {
+  slug: "avaliacao-e-pericia",
+  nome: "Avaliação e Perícia",
+  h1: "Avaliação e Perícia",
+  h1Accent: "no Rio de Janeiro",
+  slogan: "Um número confiável e uma conclusão que a Justiça entende.",
+  resumo:
+    "Avaliamos imóveis pela NBR 14653 e damos apoio técnico a quem está em processo: perícia de engenharia, assistência técnica e análise de laudos da parte contrária.",
+  image: "/photos/servico-pericia.jpg",
+  imageAlt: "Perito medindo a umidade de uma parede",
+  meta: [
+    { k: "Normas", v: "ABNT NBR 14653 e 13752" },
+    { k: "Registro", v: "ART/RRT" },
+    { k: "Atendimento", v: "Rio de Janeiro" },
+  ],
+  pilares: [
+    { t: "Método", d: "Pesquisa de mercado e tratamento dos dados, passo a passo." },
+    { t: "Fundamentação", d: "Conclusões baseadas em método e norma, e não em opinião." },
+    { t: "Clareza", d: "Linguagem objetiva para juiz, advogados e partes." },
+  ],
+  inclui: [
+    "Avaliação de imóveis pela NBR 14653, com vistoria, pesquisa de mercado e cálculo do valor",
+    "Perícia de engenharia conforme a NBR 13752",
+    "Assistência técnica judicial: quesitos, parecer e acompanhamento da perícia",
+    "Análise do processo e de laudos da parte contrária",
+    "Para venda, inventário e partilha, divórcio, financiamento, renovatória de aluguel e retificação de ITBI",
+  ],
+  etapas: [
+    { t: "Briefing", d: "Entendemos o objetivo da avaliação ou o ponto do processo e reunimos os documentos." },
+    { t: "Vistoria e pesquisa", d: "Vistoria do imóvel e pesquisa de mercado, ou análise do processo e dos quesitos." },
+    { t: "Análise", d: "Tratamento dos dados, cálculo do valor e fundamentação das conclusões." },
+    { t: "Laudo ou parecer", d: "Entregamos o documento assinado por engenheiro, com a fundamentação completa." },
+  ],
+  recebe: [
+    "Laudo ou parecer com ART/RRT",
+    "Valor fundamentado, com grau de fundamentação e precisão",
+    "Documento aceito em bancos, cartórios e processos",
+  ],
+  recebeImage: "/photos/beneficio-1-juridico.jpg",
+  recebeImageAlt: "Engenheiro assinando um laudo técnico sobre a mesa",
+  faq: [
+    {
+      q: "Qual a diferença entre o laudo e a opinião de um corretor?",
+      a: "O corretor estima um preço de mercado. O laudo de avaliação segue a NBR 14653, com pesquisa de dados, tratamento estatístico e fundamentação assinada por engenheiro, e por isso é aceito em bancos, cartórios e processos.",
+    },
+    {
+      q: "Qual a diferença entre perito e assistente técnico?",
+      a: "O perito é nomeado pelo juiz e atua para o processo. O assistente técnico é contratado por uma das partes para acompanhar a perícia, formular quesitos e dar parecer técnico.",
+    },
+    {
+      q: "Posso contratar antes de existir um processo?",
+      a: "Sim. Uma avaliação ou um parecer técnico prévio ajuda a negociar, a fechar um acordo ou a decidir se vale a pena entrar na Justiça.",
+    },
+  ],
+};

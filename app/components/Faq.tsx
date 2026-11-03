@@ -1,5 +1,6 @@
 import { faqs } from "@/lib/data";
 import Reveal from "./Reveal";
+import AccordionItem from "./AccordionItem";
 
 export default function Faq() {
   return (
@@ -9,16 +10,16 @@ export default function Faq() {
         <div className="lg:ml-[8vw] lg:max-w-[52vw]">
           {faqs.map((f, i) => (
             <Reveal key={f.q} delay={i * 40}>
-              <details name="faq" className="group border-b border-neutral-200">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-5 lg:py-[1.5vw] [&::-webkit-details-marker]:hidden">
-                  <h3 className="text-base font-semibold lg:text-[length:max(1.25vw,22.5px)] lg:leading-[1.35]">{f.q}</h3>
-                  <span aria-hidden className="relative block h-9 w-9 shrink-0 bg-sun transition-transform duration-500 ease-out group-open:rotate-45 lg:h-[2.2vw] lg:w-[2.2vw] lg:min-h-9 lg:min-w-9">
-                    <span className="absolute left-1/2 top-1/2 h-[2px] w-[40%] -translate-x-1/2 -translate-y-1/2 bg-ink" />
-                    <span className="absolute left-1/2 top-1/2 h-[40%] w-[2px] -translate-x-1/2 -translate-y-1/2 bg-ink" />
-                  </span>
-                </summary>
-                <p className="pb-6 text-[15px] leading-[1.7] text-neutral-600 lg:max-w-[44vw] lg:pb-[1.8vw] lg:text-[length:max(1vw,18.0px)] lg:leading-[1.7]">{f.a}</p>
-              </details>
+              <AccordionItem
+                group="faq"
+                className="border-b border-neutral-200"
+                btnClassName="py-5 lg:py-[1.5vw]"
+                plusClassName="h-9 w-9 lg:h-[2.2vw] lg:w-[2.2vw] lg:min-h-9 lg:min-w-9"
+                bodyClassName="pb-6 text-[15px] leading-[1.7] text-neutral-600 lg:max-w-[44vw] lg:pb-[1.8vw] lg:text-[length:max(1vw,18.0px)] lg:leading-[1.7]"
+                head={<span className="text-base font-semibold lg:text-[length:max(1.25vw,22.5px)] lg:leading-[1.35]">{f.q}</span>}
+              >
+                {f.a}
+              </AccordionItem>
             </Reveal>
           ))}
         </div>
