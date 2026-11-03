@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { navLinks } from "@/lib/data";
 
 function Logo({ onClick }: { onClick?: () => void }) {
   return (
-    <a href="/" aria-label="KFK Vistorias & Perícias" onClick={onClick}>
+    <Link href="/" aria-label="KFK Vistorias & Perícias" onClick={onClick}>
       <Image
         src="/brand/logo.png" unoptimized
         alt="KFK Vistorias & Perícias"
@@ -15,7 +16,7 @@ function Logo({ onClick }: { onClick?: () => void }) {
         priority
         className="h-6 w-auto lg:h-[clamp(1.5rem,1.35vw,2rem)]"
       />
-    </a>
+    </Link>
   );
 }
 
@@ -45,7 +46,7 @@ export default function Header({ band = false }: { band?: boolean }) {
     <header className="load-rise fixed inset-x-0 top-0 z-50 lg:absolute lg:z-30" style={{ ["--d" as string]: "800ms" }}>
       {/* mobile bar: transparent at the top, frosted white once the page scrolls */}
       <div
-        className={`relative z-10 flex items-center justify-between px-6 transition-all duration-300 lg:px-[8.33%] lg:py-[2.2vw] ${
+        className={`relative z-10 flex items-center justify-between px-6 transition-all duration-300 lg:px-[8.33%] lg:py-[2.2vw] lg:transition-none ${
           scrolled || open ? "bg-white/90 py-3.5 shadow-[0_1px_0_rgba(0,0,0,0.06)] backdrop-blur-md" : "py-6"
         } lg:border-b ${
           band ? "lg:border-transparent lg:bg-transparent" : "lg:border-neutral-200 lg:[background:var(--paper)]"
@@ -121,9 +122,9 @@ export default function Header({ band = false }: { band?: boolean }) {
           ))}
         </nav>
         <div className="mt-8">
-          <a href="/#contact" onClick={() => setOpen(false)} className="btn-sun w-full justify-center py-4 text-sm">
+          <Link href="/#contact" onClick={() => setOpen(false)} className="btn-sun w-full justify-center py-4 text-sm">
             Solicitar Orçamento
-          </a>
+          </Link>
           <p className="mt-5 text-center text-xs text-neutral-500">Rio de Janeiro, RJ · Seg a Sex, 08:00 - 18:00</p>
         </div>
       </div>

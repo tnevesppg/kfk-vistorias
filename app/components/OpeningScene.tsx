@@ -34,17 +34,21 @@ export default function OpeningScene() {
       lineBox.style.display = "none";
       if (bandLine) bandLine.style.display = "none";
       mask.style.clipPath = "";
+      mask.style.paddingTop = "0px"; // no turn, so none of the room it needs
     };
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
       hideAll();
       return;
     }
 
+    let dead = false; // late callbacks (fonts, load, the observer) must not touch a torn-down scene
     let raf = 0;
     let turn = 1; // scroll distance (px) over which the line turns
     let clipped = false;
 
     const measure = () => {
+      raf = 0;
+      if (dead) return;
       const V = line.clientHeight; // the sticky layer is one screen tall
       // exact header height for the band behind the menu (desktop only)
       if (headerBar && window.innerWidth >= 1024) {
@@ -108,15 +112,21 @@ export default function OpeningScene() {
       if (!raf) raf = requestAnimationFrame(draw);
     };
     const remeasure = () => {
-      if (!raf) raf = requestAnimationFrame(measure);
+      if (!raf && !dead) raf = requestAnimationFrame(measure);
     };
 
     measure();
+    // the menu bar changes height with the window (and while its padding animates): follow it, so the band always matches
+    const ro = headerBar ? new ResizeObserver(remeasure) : null;
+    if (headerBar) ro?.observe(headerBar);
     window.addEventListener("scroll", on, { passive: true });
     window.addEventListener("resize", remeasure);
     window.addEventListener("load", remeasure);
     document.fonts?.ready.then(remeasure);
     return () => {
+      dead = true;
+      ro?.disconnect();
+      document.documentElement.style.removeProperty("--header-h");
       window.removeEventListener("scroll", on);
       window.removeEventListener("resize", remeasure);
       window.removeEventListener("load", remeasure);

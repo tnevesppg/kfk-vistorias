@@ -39,7 +39,7 @@ html[data-seen] [data-preloader] {
 }
 /* desktop: the room the turn needs above the clients strip, known from CSS alone so nothing shifts when the script runs
    (115svh = 0.65 turn + 0.5 half screen, 40px margin; 58.104vw = hero 52.604vw + strip padding 5.5vw). Keep in step with OpeningScene.tsx */
-@media (min-width: 1024px) {
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
   [data-opening-mask] {
     padding-top: max(0px, calc(115svh + 40px - 58.104vw));
   }
