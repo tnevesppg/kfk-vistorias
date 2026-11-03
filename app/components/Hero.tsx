@@ -11,7 +11,7 @@ export default function Hero() {
     <section id="home" className="relative">
       {/* desktop: absolute collage mirrored from the demo (1920 design grid) */}
       <div className="relative hidden lg:block" style={{ height: u(1010) }}>
-        <Parallax speed={0.12} fadeOut className="photo photo-pop load-wipe absolute" style={{ left: u(160), top: u(136), width: u(160), height: u(564), ["--d" as string]: "700ms" }}>
+        <Parallax speed={0.12} fadeOut className="photo photo-pop load-wipe absolute" style={{ left: u(160), top: u(136), width: u(206), height: u(650), ["--d" as string]: "700ms" }}>
           <Image src={images.heroPlant} alt="Fachada de edifício residencial vista de baixo" fill sizes="25vw" quality={90} priority className="object-cover" />
         </Parallax>
 

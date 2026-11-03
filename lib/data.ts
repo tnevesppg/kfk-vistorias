@@ -14,19 +14,20 @@ export const images = {
   video: "/photos/laudo-protege.jpg",
 };
 
-export const navLinks = [
-  { label: "Início", href: "/" },
+export const services = [
+  { n: "01", title: "Inspeção Predial", href: "/servicos/inspecao-predial", text: "Diagnóstico de estrutura, fachadas e instalações, com laudo conforme a NBR 16747." },
+  { n: "02", title: "Vistorias Técnicas", href: "/servicos/vistorias-tecnicas", text: "Cautelar de vizinhança, imóvel novo, áreas comuns e locativa. Registramos o estado do imóvel antes que vire disputa." },
+  { n: "03", title: "Perícia e Avaliação", href: "/servicos/pericia-e-avaliacao", text: "Assistência técnica judicial, perícia de engenharia e avaliação de imóveis pela NBR 14653." },
+];
+
+export type NavLink = { label: string; href: string; children?: { label: string; href: string }[] };
+
+export const navLinks: NavLink[] = [
   { label: "Sobre", href: "/sobre" },
-  { label: "Serviços", href: "/servicos" },
+  { label: "Serviços", href: "/servicos", children: services.map((x) => ({ label: x.title, href: x.href })) },
   { label: "Clientes", href: "/clientes" },
   { label: "Equipamentos", href: "/equipamentos" },
   { label: "Contato", href: "/#contact" },
-];
-
-export const services = [
-  { n: "01", title: "Inspeção Predial", text: "Diagnóstico de estrutura, fachadas e instalações, com laudo conforme a NBR 16747." },
-  { n: "02", title: "Vistorias Técnicas", text: "Cautelar de vizinhança, imóvel novo, áreas comuns e locativa. Registramos o estado do imóvel antes que vire disputa." },
-  { n: "03", title: "Perícia e Avaliação", text: "Assistência técnica judicial, perícia de engenharia e avaliação de imóveis pela NBR 14653." },
 ];
 
 export const benefits: { n: string; title: string; text: string; src: string }[] = [

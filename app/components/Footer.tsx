@@ -38,7 +38,7 @@ export default function Footer() {
           </a>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-x-6 gap-y-10 bg-white px-6 py-12 lg:grid-cols-[1.3fr_1fr_1.3fr_1fr] lg:px-[8.33%] lg:py-[4vw]">
+      <div className="grid grid-cols-2 gap-x-6 gap-y-10 paper px-6 py-12 lg:grid-cols-[1.3fr_1fr_1.3fr_1fr] lg:px-[8.33%] lg:py-[4vw]">
         <div className="col-span-2 lg:col-span-1">
           <Image src="/brand/logo.png" unoptimized alt="KFK Vistorias & Perícias" width={1400} height={201} className="h-6 w-auto lg:h-[clamp(1.5rem,1.55vw,2rem)]" />
           <p className="mt-4 max-w-[16rem] text-xs leading-6 text-neutral-500 lg:text-[0.7vw]">
@@ -67,7 +67,7 @@ export default function Footer() {
           </div>
         ))}
       </div>
-      <div className="flex flex-col gap-2 border-t border-neutral-200 bg-white px-6 pb-20 pt-5 text-xs text-neutral-500 lg:py-5 sm:flex-row sm:items-center sm:justify-between lg:px-[8.33%] lg:text-[0.7vw]">
+      <div className="flex flex-col gap-2 border-t border-neutral-200 paper px-6 pb-20 pt-5 text-xs text-neutral-500 lg:py-5 sm:flex-row sm:items-center sm:justify-between lg:px-[8.33%] lg:text-[0.7vw]">
         <p>© <Year /> KFK Vistorias &amp; Perícias. Todos os direitos reservados.</p>
         <p>
           Desenvolvido por{" "}

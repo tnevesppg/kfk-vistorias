@@ -9,6 +9,14 @@
   --font-display: var(--font-sans-main);
 }
 
+/* paper grain: warm off-white with a fine noise tile; swap the --paper value to #fff to go back to plain white */
+:root {
+  --paper: #f5f5ef url(/textures/papel.png) 0 0 / 124px 124px;
+}
+.paper {
+  background: var(--paper);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -18,7 +26,7 @@ body {
   font-weight: 400;
   letter-spacing: -0.015em;
   color: #242625;
-  background: #fff;
+  background: var(--paper);
   overflow-x: hidden;
 }
 
@@ -197,12 +205,39 @@ html.lenis body {
 }
 
 /* desktop menu: the item under the mouse stays, the others step back */
-.menu-dim a {
+.menu-dim .menu-item > a {
   transition: opacity 0.3s;
 }
-.menu-dim:hover a:not(:hover) {
+.menu-dim:hover .menu-item:not(:hover) > a {
   opacity: 0.3;
 }
+/* items with a submenu carry a small corner mark; on hover a second one frames the item */
+.menu-item .corner {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  color: currentColor;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.menu-item .corner-br { right: -10px; bottom: -6px; }
+.menu-item .corner-tl { left: -10px; top: -6px; opacity: 0; transform: translate(3px, 3px); }
+.menu-item:hover .corner-tl,
+.menu-item:focus-within .corner-tl { opacity: 1; transform: none; }
+.menu-item:hover .corner-br,
+.menu-item:focus-within .corner-br { transform: translate(2px, 2px); }
+.submenu {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+}
+.menu-item:hover .submenu,
+.menu-item:focus-within .submenu {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+}
+header nav.menu-dim .submenu a { font-weight: 500; }
 
 /* loader: each photo swap slides in a little and flashes */
 @keyframes photo-swap {

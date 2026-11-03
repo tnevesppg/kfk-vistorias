@@ -46,14 +46,40 @@ export default function Header() {
       <div
         className={`relative z-10 flex items-center justify-between px-6 transition-all duration-300 lg:px-[8.33%] lg:py-[2.2vw] ${
           scrolled || open ? "bg-white/90 py-3.5 shadow-[0_1px_0_rgba(0,0,0,0.06)] backdrop-blur-md" : "py-6"
-        } lg:border-b lg:border-neutral-200 lg:bg-white lg:shadow-none lg:backdrop-blur-none`}
+        } lg:border-b lg:border-neutral-200 lg:[background:var(--paper)] lg:shadow-none lg:backdrop-blur-none`}
       >
         <Logo onClick={() => setOpen(false)} />
-        <nav className="menu-dim hidden gap-[2.1vw] lg:flex">
+        <nav className="menu-dim hidden gap-[3.4vw] lg:flex">
           {navLinks.map((l) => (
-            <a key={l.href} href={l.href} className="text-[clamp(11px,calc(0.8vw-2px),14px)] uppercase">
-              {l.label}
-            </a>
+            <div key={l.href} className="menu-item relative">
+              <a href={l.href} className="text-[clamp(11px,calc(0.8vw-2px),14px)] uppercase">
+                {l.label}
+              </a>
+              {l.children && (
+                <>
+                  <svg aria-hidden className="corner corner-br" viewBox="0 0 6 6" fill="none">
+                    <path d="M5.47 0V5.33H0" stroke="currentColor" strokeLinejoin="round" />
+                  </svg>
+                  <svg aria-hidden className="corner corner-tl" viewBox="0 0 6 6" fill="none">
+                    <path d="M0 5.33V0H5.47" stroke="currentColor" strokeLinejoin="round" />
+                  </svg>
+                  <div className="submenu absolute left-[-1.2vw] top-full z-20 pt-[1.4vw]">
+                    <ul className="paper min-w-[15vw] border border-neutral-300 py-2 shadow-[0_12px_30px_-18px_rgba(0,0,0,0.35)]">
+                      {l.children.map((c) => (
+                        <li key={c.href}>
+                          <a
+                            href={c.href}
+                            className="block whitespace-nowrap px-[1.2vw] py-[0.7vw] text-[clamp(11px,calc(0.8vw-2px),14px)] uppercase hover:bg-black/[0.04]"
+                          >
+                            {c.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </>
+              )}
+            </div>
           ))}
         </nav>
         <button
@@ -72,7 +98,7 @@ export default function Header() {
 
       {/* full-screen mobile menu */}
       <div
-        className={`fixed inset-0 z-0 flex flex-col bg-white px-6 pb-8 pt-24 transition-all duration-500 ease-out lg:hidden ${
+        className={`paper fixed inset-0 z-0 flex flex-col px-6 pb-8 pt-24 transition-all duration-500 ease-out lg:hidden ${
           open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-4 opacity-0"
         }`}
         aria-hidden={!open}
