@@ -6,7 +6,7 @@ import { navLinks } from "@/lib/data";
 
 function Logo({ onClick }: { onClick?: () => void }) {
   return (
-    <a href="#home" aria-label="KFK Vistorias & Perícias" onClick={onClick}>
+    <a href="/" aria-label="KFK Vistorias & Perícias" onClick={onClick}>
       <Image
         src="/brand/logo.png" unoptimized
         alt="KFK Vistorias & Perícias"
@@ -46,12 +46,12 @@ export default function Header() {
       <div
         className={`relative z-10 flex items-center justify-between px-6 transition-all duration-300 lg:px-[8.33%] lg:py-[2.2vw] ${
           scrolled || open ? "bg-white/90 py-3.5 shadow-[0_1px_0_rgba(0,0,0,0.06)] backdrop-blur-md" : "py-6"
-        } lg:bg-transparent lg:shadow-none lg:backdrop-blur-none`}
+        } lg:border-b lg:border-neutral-200 lg:bg-white lg:shadow-none lg:backdrop-blur-none`}
       >
         <Logo onClick={() => setOpen(false)} />
         <nav className="menu-dim hidden gap-[2.1vw] lg:flex">
           {navLinks.map((l) => (
-            <a key={l.href} href={l.href} className="text-[0.8vw] font-semibold uppercase max-[1400px]:text-[11px]">
+            <a key={l.href} href={l.href} className="text-[clamp(11px,calc(0.8vw-2px),14px)] uppercase">
               {l.label}
             </a>
           ))}
@@ -92,7 +92,7 @@ export default function Header() {
           ))}
         </nav>
         <div className="mt-8">
-          <a href="#contact" onClick={() => setOpen(false)} className="btn-sun w-full justify-center py-4 text-sm">
+          <a href="/#contact" onClick={() => setOpen(false)} className="btn-sun w-full justify-center py-4 text-sm">
             Solicitar Orçamento
           </a>
           <p className="mt-5 text-center text-xs text-neutral-500">Rio de Janeiro, RJ · Seg a Sex, 08:00 - 18:00</p>

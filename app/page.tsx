@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import Clients from "./components/Clients";
 import About from "./components/About";
 import Services from "./components/Services";
 import Benefits from "./components/Benefits";
@@ -27,6 +28,7 @@ export default function Home() {
       <Header />
       <main className="relative z-10">
         <Hero />
+        <Clients />
         <About />
         <Services />
         <Benefits />

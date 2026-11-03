@@ -3,7 +3,15 @@
 import { useEffect, useRef } from "react";
 
 /** Muted looping clip with the old photo as poster, so there is never an empty frame. */
-export default function HeroVideo({ alt }: { alt: string }) {
+export default function HeroVideo({
+  alt,
+  src = "/videos/engenheiro_inspecionando_parede.mp4",
+  poster = "/photos/hero-principal.jpg",
+}: {
+  alt: string;
+  src?: string;
+  poster?: string;
+}) {
   const ref = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -15,8 +23,8 @@ export default function HeroVideo({ alt }: { alt: string }) {
     <video
       ref={ref}
       className="absolute inset-0 h-full w-full object-cover"
-      src="/videos/engenheiro_inspecionando_parede.mp4"
-      poster="/photos/hero-principal.jpg"
+      src={src}
+      poster={poster}
       aria-label={alt}
       autoPlay
       muted

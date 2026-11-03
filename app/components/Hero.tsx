@@ -6,24 +6,16 @@ import Reveal from "./Reveal";
 import HeroTitle from "./HeroTitle";
 import HeroVideo from "./HeroVideo";
 
-function Lead() {
-  return (
-    <p className="text-center text-lg font-semibold text-neutral-700 lg:text-[1.7vw]">
-      Você se identifica com algum desses problemas?
-    </p>
-  );
-}
-
 export default function Hero() {
   return (
     <section id="home" className="relative">
       {/* desktop: absolute collage mirrored from the demo (1920 design grid) */}
-      <div className="relative hidden lg:block" style={{ height: u(1130) }}>
-        <Parallax speed={0.12} fadeOut className="photo load-wipe absolute" style={{ left: u(160), top: u(136), width: u(160), height: u(564), ["--d" as string]: "700ms" }}>
+      <div className="relative hidden lg:block" style={{ height: u(1010) }}>
+        <Parallax speed={0.12} fadeOut className="photo photo-pop load-wipe absolute" style={{ left: u(160), top: u(136), width: u(160), height: u(564), ["--d" as string]: "700ms" }}>
           <Image src={images.heroPlant} alt="Fachada de edifício residencial vista de baixo" fill sizes="25vw" quality={90} priority className="object-cover" />
         </Parallax>
 
-        <Parallax speed={0.1} fadeOut className="photo load-wipe absolute" style={{ left: u(1152), top: u(136), width: u(736), height: u(564), ["--d" as string]: "600ms" }}>
+        <Parallax speed={0.1} fadeOut className="photo load-wipe absolute" style={{ left: u(1152), top: 0, right: 0, height: u(700), ["--d" as string]: "600ms" }}>
           <HeroVideo alt="Engenheiro inspecionando trinca em parede" />
         </Parallax>
 
@@ -59,9 +51,6 @@ export default function Hero() {
             Você não precisa adivinhar o tamanho do problema. Um engenheiro registra, explica e indica o caminho, com laudo que sustenta sua decisão em assembleia, seguro ou disputa.</p>
         </div>
 
-        <div className="load-rise absolute" style={{ left: u(160), top: u(1050), width: u(1600) }}>
-          <Lead />
-        </div>
       </div>
 
       {/* mobile / tablet */}
@@ -106,7 +95,7 @@ export default function Hero() {
           </Reveal>
           <div className="mt-3 grid grid-cols-2 gap-3">
             <Reveal delay={60}>
-              <div className="photo load-wipe relative aspect-[3/4] overflow-hidden" style={{ ["--d" as string]: "850ms" }}>
+              <div className="photo photo-pop load-wipe relative aspect-[3/4] overflow-hidden" style={{ ["--d" as string]: "850ms" }}>
                 <Parallax speed={0.07} className="absolute -inset-y-[6%] inset-x-0">
                   <Image src={images.heroPlant} alt="Fachada de edifício residencial vista de baixo" fill sizes="(min-width:768px) 21rem, 50vw" quality={90} className="object-cover" />
                 </Parallax>
@@ -120,10 +109,6 @@ export default function Hero() {
               </div>
             </Reveal>
           </div>
-        </div>
-
-        <div className="mt-16 pb-2">
-          <Lead />
         </div>
       </div>
     </section>

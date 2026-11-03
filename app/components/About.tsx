@@ -44,10 +44,13 @@ export default function About() {
       <p aria-hidden className="mt-3 text-center text-[11px] font-semibold uppercase tracking-[0.25em] text-neutral-400 lg:hidden">Deslize →</p>
 
       <Reveal className="relative z-10 mx-auto mt-6 bg-white p-0 md:max-w-2xl lg:max-w-none lg:-mt-[5vw] lg:w-[62.5%] lg:px-[4.2vw] lg:py-[4vw]">
-        <h2 className="heading text-4xl lg:text-[3.1vw]">Esperar custa mais <span className="text-sun">.</span></h2>
+        <h2 className="heading text-4xl lg:text-[3.1vw]">Você se identifica com algum <span className="accent">desses problemas?</span></h2>
         <span className="rule mt-6 w-14 lg:w-[3.6vw]" />
-        <p className="mt-8 text-[15px] leading-[1.75] text-neutral-600 lg:text-[0.9vw] lg:leading-[1.85]">
-          Uma infiltração ignorada vira laje comprometida. Uma vistoria mal feita vira disputa na justiça. Uma fachada esquecida vira risco para quem passa embaixo. Quanto mais o problema espera, mais caro fica resolver.
+        <p className="mt-8 text-xl font-semibold leading-snug text-ink lg:text-[1.35vw]">
+          Esperar custa mais: quanto mais o problema espera, mais caro fica resolver.
+        </p>
+        <p className="mt-5 text-[15px] leading-[1.75] text-neutral-600 lg:text-[0.9vw] lg:leading-[1.85]">
+          Uma infiltração ignorada vira laje comprometida. Uma vistoria mal feita vira disputa na justiça. Uma fachada esquecida vira risco para quem passa embaixo.
         </p>
         <p className="mt-4 text-[15px] leading-[1.75] text-neutral-600 lg:text-[0.9vw] lg:leading-[1.85]">
           Na KFK Vistorias, o laudo é assinado por engenheiro habilitado, com ART/RRT, fotos e conclusões claras: você sabe o que tem, quanto é grave e o que fazer primeiro. Atendemos síndicos, administradoras, proprietários, construtoras e advogados no Rio de Janeiro.

@@ -15,10 +15,12 @@ export const images = {
 };
 
 export const navLinks = [
-  { label: "Início", href: "#home" },
-  { label: "Sobre", href: "#about" },
-  { label: "Serviços", href: "#services" },
-  { label: "Contato", href: "#contact" },
+  { label: "Início", href: "/" },
+  { label: "Sobre", href: "/sobre" },
+  { label: "Serviços", href: "/servicos" },
+  { label: "Clientes", href: "/clientes" },
+  { label: "Equipamentos", href: "/equipamentos" },
+  { label: "Contato", href: "/#contact" },
 ];
 
 export const services = [

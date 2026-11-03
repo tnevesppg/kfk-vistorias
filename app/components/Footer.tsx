@@ -1,10 +1,17 @@
 import Image from "next/image";
 import Year from "./Year";
 
-const QUICK: Record<string, string> = { "Sobre Nós": "#about", "Serviços": "#services", "Contato": "#contact" };
+const QUICK: Record<string, string> = {
+  "Início": "/",
+  "Sobre Nós": "/sobre",
+  "Serviços": "/servicos",
+  "Clientes": "/clientes",
+  "Equipamentos": "/equipamentos",
+  "Contato": "/#contact",
+};
 
 const cols = [
-  { h: "Links Rápidos", items: ["Sobre Nós", "Serviços", "Contato"] },
+  { h: "Links Rápidos", items: ["Início", "Sobre Nós", "Serviços", "Clientes", "Equipamentos", "Contato"] },
   { h: "Contato", items: ["Endereço: Rua 24 de Fevereiro, 07, Bonsucesso, Rio de Janeiro, RJ", "Telefone: (21) 2160-0974", "E-mail: contato@kfkconstrutora.com.br"] },
   { h: "Atendimento", items: ["Seg a Sex: 08:00 - 18:00", "Sábado: sob agendamento"] },
 ];

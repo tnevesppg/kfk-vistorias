@@ -33,6 +33,9 @@ header nav a {
   font-weight: 500;
   letter-spacing: 0.02em;
 }
+header nav.menu-dim a {
+  font-weight: 700;
+}
 @font-face {
   font-family: "Tartuffo";
   src: url("./_fonts/Tartuffo_Trial-RegularItalic-BF643371dadcd03.otf") format("opentype");
@@ -180,6 +183,11 @@ html.lenis body {
 .photo img,
 .photo video {
   transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+/* building photo: lift the pastel look with a bit of saturation, contrast and brightness */
+.photo-pop img,
+.photo-pop video {
+  filter: saturate(1.25) contrast(1.12) brightness(1.06);
 }
 @media (hover: hover) and (pointer: fine) {
   .photo:hover img,
