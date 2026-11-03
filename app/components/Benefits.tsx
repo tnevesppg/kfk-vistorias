@@ -22,7 +22,7 @@ export default function Benefits() {
                 alt=""
                 fill
                 sizes="(min-width:1024px) 20vw, 50vw"
-                className="object-cover transition duration-700 ease-out group-hover:scale-[1.06]"
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
               <figcaption className="absolute inset-x-0 bottom-0 p-5 text-white lg:p-[1.8vw]">
