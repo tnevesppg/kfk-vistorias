@@ -55,7 +55,7 @@ export default function About() {
         <p className="mt-4 text-[15px] leading-[1.75] text-neutral-600 lg:text-[length:max(0.9vw,16.2px)] lg:leading-[1.85]">
           Na KFK Vistorias, o laudo é assinado por engenheiro habilitado, com ART/RRT, fotos e conclusões claras: você sabe o que tem, quanto é grave e o que fazer primeiro. Atendemos síndicos, administradoras, proprietários, construtoras e advogados no Rio de Janeiro.
         </p>
-        <a href="#contact" className="btn-dark mt-8 max-lg:w-full max-lg:justify-center max-lg:py-4">Solicitar Orçamento</a>
+        <a href="/orcamento" className="btn-dark mt-8 max-lg:w-full max-lg:justify-center max-lg:py-4">Solicitar Orçamento</a>
       </Reveal>
     </section>
   );

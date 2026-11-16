@@ -122,7 +122,7 @@ export default function Header({ band = false }: { band?: boolean }) {
           ))}
         </nav>
         <div className="mt-8">
-          <Link href="/#contact" onClick={() => setOpen(false)} className="btn-sun w-full justify-center py-4 text-sm">
+          <Link href="/orcamento" onClick={() => setOpen(false)} className="btn-sun w-full justify-center py-4 text-sm">
             Solicitar Orçamento
           </Link>
           <p className="mt-5 text-center text-xs text-neutral-500">Rio de Janeiro, RJ · Seg a Sex, 08:00 - 18:00</p>

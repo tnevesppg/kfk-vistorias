@@ -36,7 +36,7 @@ export default function Hero() {
         </div>
 
         <div className="load-rise absolute" style={{ left: u(490), top: u(650), ["--d" as string]: "600ms" }}>
-          <a href="#contact" className="btn-sun">Solicitar Orçamento</a>
+          <a href="/orcamento" className="btn-sun">Solicitar Orçamento</a>
         </div>
 
         <Parallax speed={0.08} fadeOut className="photo load-wipe absolute" style={{ left: u(830), top: u(700), width: u(320), height: u(275), ["--d" as string]: "200ms" }}>
@@ -79,7 +79,7 @@ export default function Hero() {
             <span className="block">Mancha que volta, trinca que cresce, laudo contestado.</span>
             <span className="mt-2 block font-semibold text-ink">Descubra a causa real antes que vire prejuízo.</span>
           </p>
-          <a href="#contact" className="btn-sun mt-8 w-full justify-center py-4 text-sm">
+          <a href="/orcamento" className="btn-sun mt-8 w-full justify-center py-4 text-sm">
             Solicitar Orçamento
           </a>
         </div>
