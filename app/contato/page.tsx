@@ -4,7 +4,7 @@ import ContatoForm from "../components/ContatoForm";
 
 export const metadata: Metadata = {
   title: "Contato | KFK Vistorias & Perícias",
-  description: "Fale com a KFK Vistorias & Perícias: WhatsApp (21) 2160-0974, contato@kfkconstrutora.com.br, Bonsucesso, Rio de Janeiro.",
+  description: "Fale com a KFK Vistorias & Perícias: WhatsApp (21) 2160-0974, contato@kfkvistorias.com.br, Bonsucesso, Rio de Janeiro.",
 };
 
 const pad = "px-6 lg:px-[4.2vw]";
@@ -23,9 +23,9 @@ const canais = [
   },
   {
     k: "E-mail",
-    v: "contato@kfkconstrutora.com.br",
+    v: "contato@kfkvistorias.com.br",
     acao: "Enviar e-mail",
-    href: "mailto:contato@kfkconstrutora.com.br",
+    href: "mailto:contato@kfkvistorias.com.br",
     externo: false,
   },
   {

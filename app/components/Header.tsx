@@ -116,7 +116,7 @@ export default function Header({ band = false }: { band?: boolean }) {
               className="flex items-baseline gap-4 border-b border-neutral-200 py-5 font-extrabold text-4xl tracking-[-0.04em] transition-all duration-500"
               style={{ transitionDelay: open ? `${150 + i * 70}ms` : "0ms", opacity: open ? 1 : 0, transform: open ? "none" : "translateY(16px)" }}
             >
-              <span className="text-sm font-semibold tracking-normal text-sun">0{i + 1}</span>
+              <span className="w-6 shrink-0 text-sm font-semibold tracking-normal text-sun">0{i + 1}</span>
               {l.label}
             </a>
           ))}

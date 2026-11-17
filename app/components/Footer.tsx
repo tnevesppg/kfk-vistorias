@@ -7,12 +7,12 @@ const QUICK: Record<string, string> = {
   "Serviços": "/servicos",
   "Clientes": "/clientes",
   "Equipamentos": "/equipamentos",
-  "Contato": "/#contact",
+  "Contato": "/contato",
 };
 
 const cols = [
   { h: "Links Rápidos", items: ["Início", "Sobre Nós", "Serviços", "Clientes", "Equipamentos", "Contato"] },
-  { h: "Contato", items: ["Endereço: Rua 24 de Fevereiro, 07, Bonsucesso, Rio de Janeiro, RJ", "Telefone: (21) 2160-0974", "E-mail: contato@kfkconstrutora.com.br"] },
+  { h: "Contato", items: ["Endereço: Rua 24 de Fevereiro, 07, Bonsucesso, Rio de Janeiro, RJ", "Telefone: (21) 2160-0974", "E-mail: contato@kfkvistorias.com.br"] },
 ];
 
 const col = "flex flex-col gap-10 border-t border-neutral-200 px-6 py-10 first:border-t-0 lg:min-h-[20vw] lg:border-l lg:border-t-0 lg:px-[2.6vw] lg:py-[3.2vw] lg:first:border-l-0";

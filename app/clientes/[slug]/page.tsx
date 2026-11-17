@@ -9,6 +9,9 @@ const pad = "px-6 lg:px-[4.2vw]";
 const label = "text-xs font-semibold uppercase tracking-[0.04em] lg:text-[length:max(0.8vw,14.4px)]";
 const body = "text-[15px] leading-[1.75] text-neutral-700 lg:text-[length:max(0.95vw,17.1px)]";
 
+// every case is prerendered from generateStaticParams; skip the dev-only instant-navigation check on params
+export const instant = false;
+
 export function generateStaticParams() {
   return allCases.map(({ caso }) => ({ slug: caso.slug }));
 }
@@ -158,7 +161,7 @@ function CaseLink({ to, dir }: { to: (typeof allCases)[number]; dir: "prev" | "n
       data-cursor="dot"
       className={`group flex items-center gap-5 py-7 lg:gap-[1.6vw] lg:py-[2.4vw] ${
         isNext
-          ? "flex-row-reverse border-t border-neutral-200 text-right sm:border-l sm:border-t-0 sm:pl-6 lg:pl-[3vw]"
+          ? "flex-row-reverse border-t border-neutral-200 sm:border-l sm:text-right sm:border-t-0 sm:pl-6 lg:pl-[3vw]"
           : "sm:pr-6 lg:pr-[3vw]"
       }`}
     >

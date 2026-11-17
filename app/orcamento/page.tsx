@@ -51,8 +51,8 @@ export default function OrcamentoPage() {
                 </div>
                 <div>
                   <p className={small}>E-mail</p>
-                  <a href="mailto:contato@kfkconstrutora.com.br" className={`${value} break-all`}>
-                    contato@kfkconstrutora.com.br
+                  <a href="mailto:contato@kfkvistorias.com.br" className={`${value} break-all`}>
+                    contato@kfkvistorias.com.br
                   </a>
                 </div>
                 <div>

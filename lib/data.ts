@@ -27,7 +27,7 @@ export const navLinks: NavLink[] = [
   { label: "Serviços", href: "/servicos", children: services.map((x) => ({ label: x.title, href: x.href })) },
   { label: "Clientes", href: "/clientes" },
   { label: "Equipamentos", href: "/equipamentos" },
-  { label: "Contato", href: "/#contact" },
+  { label: "Contato", href: "/contato" },
 ];
 
 export const benefits: { n: string; title: string; text: string; src: string }[] = [
