@@ -393,7 +393,5 @@ header nav.menu-dim .submenu a { font-weight: 500; }
 @media (prefers-reduced-motion: reduce) {
   .pi-root { display: none; }
 }
-html[data-seen] .pi-root { display: none; }
-/* inner-page entrances wait for the shutters (started by PageIntro); at once on a returning visit */
+/* inner-page entrances wait for the shutters (PageIntro plays on every inner page load) */
 .pi-page { --base: 1500ms; }
-html[data-seen] .pi-page { --base: 0ms; }
