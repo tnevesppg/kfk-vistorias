@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import PageShell from "../components/PageShell";
 import ContatoForm from "../components/ContatoForm";
 import FaixaLaudo from "../components/FaixaLaudo";
+import { pagina } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contato | KFK Vistorias & Perícias",
-  description: "Fale com a KFK Vistorias & Perícias: WhatsApp (21) 2160-0974, contato@kfkvistorias.com.br, Bonsucesso, Rio de Janeiro.",
-};
+export const metadata: Metadata = pagina({
+  title: "Contato",
+  description: "Fale com a KFK Vistorias & Perícias: WhatsApp (21) 2160-0974, contato@kfkvistorias.com.br, Rua 24 de Fevereiro, 07, Bonsucesso, Rio de Janeiro.",
+  path: "/contato",
+});
 
 const pad = "px-6 lg:px-[4.2vw]";
 const label = "text-xs font-semibold uppercase tracking-[0.04em] lg:text-[length:max(0.8vw,14.4px)]";

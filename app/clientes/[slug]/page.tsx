@@ -5,6 +5,8 @@ import PageShell from "../../components/PageShell";
 import { Andamento } from "../../components/ClientCases";
 import { allCases, findCase } from "@/lib/clientes";
 import { capaDoCase } from "@/lib/case-fotos";
+import JsonLd from "../../components/JsonLd";
+import { ORG_ID, abs, pagina, resumir, trilhaLd } from "@/lib/seo";
 
 const pad = "px-6 lg:px-[4.2vw]";
 const label = "text-xs font-semibold uppercase tracking-[0.04em] lg:text-[length:max(0.8vw,14.4px)]";
@@ -22,11 +24,15 @@ export async function generateMetadata({ params }: PageProps<"/clientes/[slug]">
   const found = findCase(slug);
   if (!found) return {};
   const { cliente, caso } = found;
-  return {
-    title: `${caso.titulo} | ${cliente.nome} | KFK Vistorias & Perícias`,
-    description: `${caso.servico} para ${cliente.nome}: ${caso.problema[0]}`,
-    openGraph: { images: [{ url: capaDoCase(caso), alt: caso.capaAlt }] },
-  };
+  return pagina({
+    title: `${caso.titulo} | KFK Vistorias`,
+    absoluteTitle: true,
+    description: `${caso.servico} para ${cliente.nome}. ${caso.problema[0]}`,
+    path: `/clientes/${caso.slug}`,
+    image: capaDoCase(caso),
+    imageAlt: caso.capaAlt,
+    type: "article",
+  });
 }
 
 export default async function CasePage({ params }: PageProps<"/clientes/[slug]">) {
@@ -42,6 +48,28 @@ export default async function CasePage({ params }: PageProps<"/clientes/[slug]">
 
   return (
     <PageShell>
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: caso.titulo,
+            description: resumir(`${caso.servico} para ${cliente.nome}. ${caso.problema[0]}`),
+            image: abs(capaDoCase(caso)),
+            url: abs(`/clientes/${caso.slug}`),
+            inLanguage: "pt-BR",
+            about: caso.servico,
+            author: { "@id": ORG_ID },
+            publisher: { "@id": ORG_ID },
+            mainEntityOfPage: abs(`/clientes/${caso.slug}`),
+          },
+          trilhaLd([
+            { nome: "Início", path: "/" },
+            { nome: "Clientes", path: "/clientes" },
+            { nome: caso.titulo, path: `/clientes/${caso.slug}` },
+          ]),
+        ]}
+      />
       {/* opening */}
       <section className={`relative ${pad} pt-28 lg:pt-[9vw]`}>
         <p className="load-rise flex flex-wrap items-center gap-3 text-sm lg:gap-[0.8vw] lg:text-[length:max(0.9vw,16.2px)]">

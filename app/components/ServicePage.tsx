@@ -3,6 +3,8 @@ import type { Servico } from "@/lib/servicos";
 import PageShell from "./PageShell";
 import Reveal from "./Reveal";
 import AccordionItem from "./AccordionItem";
+import JsonLd from "./JsonLd";
+import { ORG_ID, abs, faqLd, trilhaLd } from "@/lib/seo";
 
 const pad = "px-6 lg:px-[4.2vw]";
 const label = "text-xs font-semibold uppercase tracking-[0.04em] lg:text-[length:max(0.8vw,14.4px)]";
@@ -17,6 +19,27 @@ function LineX({ className = "" }: { className?: string }) {
 export default function ServicePage({ s }: { s: Servico }) {
   return (
     <PageShell footerCta={false}>
+      <JsonLd
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: s.nome,
+            serviceType: s.nome,
+            description: s.resumo,
+            url: abs(`/servicos/${s.slug}`),
+            image: abs(s.image),
+            provider: { "@id": ORG_ID },
+            areaServed: { "@type": "City", name: "Rio de Janeiro" },
+          },
+          faqLd(s.faq),
+          trilhaLd([
+            { nome: "Início", path: "/" },
+            { nome: "Serviços", path: "/servicos" },
+            { nome: s.nome, path: `/servicos/${s.slug}` },
+          ]),
+        ]}
+      />
       {/* opening: title rises, then the photo is uncovered from the bottom (no pinned scrolling, unlike the Sobre page) */}
       <section className={`relative ${pad} pt-28 lg:pt-[9vw]`}>
         <p className="load-rise flex flex-wrap items-center gap-3 text-sm lg:gap-[0.8vw] lg:text-[length:max(0.9vw,16.2px)]">

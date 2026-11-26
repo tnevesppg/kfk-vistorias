@@ -1,4 +1,8 @@
+import type { Metadata } from "next";
 import Header from "./components/Header";
+import JsonLd from "./components/JsonLd";
+import { faqs } from "@/lib/data";
+import { faqLd, pagina } from "@/lib/seo";
 import Hero from "./components/Hero";
 import OpeningScene from "./components/OpeningScene";
 import Clients from "./components/Clients";
@@ -13,6 +17,14 @@ import BackToTop from "./components/BackToTop";
 import Preloader from "./components/Preloader";
 import SmoothScroll from "./components/SmoothScroll";
 import CustomCursor from "./components/CustomCursor";
+
+export const metadata: Metadata = pagina({
+  title: "Inspeção Predial, Vistorias e Perícias no Rio de Janeiro | KFK Vistorias",
+  absoluteTitle: true,
+  description:
+    "Inspeção predial, vistorias técnicas, avaliação de imóveis e perícias com laudo assinado por engenheiro. Descubra a causa real do problema antes que vire prejuízo.",
+  path: "/",
+});
 
 export default function Home() {
   return (
@@ -43,6 +55,7 @@ export default function Home() {
       </div>
       <OpeningScene />
       <main className="relative z-10">
+        <JsonLd data={faqLd(faqs)} />
         <Hero />
         {/* the block revealed by the line */}
         <div data-opening-mask>

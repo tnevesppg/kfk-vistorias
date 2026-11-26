@@ -5,11 +5,13 @@ import HeroVideo from "../components/HeroVideo";
 import Reveal from "../components/Reveal";
 import PageOpening from "../components/PageOpening";
 import AccordionItem from "../components/AccordionItem";
+import { pagina } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Sobre | KFK Vistorias & Perícias",
-  description: "A KFK Vistorias nasceu da experiência da KFK Engenharia e da KFK Construtora para oferecer inspeção, vistoria e perícia com independência técnica.",
-};
+export const metadata: Metadata = pagina({
+  title: "Sobre a KFK: engenharia independente em laudos",
+  description: "A KFK Vistorias nasceu da experiência da KFK Engenharia e da KFK Construtora para oferecer inspeção, vistoria e perícia com independência técnica no Rio de Janeiro.",
+  path: "/sobre",
+});
 
 /** Video slot under the title (the poster shows until the clip loads). */
 const VIDEO_SRC = "/videos/sobre-video.mp4";

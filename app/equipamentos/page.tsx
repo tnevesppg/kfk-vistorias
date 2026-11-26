@@ -3,11 +3,13 @@ import Image from "next/image";
 import PageShell from "../components/PageShell";
 import Reveal from "../components/Reveal";
 import { equipamentos } from "@/lib/equipamentos";
+import { pagina } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Equipamentos | KFK Vistorias & Perícias",
-  description: "Drone, câmera termográfica, pacômetro, esclerômetro e outros equipamentos que usamos em inspeções, vistorias e perícias.",
-};
+export const metadata: Metadata = pagina({
+  title: "Equipamentos de inspeção: drone, termografia e mais",
+  description: "Drone, câmera termográfica, pacômetro, esclerômetro e outros equipamentos que usamos em inspeções prediais, vistorias e perícias de engenharia.",
+  path: "/equipamentos",
+});
 
 const pad = "px-6 lg:px-[4.2vw]";
 const label = "text-xs font-semibold uppercase tracking-[0.04em] lg:text-[length:max(0.8vw,14.4px)]";

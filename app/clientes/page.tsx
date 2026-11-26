@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import PageShell from "../components/PageShell";
 import ClientCases from "../components/ClientCases";
 import { clientes } from "@/lib/clientes";
+import { pagina } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Clientes | KFK Vistorias & Perícias",
-  description: "Clientes atendidos e cases de vistorias, inspeções e laudos técnicos: problema inicial, diagnóstico e solução.",
-};
+export const metadata: Metadata = pagina({
+  title: "Clientes e cases de engenharia diagnóstica",
+  description: "UNIRIO, Caixa, Banco do Brasil, PJERJ, Poupex e condomínios do Rio: cases de vistorias, inspeções e perícias com problema, diagnóstico e solução.",
+  path: "/clientes",
+});
 
 const pad = "px-6 lg:px-[4.2vw]";
 

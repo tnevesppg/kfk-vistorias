@@ -23,9 +23,10 @@ export default function Hero() {
         <span className="absolute h-[3px] bg-sun" style={{ left: u(1095), top: u(647), width: u(53) }} />
 
         <Parallax mode="scrollX" speed={0.28} className="absolute z-10 whitespace-nowrap" style={{ left: u(490), top: u(262) }}>
-          <h1 className="font-extrabold" aria-label="Laudos precisos, decisões seguras.">
+          {/* the mobile version below is the page's single <h1>; this desktop twin keeps the heading role for screen readers */}
+          <div role="heading" aria-level={1} className="font-extrabold" aria-label="Laudos precisos, decisões seguras.">
             <HeroTitle />
-          </h1>
+          </div>
         </Parallax>
 
         <div className="load-rise absolute" style={{ left: u(490), top: u(520), width: u(640), ["--d" as string]: "400ms" }}>

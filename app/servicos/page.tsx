@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import PageShell from "../components/PageShell";
 import ServiceList from "../components/ServiceList";
+import { pagina } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Serviços | KFK Vistorias & Perícias",
-  description: "Inspeção predial, vistorias técnicas e avaliação e perícia, com laudo assinado por engenheiro.",
-};
+export const metadata: Metadata = pagina({
+  title: "Serviços de Inspeção, Vistoria e Perícia no Rio de Janeiro",
+  description: "Inspeção predial, vistorias técnicas, avaliação de imóveis e perícias de engenharia no Rio de Janeiro, com laudo assinado por engenheiro e ART/RRT.",
+  path: "/servicos",
+});
 
 export default function ServicosPage() {
   return (

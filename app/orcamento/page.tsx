@@ -3,11 +3,13 @@ import PageShell from "../components/PageShell";
 import FaixaLaudo from "../components/FaixaLaudo";
 import Reveal from "../components/Reveal";
 import OrcamentoForm from "../components/OrcamentoForm";
+import { pagina } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Solicitar orçamento | KFK Vistorias & Perícias",
-  description: "Conte o que está acontecendo no imóvel. Um engenheiro analisa o seu caso e retorna com a proposta.",
-};
+export const metadata: Metadata = pagina({
+  title: "Solicitar orçamento de vistoria, inspeção ou perícia",
+  description: "Conte o que está acontecendo no imóvel. Um engenheiro analisa o seu caso e retorna com a proposta, com escopo, prazo e valor definidos.",
+  path: "/orcamento",
+});
 
 const pad = "px-6 lg:px-[4.2vw]";
 const label = "text-xs font-semibold uppercase tracking-[0.04em] lg:text-[length:max(0.8vw,14.4px)]";
