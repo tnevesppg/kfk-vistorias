@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import Reveal from "./Reveal";
+import { Armadilha, Aviso, useEnvio } from "./useEnvio";
 
 const label = "block text-[11px] font-semibold uppercase tracking-[0.04em] text-neutral-500 lg:text-[length:max(0.7vw,12.6px)]";
 const input =
@@ -37,14 +38,9 @@ function Chips({ name, options, required }: { name: string; options: string[]; r
 }
 
 export default function OrcamentoForm() {
+  const { estado, enviando, ref, onSubmit } = useEnvio("orcamento");
   return (
-    <form
-      className="lg:pl-[3vw]"
-      onSubmit={(e) => {
-        // the screen only: sending is not wired yet
-        e.preventDefault();
-      }}
-    >
+    <form ref={ref} onSubmit={onSubmit} className="relative lg:pl-[3vw]">
       <Reveal variant="right" className={group}>
         <p className={legend}>
           <span aria-hidden className="h-2 w-2 bg-sun" />
@@ -105,7 +101,7 @@ export default function OrcamentoForm() {
         </div>
       </Reveal>
 
-      <Reveal variant="zoom" className="border-t border-neutral-200 pt-8 lg:pt-[3vw]">
+      <Reveal variant="zoom" className="pt-8 lg:pt-[3vw]">
         <label className="flex items-start gap-3 text-sm leading-6 text-neutral-600 lg:gap-[0.9vw] lg:text-[length:max(0.85vw,15.3px)] lg:leading-[1.6]">
           <input type="checkbox" name="aceite" required className="peer sr-only" />
           <span
@@ -119,12 +115,18 @@ export default function OrcamentoForm() {
           <span>Concordo em ser contatado pela KFK Vistorias &amp; Perícias para receber a proposta. Usamos seus dados apenas para isso.</span>
         </label>
         <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6 lg:mt-[2.4vw] lg:gap-[2vw]">
-          <button type="submit" className="btn-sun max-sm:w-full max-sm:justify-center lg:gap-[1vw] lg:px-[3vw] lg:py-[1.4vw] lg:text-[length:max(1vw,18px)]">
-            Enviar solicitação
+          <button
+            type="submit"
+            disabled={enviando}
+            className="btn-sun disabled:cursor-wait disabled:opacity-70 max-sm:w-full max-sm:justify-center lg:gap-[1vw] lg:px-[3vw] lg:py-[1.4vw] lg:text-[length:max(1vw,18px)]"
+          >
+            {enviando ? "Enviando…" : "Enviar solicitação"}
           </button>
           <p className="text-xs text-neutral-500 lg:text-[length:max(0.8vw,14.4px)]">Um engenheiro retorna com a proposta.</p>
         </div>
+        <Aviso estado={estado} className="mt-6 text-sm lg:mt-[1.6vw] lg:text-[length:max(0.95vw,17px)]" />
       </Reveal>
+      <Armadilha />
     </form>
   );
 }

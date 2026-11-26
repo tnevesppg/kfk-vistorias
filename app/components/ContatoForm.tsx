@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { Armadilha, Aviso, useEnvio } from "./useEnvio";
 
 const label = "block text-[11px] font-semibold uppercase tracking-[0.04em] text-neutral-500 lg:text-[length:max(0.7vw,12.6px)]";
 const input =
@@ -22,13 +23,9 @@ function Cell({ name, title, className = "", children }: { name: string; title: 
 }
 
 export default function ContatoForm() {
+  const { estado, enviando, ref, onSubmit } = useEnvio("contato");
   return (
-    <form
-      onSubmit={(e) => {
-        // the screen only: sending is not wired yet
-        e.preventDefault();
-      }}
-    >
+    <form ref={ref} onSubmit={onSubmit} className="relative">
       {/* 1px gaps over a grey background draw the grid lines between the cells */}
       <div className="grid gap-px border-t border-neutral-200 bg-neutral-200 sm:grid-cols-2 sm:border-x lg:border-0">
         <Cell name="nome" title="Nome">
@@ -80,15 +77,18 @@ export default function ContatoForm() {
         </div>
         <button
           type="submit"
+          disabled={enviando}
           data-cursor="solid"
-          className="group flex min-h-20 cursor-pointer items-center justify-between gap-4 bg-sun px-5 text-left text-sm font-medium uppercase tracking-[0.06em] text-ink transition-colors duration-300 hover:bg-ink hover:text-white lg:min-h-[5vw] lg:px-[1.6vw] lg:text-[length:max(0.9vw,16px)]"
+          className="group flex min-h-20 cursor-pointer items-center justify-between gap-4 bg-sun px-5 text-left text-sm font-medium uppercase tracking-[0.06em] text-ink transition-colors duration-300 hover:bg-ink hover:text-white disabled:cursor-wait disabled:opacity-70 lg:min-h-[5vw] lg:px-[1.6vw] lg:text-[length:max(0.9vw,16px)]"
         >
-          Enviar mensagem
+          {enviando ? "Enviando…" : "Enviar mensagem"}
           <span aria-hidden className="text-xl transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 lg:text-[1.6vw]">
             ↗
           </span>
         </button>
       </div>
+      <Aviso estado={estado} className="paper border-t border-neutral-200 px-5 py-4 text-sm lg:px-[1.6vw] lg:py-[1.2vw] lg:text-[length:max(0.9vw,16px)]" />
+      <Armadilha />
     </form>
   );
 }

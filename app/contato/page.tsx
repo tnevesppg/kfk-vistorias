@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageShell from "../components/PageShell";
 import ContatoForm from "../components/ContatoForm";
+import FaixaLaudo from "../components/FaixaLaudo";
 
 export const metadata: Metadata = {
   title: "Contato | KFK Vistorias & Perícias",
@@ -133,19 +134,7 @@ export default function ContatoPage() {
         </div>
       </section>
 
-      <div
-        className="bg-ink bg-cover bg-center px-6 py-14 text-white lg:px-[8.33%] lg:py-[4.5vw]"
-        style={{ backgroundImage: "url(/photos/vector-footer.png)" }}
-      >
-        <div className="lg:max-w-[52vw]">
-          <h2 className="text-3xl font-extrabold leading-tight lg:text-[2.6vw]">
-            Todo imóvel seguro começa com um laudo bem feito<span className="text-sun">.</span>
-          </h2>
-          <p className="mt-3 text-sm leading-7 text-white/70 lg:mt-[1vw] lg:text-[length:max(1vw,18.0px)] lg:leading-[1.7]">
-            Engenharia que enxerga o que os olhos não veem.
-          </p>
-        </div>
-      </div>
+      <FaixaLaudo titulo="Todo imóvel seguro começa com um laudo bem feito" texto="Engenharia que enxerga o que os olhos não veem." />
     </PageShell>
   );
 }

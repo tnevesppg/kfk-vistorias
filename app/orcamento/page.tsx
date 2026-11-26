@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageShell from "../components/PageShell";
+import FaixaLaudo from "../components/FaixaLaudo";
 import Reveal from "../components/Reveal";
 import OrcamentoForm from "../components/OrcamentoForm";
 
@@ -69,6 +70,8 @@ export default function OrcamentoPage() {
           </div>
         </div>
       </section>
+
+      <FaixaLaudo titulo="Quanto antes o diagnóstico, menor o custo do reparo" texto="Conte o caso hoje e receba a proposta com escopo, prazo e valor definidos." />
     </PageShell>
   );
 }
