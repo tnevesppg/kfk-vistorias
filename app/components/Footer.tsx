@@ -68,6 +68,13 @@ export default function Footer({ cta = true }: { cta?: boolean }) {
                         (21) 2160-0974
                       </a>
                     </>
+                  ) : i.startsWith("E-mail") ? (
+                    <>
+                      E-mail:{" "}
+                      <a href="mailto:contato@kfkvistorias.com.br" className="underline hover:text-brand">
+                        contato@kfkvistorias.com.br
+                      </a>
+                    </>
                   ) : i}
                 </li>
               ))}
