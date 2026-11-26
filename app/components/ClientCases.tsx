@@ -16,6 +16,20 @@ function Logo({ c }: { c: Cliente }) {
   );
 }
 
+/** small tag for a case whose work is still under way */
+export function Andamento({ dark = false }: { dark?: boolean }) {
+  return (
+    <span
+      className={`inline-flex items-center gap-1.5 border px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.06em] lg:text-[length:max(0.62vw,11px)] ${
+        dark ? "border-white/30 text-white/80" : "border-neutral-300 text-neutral-600"
+      }`}
+    >
+      <span aria-hidden className="h-1.5 w-1.5 animate-pulse rounded-full bg-sun" />
+      Em andamento
+    </span>
+  );
+}
+
 /**
  * Client list: one row per client, logo on the left and that client's cases stacked on the right,
  * each linking to its page (/clientes/[slug]). Clients without a case yet show "Case em breve".
@@ -45,7 +59,10 @@ export default function ClientCases({ clientes }: { clientes: Cliente[] }) {
                       <span className="text-xl leading-tight tracking-[-0.02em] transition-colors duration-300 group-hover:text-brand lg:text-[length:max(1.6vw,28px)]">
                         {x.titulo}
                       </span>
-                      <span className="text-sm text-neutral-500 lg:text-[length:max(0.9vw,16px)]">{x.servico}</span>
+                      <span className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-neutral-500 lg:text-[length:max(0.9vw,16px)]">
+                        {x.servico}
+                        {x.andamento && <Andamento />}
+                      </span>
                     </span>
                     <span className="flex justify-end lg:pr-[0.4vw]">
                       <span

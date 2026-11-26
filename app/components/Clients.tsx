@@ -7,6 +7,7 @@ const clients = [
   { name: "Poder Judiciário do Estado do Rio de Janeiro", src: "/photos/clientes/pjerj-preto.png", ratio: 900 / 250, k: 9.5 },
   { name: "Poupex", src: "/photos/clientes/poupex-preto.png", ratio: 900 / 240, k: 7.5 },
   { name: "Saint Martin", src: "/photos/clientes/resstmartin-preto.png", ratio: 900 / 333, k: 7 },
+  { name: "Condomínio Rubi", src: "/photos/clientes/rubi-preto.png", ratio: 900 / 585, k: 5.4 },
   { name: "UNIRIO", src: "/photos/clientes/unirio-preto.png", ratio: 900 / 288, k: 8.5 },
 ];
 

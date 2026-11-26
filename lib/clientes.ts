@@ -14,6 +14,8 @@ export type Case = {
    */
   capaAlt: string;
   capaProvisoria: string;
+  /** work still under way: shows an "Em andamento" tag */
+  andamento?: boolean;
 };
 
 export type Cliente = {
@@ -291,7 +293,76 @@ export const clientes: Cliente[] = [
       },
     ],
   },
-  { slug: "saint-martin", nome: "Saint Martin", segmento: "Residencial", logo: "/photos/clientes/resstmartin-preto.png", ratio: 900 / 333, k: 7, cases: [] },
+  {
+    slug: "rubi",
+    nome: "Condomínio Rubi",
+    segmento: "Residencial Jardim Mariana Rubi",
+    logo: "/photos/clientes/rubi-preto.png",
+    ratio: 900 / 585,
+    k: 5.4,
+    cases: [
+      {
+        slug: "rubi-laje-estacionamento",
+        titulo: "A laje cedeu: risco estrutural ou vício da construtora?",
+        servico: "Vistoria de análise de causalidade estrutural",
+        capaProvisoria: "/photos/problema-infiltracao.jpg",
+        capaAlt: "Laje de estacionamento com infiltração sobre estrutura metálica",
+        equipamentos: ["Esclerômetro", "Nível a laser", "Câmera termográfica"],
+        problema: [
+          "A laje do estacionamento tinha uma flecha grande: um abaulamento visível por baixo. Os moradores temiam que ela tivesse cedido demais e que houvesse risco estrutural.",
+          "O condomínio queria saber se podia cobrar a construtora. Vício construtivo estrutural é considerado vício oculto, não fica limitado ao prazo de 5 anos, e, se o risco for culpa da construtora, ela é obrigada a reparar. Se fosse falta de manutenção, a conta seria do próprio condomínio.",
+        ],
+        diagnostico: [
+          "Fizemos uma vistoria de análise de causalidade para separar o que era defeito da obra do que era falta de manutenção.",
+          "Com o esclerômetro, verificamos a resistência do concreto. Com o nível a laser, medimos o nivelamento da laje. O abaulamento existia só por baixo, sem nenhum reflexo na face de cima: a laje cedeu durante a execução, no escoramento, e a flecha não representava risco estrutural.",
+          "A câmera termográfica, usada num dia de chuva, mostrou um problema maior: muitos pontos de infiltração. A laje estava muito fissurada e cheia de juntas, e a água passava direto para a estrutura metálica que a sustenta.",
+          "Essa estrutura metálica estava com corrosão muito avançada, o que reduz muito a sua vida útil. Fomos chamados por um problema e encontramos outro, mais sério.",
+        ],
+        solucao: [
+          "O laudo mostrou que a flecha não era um risco e apontou a causa real do dano: o projeto de arquitetura não previu, no memorial descritivo, impermeabilização nem revestimento adequado para uma laje de estacionamento.",
+          "Com o diagnóstico, indicamos o tratamento da laje e da estrutura metálica.",
+          "O condomínio saiu com a causa do problema definida e com base técnica para tratar com a construtora a falha de projeto.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "saint-martin",
+    nome: "Saint Martin",
+    segmento: "Condomínio residencial na Península, Barra da Tijuca",
+    logo: "/photos/clientes/resstmartin-preto.png",
+    ratio: 900 / 333,
+    k: 7,
+    cases: [
+      {
+        slug: "saint-martin-causalidade-estrutural",
+        titulo: "O que está trincando o piso das garagens?",
+        servico: "Vistoria de análise de causalidade estrutural",
+        andamento: true,
+        capaProvisoria: "/photos/problema-trincas.jpg",
+        capaAlt: "Trincas no piso de concreto de uma garagem subterrânea",
+        equipamentos: ["Potencial de corrosão", "Pacômetro"],
+        problema: [
+          "O condomínio, dentro da Península, tem dois subsolos de garagem com cerca de 19 mil m² cada. O piso dos dois, principalmente o do primeiro subsolo, está tomado de fissuras, trincas e rachaduras.",
+          "Os dois pavimentos foram construídos em laje nervurada com cubetas. Sem saber o que provoca as aberturas, o condomínio não sabe se o problema é estrutural nem o que fazer para resolvê-lo.",
+          "Cada abertura tem um nome porque cada uma pesa diferente: a fissura é fina e não tem caráter estrutural; a trinca, acima de 0,20 mm, e a rachadura, acima de 0,25 mm, já indicam um problema na estrutura.",
+        ],
+        diagnostico: [
+          "É uma vistoria de análise de causalidade: o laudo precisa dizer o que causa o problema, e a causa não se constata só olhando.",
+          "A primeira hipótese é a movimentação dos carros sobre um piso sem juntas de dilatação. Mas a causa pode estar no projeto, na execução ou numa armadura mal dimensionada, e só os ensaios confirmam qual é.",
+          "Mapeamos todas as fissuras e trincas dos subsolos para entender como a estrutura está se comportando.",
+          "Depois vêm os ensaios. Selos de vidro colados sobre as fissuras mostram se elas estão ativas: se o vidro trinca, a estrutura está se movimentando. O ensaio de potencial de corrosão mostra se o aço dentro da laje está corroendo. O pacômetro confere se o cobrimento de concreto sobre a armadura segue a norma.",
+          "Por fim, modelamos a estrutura em 3D no computador para ver como ela trabalha e onde estão os pontos de fragilidade.",
+          "Funciona como no médico: os ensaios são os exames que permitem fechar o diagnóstico.",
+        ],
+        solucao: [
+          "Com o resultado dos ensaios, o laudo aponta a causa das trincas, se de projeto ou de execução, e indica o tratamento da estrutura.",
+          "O ensaio de corrosão também define a vida útil do piso: quantos anos ele ainda aguenta e em que prazo precisa ser tratado.",
+          "Assim o condomínio trata a causa uma vez, em vez de gastar com reparos que não resolvem o problema. O trabalho está em andamento.",
+        ],
+      },
+    ],
+  },
 ];
 
 /** Every case in list order, paired with its client. */

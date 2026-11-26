@@ -110,3 +110,25 @@ Proporção 21:9. Quadro de medidores no corredor técnico de um prédio residen
 ```
 Proporção 21:9. Divisa entre duas casas residenciais com um muro baixo; na parede de uma delas, uma janela recém-aberta voltada para o quintal do vizinho. No centro, um perito de perfil, colete e prancheta azul, mede a distância da janela até a divisa com uma trena a laser. Casas simples do subúrbio carioca, céu claro, plantas no quintal. Fotografia editorial, sem pessoas além do perito.
 ```
+
+---
+
+## Saint Martin (Península)
+
+### O que está trincando o piso das garagens?
+- **Arquivo:** `saint-martin-causalidade-estrutural.jpg`
+
+```
+Proporção 21:9. Subsolo de garagem amplo de um condomínio residencial, piso de concreto cinza com várias trincas finas ramificadas marcadas com giz amarelo e pequenas plaquetas de vidro coladas sobre algumas delas. Teto em laje nervurada com cubetas aparentes, pilares de concreto, iluminação fria de garagem. No centro, uma engenheira de costas, capacete branco e colete, agachada, encosta um equipamento de medição no piso ao lado de uma trinca; prancheta azul no chão. Vagas vazias, sem carros nem placas legíveis. Clima técnico e investigativo.
+```
+
+---
+
+## Condomínio Rubi
+
+### A laje cedeu: risco estrutural ou vício da construtora?
+- **Arquivo:** `rubi-laje-estacionamento.jpg`
+
+```
+Proporção 21:9. Vista de baixo de uma laje de estacionamento apoiada em vigas e pilares metálicos, num condomínio residencial. A laje tem uma leve curvatura para baixo no centro, manchas de umidade escorrendo pelas juntas e a estrutura metálica com pontos de ferrugem alaranjada. No centro, um engenheiro de costas, capacete branco e colete, aponta uma câmera termográfica para a laje; a tela mostra manchas azuis de umidade, sem números. Dia chuvoso, luz fria e difusa. Sem carros nem placas legíveis.
+```

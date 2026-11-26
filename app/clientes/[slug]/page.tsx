@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import PageShell from "../../components/PageShell";
+import { Andamento } from "../../components/ClientCases";
 import { allCases, findCase } from "@/lib/clientes";
 import { capaDoCase } from "@/lib/case-fotos";
 
@@ -56,6 +57,11 @@ export default async function CasePage({ params }: PageProps<"/clientes/[slug]">
               <span aria-hidden className="h-2 w-2 bg-sun" />
               {caso.servico}
             </p>
+            {caso.andamento && (
+              <div className="load-rise mt-4 lg:mt-[1vw]" style={{ ["--d" as string]: "100ms" }}>
+                <Andamento />
+              </div>
+            )}
             <h1 className="load-rise mt-5 text-[2.6rem] leading-[1.04] tracking-[-0.03em] lg:mt-[1.4vw] lg:text-[4.6vw]" style={{ ["--d" as string]: "120ms" }}>
               {caso.titulo}
             </h1>
