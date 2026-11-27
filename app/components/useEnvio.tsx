@@ -2,29 +2,33 @@
 
 import { startTransition, useActionState, useEffect, useRef, useState, type FormEvent, type Ref } from "react";
 import { enviarMensagem, type Estado } from "../actions/mensagem";
-import { mascararTelefone, rotulos, validar, validarCampo, type Erros, type Tipo } from "@/lib/validacao";
+import { mascararTelefone, validar, validarCampo, type Erros, type Tipo } from "@/lib/validacao";
 
 const acoes = {
   contato: enviarMensagem.bind(null, "contato"),
   orcamento: enviarMensagem.bind(null, "orcamento"),
 };
 
-type Alerta = { ok: boolean; mensagem: string; lista?: string[] } | null;
+type Alerta = { ok: boolean; mensagem: string } | null;
+
+/** Only the first failing field, in form order: the visitor fixes one thing at a time. */
+const primeiro = (e: Erros): Erros => Object.fromEntries(Object.entries(e).slice(0, 1));
 
 /**
  * Validates and sends a form through the e-mail Server Action.
  *
- * With JavaScript: fields are checked before anything is sent, each failing field shows its own
- * message and an alert lists what is missing. The submit is dispatched by hand so a failed send
- * keeps what the visitor typed; the form clears only on success.
+ * With JavaScript: fields are checked before anything is sent, one at a time: only the first failing
+ * field is marked, focused and brought into view. The alert is kept for the server's answer. The
+ * submit is dispatched by hand so a failed send keeps what the visitor typed; the form clears only
+ * on success.
  * Without JavaScript: the form posts to the same action (the `action` prop), which runs the same
  * rules and sends the errors back with the typed values.
  */
 export function useEnvio(tipo: Tipo) {
   const [estado, despachar, enviando] = useActionState<Estado, FormData>(acoes[tipo], null);
   const ref = useRef<HTMLFormElement>(null);
-  const [erros, setErros] = useState<Erros>(estado?.erros ?? {});
-  const [alerta, setAlerta] = useState<Alerta>(estado ? doServidor(tipo, estado) : null);
+  const [erros, setErros] = useState<Erros>(primeiro(estado?.erros ?? {}));
+  const [alerta, setAlerta] = useState<Alerta>(estado ? doServidor(estado) : null);
   const alertaRef = useRef<HTMLDivElement>(null);
 
   // a new answer from the server replaces the field errors and the alert (adjusted during render, not in an effect)
@@ -32,8 +36,8 @@ export function useEnvio(tipo: Tipo) {
   if (estado !== visto) {
     setVisto(estado);
     if (estado) {
-      setErros(estado.erros ?? {});
-      setAlerta(doServidor(tipo, estado));
+      setErros(primeiro(estado.erros ?? {}));
+      setAlerta(doServidor(estado));
     }
   }
 
@@ -50,26 +54,24 @@ export function useEnvio(tipo: Tipo) {
       });
   }, [alerta?.mensagem, alerta?.ok]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const focarPrimeiro = (e: Erros) => {
-    const nome = Object.keys(e)[0];
-    ref.current?.querySelector<HTMLElement>(`[name="${nome}"]`)?.focus({ preventScroll: true });
+  const focar = (nome: string) => {
+    const alvo = ref.current?.querySelector<HTMLElement>(`[name="${nome}"]`);
+    alvo?.focus({ preventScroll: true });
+    // the checkbox and the option chips are visually hidden, so scroll to what is drawn around them
+    (alvo?.closest("fieldset") ?? alvo?.closest("label"))?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    const novos = validar(tipo, fd);
+    const novos = primeiro(validar(tipo, fd));
     setErros(novos);
-    if (Object.keys(novos).length) {
-      setAlerta({
-        ok: false,
-        mensagem: "Faltam informações para enviar. Confira:",
-        lista: rotulos(tipo, novos),
-      });
-      focarPrimeiro(novos);
+    setAlerta(null);
+    const [invalido] = Object.keys(novos);
+    if (invalido) {
+      focar(invalido);
       return;
     }
-    setAlerta(null);
     startTransition(() => despachar(fd));
   };
 
@@ -89,11 +91,6 @@ export function useEnvio(tipo: Tipo) {
     if (erro) proximos[alvo.name] = erro;
     else delete proximos[alvo.name];
     setErros(proximos);
-    setAlerta((a) => {
-      if (!a || a.ok) return a;
-      if (!Object.keys(proximos).length) return null;
-      return a.lista ? { ...a, lista: rotulos(tipo, proximos) } : a;
-    });
   };
 
   /** Props that tie a field to its message for screen readers. */
@@ -115,14 +112,9 @@ export function useEnvio(tipo: Tipo) {
   };
 }
 
-function doServidor(tipo: Tipo, estado: NonNullable<Estado>): Alerta {
-  if (estado.erros && Object.keys(estado.erros).length) {
-    return {
-      ok: false,
-      mensagem: "Faltam informações para enviar. Confira:",
-      lista: rotulos(tipo, estado.erros),
-    };
-  }
+/** The alert for the server's answer; field errors are shown on the field itself. */
+function doServidor(estado: NonNullable<Estado>): Alerta {
+  if (estado.erros && Object.keys(estado.erros).length) return null;
   return { ok: estado.ok, mensagem: estado.mensagem };
 }
 
@@ -173,13 +165,6 @@ export function Alerta({
           <Icone ok={alerta.ok} />
           <div className="min-w-0 flex-1">
             <p className="font-semibold">{alerta.mensagem}</p>
-            {alerta.lista && (
-              <ul className="mt-1 list-disc pl-5">
-                {alerta.lista.map((r) => (
-                  <li key={r}>{r}</li>
-                ))}
-              </ul>
-            )}
           </div>
           <button
             type="button"

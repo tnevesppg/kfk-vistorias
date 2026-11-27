@@ -86,10 +86,18 @@ export default function ContatoPage() {
                 </span>
                 <span
                   className={`mt-4 block leading-snug tracking-[-0.02em] lg:mt-[1.2vw] ${
-                    c.k === "E-mail" ? "break-all text-lg sm:break-normal lg:whitespace-nowrap lg:text-[length:max(1.05vw,18px)]" : "text-xl lg:text-[length:max(1.45vw,25px)]"
+                    c.k === "E-mail" ? "text-lg [overflow-wrap:anywhere] lg:text-[length:max(1.05vw,18px)]" : "text-xl lg:text-[length:max(1.45vw,25px)]"
                   }`}
                 >
-                  {c.v}
+                  {c.k === "E-mail" ? (
+                    // when the cell is too narrow, the address breaks before the @
+                    <>
+                      {c.v.split("@")[0]}
+                      <wbr />@{c.v.split("@")[1]}
+                    </>
+                  ) : (
+                    c.v
+                  )}
                 </span>
               </span>
               <span className={`${label} inline-flex items-center gap-2 self-start border-b border-ink pb-1 transition-colors group-hover:border-brand group-hover:text-brand`}>
