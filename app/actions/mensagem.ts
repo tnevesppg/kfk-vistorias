@@ -1,6 +1,7 @@
 "use server";
 
 import nodemailer from "nodemailer";
+import { rotulos, validar, type Erros, type Tipo } from "@/lib/validacao";
 
 /**
  * Sends the Contato and Orçamento forms by e-mail over SMTP.
@@ -11,9 +12,11 @@ import nodemailer from "nodemailer";
  *   MAIL_FROM sender shown in the inbox, defaults to SMTP_USER
  */
 
-export type Estado = { ok: boolean; mensagem: string } | null;
-
-type Tipo = "contato" | "orcamento";
+/**
+ * `erros` holds one message per failing field; `valores` echoes what was sent so the form can
+ * be filled back in when the page re-renders after a submission made without JavaScript.
+ */
+export type Estado = { ok: boolean; mensagem: string; erros?: Erros; valores?: Record<string, string> } | null;
 
 const CAMPOS: Record<Tipo, { assunto: string; campos: [string, string][] }> = {
   contato: {
@@ -55,9 +58,14 @@ export async function enviarMensagem(tipo: Tipo, _anterior: Estado, fd: FormData
   const dados = def.campos.map(([k, rotulo]) => [rotulo, texto(fd, k, k === "mensagem" ? 5000 : 200)] as const);
   const nome = texto(fd, "nome");
   const email = texto(fd, "email");
-  const mensagem = texto(fd, "mensagem", 5000);
-  if (!nome || !mensagem || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !fd.get("aceite")) {
-    return { ok: false, mensagem: "Confira os campos obrigatórios e tente de novo." };
+
+  // same rules as the browser, enforced here so a submission that skips the JavaScript is still refused
+  const erros = validar(tipo, fd);
+  if (Object.keys(erros).length) {
+    const valores = Object.fromEntries(
+      [...def.campos.map(([k]) => k), "aceite"].map((k) => [k, texto(fd, k, k === "mensagem" ? 5000 : 200)]),
+    );
+    return { ok: false, mensagem: `Preencha corretamente: ${rotulos(tipo, erros).join(", ")}.`, erros, valores };
   }
 
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_TO, MAIL_FROM } = process.env;
